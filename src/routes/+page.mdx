@@ -1,0 +1,128 @@
+<script>
+  import Hero from '$lib/components/Hero.svelte';
+  import Section from '$lib/components/Section.svelte';
+  import StatsBar from '$lib/components/StatsBar.svelte';
+  import LogoCarousel from '$lib/components/LogoCarousel.svelte';
+  import MediaGrid from '$lib/components/MediaGrid.svelte';
+  import Button from '$lib/components/Button.svelte';
+  import ContactForm from '$lib/components/ContactForm.svelte';
+</script>
+
+<svelte:head>
+  <title>Shaïman Thürler - Conférencier spécialiste en intelligence artificielle</title>
+  <meta name="description" content="Conférencier spécialiste en IA. Plus grand podcast francophone sur l'intelligence artificielle. Conférences adaptables, pédagogiques et approfondies." />
+</svelte:head>
+
+<Hero background="/images/hero-conference.jpg">
+  # Shaïman Thürler
+  ## Conférencier spécialiste en intelligence artificielle
+  <Button href="#contact">Me contacter</Button>
+</Hero>
+
+<StatsBar stats={[
+  { value: "180+", label: "vidéos" },
+  { value: "80K+", label: "abonnés" },
+  { value: "170K+", label: "écoutes/mois" }
+]} />
+
+<Section theme="light">
+  <LogoCarousel logos={[
+    { src: "/images/logos/placeholder-1.png", alt: "Groupe VYV" },
+    { src: "/images/logos/placeholder-2.png", alt: "Rencontres Esprit Critique" },
+    { src: "/images/logos/placeholder-3.png", alt: "Client 3" },
+    { src: "/images/logos/placeholder-4.png", alt: "Client 4" }
+  ]} />
+</Section>
+
+<Section theme="light">
+  ## Ma conférence
+
+  Ma conférence la plus demandée explore **le futur et les dangers de l'intelligence artificielle**.
+  Elle offre un panorama clair et accessible de la trajectoire dans laquelle nous sommes embarqués.
+
+  - **Durée:** Adaptable de 15 min à 3h
+  - **Lieu:** En présentiel (France & international) ou en visio
+  - **Format:** Pédagogique, approfondi, constructif
+
+  <Button href="#contact">Réserver une conférence</Button>
+</Section>
+
+<Section theme="dark">
+  ## Qui suis-je ?
+
+  Je suis le fondateur du média **Le Futurologue**, le plus grand podcast francophone
+  sur l'intelligence artificielle.
+
+  À travers des interviews, des débats et des analyses, mon objectif est d'expliquer
+  les enjeux de l'IA de façon simple et rigoureuse. J'ai eu le privilège d'échanger
+  avec des dizaines d'experts de premier plan et de donner de nombreuses conférences
+  et interventions publiques.
+
+  <Button variant="secondary" href="https://youtube.com/@lefuturologuepodcast">
+    Voir ma chaîne YouTube →
+  </Button>
+</Section>
+
+<Section theme="light">
+  ## Thèmes de conférences
+
+  ### Conférence principale
+
+  **Le futur et les dangers de l'intelligence artificielle** - Un panorama clair et
+  accessible de la trajectoire dans laquelle nous sommes embarqués. Point de départ
+  idéal pour comprendre les vrais enjeux derrière le battage médiatique.
+
+  ### Autres interventions possibles
+
+  - Le futur du travail
+  - Les enjeux géopolitiques de l'IA
+  - La souveraineté numérique
+  - La robotique
+  - Les impacts psychologiques de l'IA
+  - Thèmes sur mesure selon vos besoins
+</Section>
+
+<Section theme="dark">
+  ## Conférences & Interviews
+
+  ### Exemples de conférences réalisées
+
+  <MediaGrid videos={[
+    { id: "yusjUh-2a7E", title: "TransVision 2022" },
+    { id: "xnBLgKEs9aM", title: "Rencontres Esprit Critique" },
+    { id: "sCRh9Pd8z_k", title: "Altruisme Efficace France" }
+  ]} />
+
+  ### Interviews données
+
+  <MediaGrid videos={[
+    { id: "dQw4w9WgXcQ", title: "Interview 1" },
+    { id: "dQw4w9WgXcQ", title: "Interview 2" },
+    { id: "dQw4w9WgXcQ", title: "Interview 3" }
+  ]} />
+</Section>
+
+<Section theme="light">
+  <div id="contact">
+    ## Me contacter
+
+    <ContactForm />
+
+    **Email:** contact@lefuturologue.com
+
+    ### Retrouvez-moi sur les réseaux sociaux
+
+    - [YouTube](https://youtube.com/@lefuturologuepodcast)
+    - [Instagram](https://instagram.com/le.futurologue)
+    - [LinkedIn](https://linkedin.com/in/shaimanthurler)
+    - [Twitter/X](https://twitter.com/le_futurologue)
+    - [Facebook](https://facebook.com/le.futurologue)
+    - [TikTok](https://tiktok.com/@le.futurologue)
+    - [Bluesky](https://bsky.app/profile/lefuturologue.bsky.social)
+    - [Mastodon](https://mastodon.social/@le_futurologue)
+  </div>
+</Section>
+
+<footer style="background-color: var(--dark-800); color: rgba(255, 255, 255, 0.7); padding: var(--space-8); text-align: center; font-size: var(--text-sm);">
+  <p>© 2025 Le Futurologue. Tous droits réservés.</p>
+</footer>
