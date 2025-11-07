@@ -1,0 +1,5 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#f0f0f0"/>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="32" fill="#666" text-anchor="middle">Conference Action Photo</text>
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="18" fill="#999" text-anchor="middle">Replace with actual photo</text>
+</svg>
