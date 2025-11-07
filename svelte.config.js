@@ -8,10 +8,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [vitePreprocess(), mdsvex()],
 	kit: {
-		adapter: adapter({
-			edge: false,
-			split: false
-		})
+		adapter: adapter()
 	},
 	extensions: ['.svelte', '.mdx']
 };
