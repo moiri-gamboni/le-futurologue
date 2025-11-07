@@ -4,8 +4,10 @@
   import StatsBar from '$lib/components/StatsBar.svelte';
   import LogoCarousel from '$lib/components/LogoCarousel.svelte';
   import MediaGrid from '$lib/components/MediaGrid.svelte';
+  import TwoColumn from '$lib/components/TwoColumn.svelte';
   import Button from '$lib/components/Button.svelte';
   import ContactForm from '$lib/components/ContactForm.svelte';
+  import SocialLinks from '$lib/components/SocialLinks.svelte';
 </script>
 
 <svelte:head>
@@ -27,24 +29,26 @@
 
 <Section theme="light">
   <LogoCarousel logos={[
-    { src: "/images/logos/placeholder-1.png", alt: "Groupe VYV" },
-    { src: "/images/logos/placeholder-2.png", alt: "Rencontres Esprit Critique" },
-    { src: "/images/logos/placeholder-3.png", alt: "Client 3" },
-    { src: "/images/logos/placeholder-4.png", alt: "Client 4" }
+    { src: "/images/logos/placeholder-1.svg", alt: "Groupe VYV" },
+    { src: "/images/logos/placeholder-2.svg", alt: "Rencontres de l'Esprit Critique" },
+    { src: "/images/logos/placeholder-3.svg", alt: "Altruisme Efficace France" },
+    { src: "/images/logos/placeholder-4.svg", alt: "Eurêkafé" }
   ]} />
 </Section>
 
-<Section theme="light">
-  ## Ma conférence
+<Section theme="light" width="xl">
+  <TwoColumn image="/images/conference-action.jpg" imagePosition="left" imageAlt="Shaïman Thürler en conférence">
+    ## Ma conférence
 
-  Ma conférence la plus demandée explore **le futur et les dangers de l'intelligence artificielle**.
-  Elle offre un panorama clair et accessible de la trajectoire dans laquelle nous sommes embarqués.
+    Ma conférence la plus demandée explore **le futur et les dangers de l'intelligence artificielle**.
+    Elle offre un panorama clair et accessible de la trajectoire dans laquelle nous sommes embarqués.
 
-  - **Durée:** Adaptable de 15 min à 3h
-  - **Lieu:** En présentiel (France & international) ou en visio
-  - **Format:** Pédagogique, approfondi, constructif
+    - **Durée:** Adaptable de 15 min à 3h
+    - **Lieu:** En présentiel (France & international) ou en visio
+    - **Format:** Pédagogique, approfondi, constructif
 
-  <Button href="#contact">Réserver une conférence</Button>
+    <Button href="#contact">Réserver une conférence</Button>
+  </TwoColumn>
 </Section>
 
 <Section theme="dark">
@@ -96,9 +100,9 @@
   ### Interviews données
 
   <MediaGrid videos={[
-    { id: "dQw4w9WgXcQ", title: "Interview 1" },
-    { id: "dQw4w9WgXcQ", title: "Interview 2" },
-    { id: "dQw4w9WgXcQ", title: "Interview 3" }
+    { id: "yusjUh-2a7E", title: "Interview - TransVision" },
+    { id: "xnBLgKEs9aM", title: "Interview - Esprit Critique" },
+    { id: "sCRh9Pd8z_k", title: "Interview - Altruisme Efficace" }
   ]} />
 </Section>
 
@@ -112,14 +116,16 @@
 
     ### Retrouvez-moi sur les réseaux sociaux
 
-    - [YouTube](https://youtube.com/@lefuturologuepodcast)
-    - [Instagram](https://instagram.com/le.futurologue)
-    - [LinkedIn](https://linkedin.com/in/shaimanthurler)
-    - [Twitter/X](https://twitter.com/le_futurologue)
-    - [Facebook](https://facebook.com/le.futurologue)
-    - [TikTok](https://tiktok.com/@le.futurologue)
-    - [Bluesky](https://bsky.app/profile/lefuturologue.bsky.social)
-    - [Mastodon](https://mastodon.social/@le_futurologue)
+    <SocialLinks platforms={[
+      { name: "YouTube", url: "https://youtube.com/@lefuturologuepodcast" },
+      { name: "Instagram", url: "https://instagram.com/le.futurologue" },
+      { name: "LinkedIn", url: "https://linkedin.com/in/shaimanthurler" },
+      { name: "Twitter/X", url: "https://twitter.com/le_futurologue" },
+      { name: "Facebook", url: "https://facebook.com/le.futurologue" },
+      { name: "TikTok", url: "https://tiktok.com/@le.futurologue" },
+      { name: "Bluesky", url: "https://bsky.app/profile/lefuturologue.bsky.social" },
+      { name: "Mastodon", url: "https://mastodon.social/@le_futurologue" }
+    ]} />
   </div>
 </Section>
 
