@@ -206,6 +206,18 @@ hr {
   max-width: var(--container-xl);
 }
 
+/* ===== Smooth Scroll Behavior ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* ===== Scrollbar Styling (webkit browsers) ===== */
 
 ::-webkit-scrollbar {
