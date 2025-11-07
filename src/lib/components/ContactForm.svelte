@@ -29,7 +29,21 @@
 	}
 </script>
 
-<form class="contact-form" method="POST" onsubmit={handleSubmit}>
+<form
+	class="contact-form"
+	method="POST"
+	onsubmit={handleSubmit}
+	data-netlify="true"
+	netlify-honeypot="bot-field"
+	name="contact"
+>
+	<!-- Honeypot field for spam prevention -->
+	<input type="hidden" name="form-name" value="contact" />
+	<div class="sr-only">
+		<label for="bot-field">Don't fill this out if you're human</label>
+		<input id="bot-field" name="bot-field" />
+	</div>
+
 	<div class="form-group">
 		<label for="name">Nom</label>
 		<input type="text" id="name" name="name" required />
@@ -157,5 +171,17 @@
 		background-color: rgba(239, 68, 68, 0.1);
 		color: #b91c1c;
 		border: 1px solid #ef4444;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 </style>
