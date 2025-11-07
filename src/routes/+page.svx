@@ -8,6 +8,14 @@
   import Button from '$lib/components/Button.svelte';
   import ContactForm from '$lib/components/ContactForm.svelte';
   import SocialLinks from '$lib/components/SocialLinks.svelte';
+
+  import heroImage from '$lib/assets/images/IMG_7197.jpeg?enhanced';
+  import conferenceImage from '$lib/assets/images/IMG_8028.jpeg?enhanced';
+
+  import logoVYV from '$lib/assets/logos/groupe-vyv.svg';
+  import logoREC from '$lib/assets/logos/rec.webp';
+  import logoAEF from '$lib/assets/logos/aef.png';
+  import logoEurekafe from '$lib/assets/logos/eurekafe.png';
 </script>
 
 <svelte:head>
@@ -15,7 +23,7 @@
   <meta name="description" content="Conférencier spécialiste en IA. Plus grand podcast francophone sur l'intelligence artificielle. Conférences adaptables, pédagogiques et approfondies." />
 </svelte:head>
 
-<Hero background="/images/hero-conference.jpg">
+<Hero background={heroImage}>
   # Shaïman Thürler
   ## Conférencier spécialiste en intelligence artificielle
   <Button href="#contact">Me contacter</Button>
@@ -29,15 +37,15 @@
 
 <Section theme="light">
   <LogoCarousel logos={[
-    { src: "/images/logos/placeholder-1.svg", alt: "Groupe VYV" },
-    { src: "/images/logos/placeholder-2.svg", alt: "Rencontres de l'Esprit Critique" },
-    { src: "/images/logos/placeholder-3.svg", alt: "Altruisme Efficace France" },
-    { src: "/images/logos/placeholder-4.svg", alt: "Eurêkafé" }
+    { src: logoVYV, alt: "Groupe VYV" },
+    { src: logoREC, alt: "Rencontres de l'Esprit Critique" },
+    { src: logoAEF, alt: "Altruisme Efficace France" },
+    { src: logoEurekafe, alt: "Eurêkafé" }
   ]} />
 </Section>
 
 <Section theme="light" width="xl">
-  <TwoColumn image="/images/conference-action.jpg" imagePosition="left" imageAlt="Shaïman Thürler en conférence">
+  <TwoColumn image={conferenceImage} imagePosition="left" imageAlt="Shaïman Thürler en conférence">
 
 ## Ma conférence
 
