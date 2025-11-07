@@ -18,7 +18,7 @@
 	<div class="track">
 		{#each duplicatedLogos as logo}
 			<div class="logo-item">
-				<img src={logo.src} alt={logo.alt} />
+				<img src={logo.src} alt={logo.alt} loading="lazy" />
 			</div>
 		{/each}
 	</div>
@@ -71,6 +71,7 @@
 		filter: grayscale(100%);
 		opacity: 0.7;
 		transition: all var(--transition-base);
+		loading: lazy;
 	}
 
 	.logo-item img:hover {
