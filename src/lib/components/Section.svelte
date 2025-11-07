@@ -1,17 +1,31 @@
 <script lang="ts">
+	import { fadeIn } from '$lib/utils/fade-in';
+
 	interface Props {
 		theme?: 'light' | 'dark';
 		width?: 'lg' | 'xl';
+		animate?: boolean;
 		children?: import('svelte').Snippet;
 	}
 
-	let { theme = 'light', width = 'lg', children }: Props = $props();
+	let { theme = 'light', width = 'lg', animate = true, children }: Props = $props();
 </script>
 
 <section class="section" class:light={theme === 'light'} class:dark={theme === 'dark'}>
-	<div class="container" class:container-lg={width === 'lg'} class:container-xl={width === 'xl'}>
-		{@render children?.()}
-	</div>
+	{#if animate}
+		<div
+			class="container"
+			class:container-lg={width === 'lg'}
+			class:container-xl={width === 'xl'}
+			use:fadeIn={{ duration: 600, delay: 0 }}
+		>
+			{@render children?.()}
+		</div>
+	{:else}
+		<div class="container" class:container-lg={width === 'lg'} class:container-xl={width === 'xl'}>
+			{@render children?.()}
+		</div>
+	{/if}
 </section>
 
 <style>
@@ -46,5 +60,13 @@
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	.container-lg {
+		max-width: var(--container-lg);
+	}
+
+	.container-xl {
+		max-width: var(--container-xl);
 	}
 </style>
