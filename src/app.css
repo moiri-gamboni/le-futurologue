@@ -1,83 +1,208 @@
 @import "tailwindcss";
-
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+/**
+ * Le Futurologue Design System
+ * Based on Refactoring UI principles
+ * Brand: Green (#4ada56) = growth/technology, Yellow (#fae60b) = energy/innovation
+ * Personality: The Sage/Explorer - Expert knowledge made accessible
+ */
+
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  /* === Brand Identity === */
+  /* Radius: 8px = approachable professionalism (not cold 0px, not playful 20px+) */
+  --radius: 0.5rem; /* 8px - matches design-plan.md line 130 */
+
+  /* === COMPLETE COLOR SYSTEM (34 shades from design-plan.md) === */
+
+  /* Dark Background System (7 shades) - Pure greys for backgrounds */
+  --dark-900: oklch(0 0 0);           /* #000000 - pure black */
+  --dark-800: oklch(0.04 0 0);        /* #0a0a0a - primary dark background */
+  --dark-700: oklch(0.08 0 0);        /* #141414 */
+  --dark-600: oklch(0.11 0 0);        /* #1a1a1a - text on light backgrounds */
+  --dark-500: oklch(0.13 0 0);        /* #202020 */
+  --dark-400: oklch(0.16 0 0);        /* #262626 */
+  --dark-300: oklch(0.18 0 0);        /* #2a2a2a */
+
+  /* Green Accent (9 shades) - Brand primary, saturation compensated at extremes */
+  /* Refactoring UI: "Don't let lightness kill saturation" - extremes have higher saturation */
+  --green-900: oklch(0.50 0.12 147);  /* #2d8a3f - darkest, high saturation to avoid muddy */
+  --green-800: oklch(0.55 0.13 146);  /* #369448 */
+  --green-700: oklch(0.60 0.14 146);  /* #3fa052 */
+  --green-600: oklch(0.65 0.15 145);  /* #48ac5b */
+  --green-500: oklch(0.78 0.18 145);  /* #4ada56 - PRIMARY CTA - peak saturation */
+  --green-400: oklch(0.83 0.16 144);  /* #6ee379 */
+  --green-300: oklch(0.88 0.12 143);  /* #92eb9c */
+  --green-200: oklch(0.92 0.09 142);  /* #b6f4bf */
+  --green-100: oklch(0.97 0.05 141);  /* #dafce1 - lightest, lower saturation but still vibrant */
+
+  /* Yellow Accent (9 shades) - Brand secondary, hue rotates toward orange when darker */
+  /* Refactoring UI: "Hue rotation for brightness" - darker yellows toward orange to avoid muddy brown */
+  --yellow-900: oklch(0.72 0.15 95);  /* #c4b500 - darkest, rotated toward orange (95° vs 100°) */
+  --yellow-800: oklch(0.76 0.16 97);  /* #d4c200 */
+  --yellow-700: oklch(0.80 0.18 98);  /* #e4cf00 */
+  --yellow-600: oklch(0.85 0.19 99);  /* #f4dc00 */
+  --yellow-500: oklch(0.93 0.20 100); /* #fae60b - SECONDARY ACCENT - peak saturation, pure yellow */
+  --yellow-400: oklch(0.94 0.18 101); /* #fbea35 */
+  --yellow-300: oklch(0.95 0.16 102); /* #fcee5f */
+  --yellow-200: oklch(0.96 0.12 103); /* #fdf389 */
+  --yellow-100: oklch(0.98 0.08 104); /* #fef7b3 - lightest */
+
+  /* Grey System (9 shades) - Blue-tinted for warmth and tech-appropriate feel */
+  /* Refactoring UI: "Greys don't have to be grey" - blue undertone for cool, professional, tech feel */
+  /* KEY: Saturation is 0.01 NOT 0 - this is the blue tint that differentiates the brand */
+  --grey-900: oklch(0.10 0.01 235);   /* #0f1419 - NOT pure grey (#0d0d0d) */
+  --grey-800: oklch(0.13 0.01 235);   /* #1a1f24 */
+  --grey-700: oklch(0.17 0.01 235);   /* #252a2f */
+  --grey-600: oklch(0.21 0.01 235);   /* #30353a */
+  --grey-500: oklch(0.26 0.01 235);   /* #3b4045 */
+  --grey-400: oklch(0.39 0.01 235);   /* #5a5f64 */
+  --grey-300: oklch(0.52 0.01 235);   /* #797e83 */
+  --grey-200: oklch(0.64 0.01 235);   /* #989da2 */
+  --grey-100: oklch(0.76 0.01 235);   /* #b7bcc1 */
+
+  /* === Semantic Color Mappings (shadcn compatibility) === */
+
+  /* Light theme colors */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: var(--dark-600); /* #1a1a1a - dark text */
+
+  /* Brand Colors mapped to semantic names */
+  --primary: var(--green-500); /* Green #4ada56 - PRIMARY CTA */
+  --primary-foreground: var(--dark-800); /* Dark text on green */
+  --accent: var(--yellow-500); /* Yellow #fae60b - SECONDARY ACCENT */
+  --accent-foreground: var(--dark-800); /* Dark text on yellow */
+
+  /* Semantic colors */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.11 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --popover-foreground: oklch(0.11 0 0);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --ring: oklch(0.78 0.18 145); /* Green ring for focus states */
+
+  /* Chart colors */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar (not needed for landing page) */
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.78 0.18 145);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar-ring: oklch(0.78 0.18 145);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
+  /* === Dark Theme Overrides === */
+  /* NOTE: All 34 color shades remain the same - they're already defined in :root */
+  /* Only semantic mappings change for dark mode */
+
+  /* Dark theme: --dark-800 (#0a0a0a) background from design-plan.md */
+  --background: var(--dark-800); /* #0a0a0a - primary dark background */
+  --foreground: oklch(0.95 0 0); /* rgba(255,255,255,0.95) - text on dark */
+
+  /* Brand colors on dark (same colors, different foregrounds) */
+  --primary: var(--green-500); /* Green #4ada56 - same green */
+  --primary-foreground: var(--dark-800); /* Dark background text */
+  --accent: var(--yellow-500); /* Yellow #fae60b - same yellow */
+  --accent-foreground: var(--dark-800); /* Dark background text */
+
+  /* Semantic colors for dark */
+  --card: oklch(0.08 0.01 265); /* Slightly lighter than background */
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.08 0.01 265);
+  --popover-foreground: oklch(0.95 0 0);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --ring: oklch(0.78 0.18 145);
+
+  /* Charts dark mode */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+
+  /* Sidebar dark */
+  --sidebar: oklch(0.08 0.01 265);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.78 0.18 145);
+  --sidebar-primary-foreground: oklch(0.04 0 0);
   --sidebar-accent: oklch(0.279 0.041 260.031);
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-ring: oklch(0.78 0.18 145);
 }
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* === COMPLETE Color System for Tailwind Utilities === */
+  /* Note: Using Tailwind's default radius, shadows, spacing, typography, etc. */
+  /* Only custom values defined below */
+
+  /* Dark shades: text-dark-600, bg-dark-800, etc. */
+  --color-dark-900: var(--dark-900);
+  --color-dark-800: var(--dark-800);
+  --color-dark-700: var(--dark-700);
+  --color-dark-600: var(--dark-600);
+  --color-dark-500: var(--dark-500);
+  --color-dark-400: var(--dark-400);
+  --color-dark-300: var(--dark-300);
+
+  /* Green shades: text-green-500, bg-green-100, hover:bg-green-600, etc. */
+  --color-green-900: var(--green-900);
+  --color-green-800: var(--green-800);
+  --color-green-700: var(--green-700);
+  --color-green-600: var(--green-600);
+  --color-green-500: var(--green-500);
+  --color-green-400: var(--green-400);
+  --color-green-300: var(--green-300);
+  --color-green-200: var(--green-200);
+  --color-green-100: var(--green-100);
+
+  /* Yellow shades: text-yellow-500, bg-yellow-100, etc. */
+  --color-yellow-900: var(--yellow-900);
+  --color-yellow-800: var(--yellow-800);
+  --color-yellow-700: var(--yellow-700);
+  --color-yellow-600: var(--yellow-600);
+  --color-yellow-500: var(--yellow-500);
+  --color-yellow-400: var(--yellow-400);
+  --color-yellow-300: var(--yellow-300);
+  --color-yellow-200: var(--yellow-200);
+  --color-yellow-100: var(--yellow-100);
+
+  /* Grey shades: text-grey-500, bg-grey-100, border-grey-300, etc. */
+  /* These are BLUE-TINTED - key brand differentiator */
+  --color-grey-900: var(--grey-900);
+  --color-grey-800: var(--grey-800);
+  --color-grey-700: var(--grey-700);
+  --color-grey-600: var(--grey-600);
+  --color-grey-500: var(--grey-500);
+  --color-grey-400: var(--grey-400);
+  --color-grey-300: var(--grey-300);
+  --color-grey-200: var(--grey-200);
+  --color-grey-100: var(--grey-100);
+
+  /* Semantic color mappings (shadcn compatibility) */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -109,13 +234,20 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* === Custom Breakpoint === */
+  /* Tailwind defaults: sm=640px, md=768px, lg=1024px, xl=1280px, 2xl=1536px */
+  /* We use 1440px instead of 1536px for 2xl */
+  --breakpoint-2xl: 1440px;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
 }

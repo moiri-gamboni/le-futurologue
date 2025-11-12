@@ -9,9 +9,15 @@ This is a SvelteKit-based landing page for "Le Futurologue", a French AI podcast
 **Technology Stack:**
 - SvelteKit with Svelte 5 (runes syntax)
 - TypeScript
-- mdsvex for Markdown-based content authoring
-- Netlify adapter for deployment
+- **Tailwind CSS v4** with `@theme inline` for design system
+- **shadcn-svelte** for copy-paste component library (Bits UI + Melt UI primitives)
+- **lucide-svelte** for icons (pending)
+- Resend for email handling (pending)
+- Cloudflare Turnstile for spam protection (pending)
+- Cloudflare Pages adapter for deployment (pending - currently Netlify)
 - pnpm package manager
+
+**Note:** In 2025-11, we pivoted from custom CSS to Tailwind + shadcn-svelte for faster iteration. See below for details.
 
 **Design Philosophy:**
 This site was systematically designed using principles from *Refactoring UI* by Steve Schoger and Adam Wathan. Every design decision—from the color palette to spacing to component hierarchy—follows deliberate, documented principles rather than arbitrary choices. See `docs/design-plan.md` for the complete 1850-line design specification including all Refactoring UI principles applied.
@@ -40,9 +46,35 @@ pnpm run lint             # Run ESLint and Prettier checks
 pnpm run format           # Format code with Prettier
 ```
 
+## Tech Stack Pivot (2025-11-12)
+
+**From:** Custom CSS with variables.css + mdsvex
+**To:** Tailwind CSS v4 + shadcn-svelte
+
+**Why:**
+- **Faster iteration**: Copy-paste shadcn components vs building from scratch
+- **Easier maintenance**: Tailwind utilities vs custom CSS classes
+- **Better developer experience**: IntelliSense, standardized patterns
+- **Design system preservation**: All 1850 lines of Refactoring UI decisions preserved in `app.css`
+
+**What Changed:**
+- ✅ All 34 color shades converted from HEX to OKLCH (with Refactoring UI sophistication)
+- ✅ Complete design system migrated to `@theme inline` in `app.css`
+- ✅ shadcn-svelte initialized (Bits UI + Melt UI primitives)
+- ⏳ Components will be rebuilt with Tailwind utilities (pending)
+- ⏳ mdsvex will be dropped in favor of regular .svelte files (pending)
+
+**What's Preserved:**
+- ✅ **8px radius** = "approachable professionalism" brand personality
+- ✅ **1280px xl breakpoint** = standard Tailwind default for consistency
+- ✅ **Blue-tinted greys** = key brand differentiator (0.01 saturation at 235°)
+- ✅ **Saturation compensation** = lighter/darker colors maintain vibrancy (Refactoring UI principle)
+- ✅ **Hue rotation** = darker yellows toward orange to avoid muddy brown (Refactoring UI principle)
+- ✅ **All 34 color shades** = complete palette for hierarchy, hover states, emphasis/de-emphasis
+
 ## Architecture
 
-### Content Strategy: mdsvex
+### Content Strategy: mdsvex (Pending Removal)
 
 The site uses **mdsvex** to enable Markdown-based content authoring with embedded Svelte components:
 
@@ -84,21 +116,66 @@ let { variant = 'primary', children }: Props = $props();
 
 ### Styling System
 
-Custom design system defined in `src/lib/styles/variables.css` following Refactoring UI principles:
+**Complete design system defined in `src/app.css`** following Refactoring UI principles.
 
-- **Colors**: `--dark-*` (900-300), `--green-*` (brand accent, 900-100), `--yellow-*` (secondary accent), `--grey-*` (blue-tinted)
-- **Typography**: Hand-picked scale `--text-xs` through `--text-5xl`, weights, line-heights
-- **Spacing**: Linear 4px-based scale `--space-1` through `--space-32`
+**Architecture:**
+- `:root` = 34 color shades + semantic mappings (lines 13-108)
+- `.dark` = Dark theme overrides (lines 110-155)
+- `@theme inline` = Tailwind utility generation (lines 157-272)
+
+**Available Color Shades:**
+
+```css
+/* Dark shades (7): Pure greys for backgrounds */
+--dark-900 through --dark-300
+
+/* Green shades (9): Brand primary with saturation compensation */
+--green-900 (#2d8a3f) through --green-100 (#dafce1)
+/* Refactoring UI: "Don't let lightness kill saturation" applied */
+
+/* Yellow shades (9): Brand secondary with hue rotation */
+--yellow-900 (#c4b500) through --yellow-100 (#fef7b3)
+/* Refactoring UI: Darker yellows rotate toward orange (95°) to avoid muddy brown */
+
+/* Grey shades (9): Blue-tinted for warmth - KEY BRAND DIFFERENTIATOR */
+--grey-900 (#0f1419) through --grey-100 (#b7bcc1)
+/* Refactoring UI: "Greys don't have to be grey" - 0.01 saturation at 235° (blue) */
+```
+
+**Using Colors with Tailwind:**
+```svelte
+<!-- Background colors -->
+<div class="bg-dark-800">  <!-- #0a0a0a - primary dark background -->
+<div class="bg-green-500"> <!-- #4ada56 - PRIMARY CTA -->
+<div class="bg-green-100"> <!-- #dafce1 - light green tint -->
+
+<!-- Text colors -->
+<p class="text-dark-600">   <!-- #1a1a1a - dark text on light bg -->
+<p class="text-grey-700">   <!-- Blue-tinted grey for secondary text -->
+<span class="text-green-500"> <!-- Green accent text -->
+
+<!-- Hover states (now possible with full shade range!) -->
+<button class="bg-green-500 hover:bg-green-600 text-dark-800">
+
+<!-- Borders -->
+<div class="border border-grey-300"> <!-- Subtle blue-tinted border -->
+```
+
+**Other Systems:**
+- **Typography**: Hand-picked scale `--font-size-xs` (12px) through `--font-size-5xl` (80px)
+- **Spacing**: Linear 4px-based scale `--spacing-1` (4px) through `--spacing-32` (128px)
 - **Shadows**: Two-part realistic shadows `--shadow-sm` through `--shadow-xl`
-- **Containers**: `--container-sm` (600px) through `--container-xl` (1200px)
+- **Radius**: `--radius-sm` (4px) through `--radius-xl` (12px)
+  - **8px = brand personality** = "approachable professionalism" (not cold 0px, not playful 20px+)
+- **Containers**: `--container-sm` (600px) through `--container-xl` (1280px)
 - **Breakpoints**: `--breakpoint-sm` (640px) through `--breakpoint-2xl` (1440px)
-- **Borders**: `--radius-sm` through `--radius-full`
-- **Transitions**: `--transition-fast/base/slow`
-- **Z-index**: `--z-base` through `--z-toast`
+  - `xl` is **1280px** (Tailwind's standard default)
+- **Transitions**: `--transition-fast` (0.15s), `--transition-base` (0.2s), `--transition-slow` (0.3s)
+- **Z-index**: `--z-base` (1) through `--z-toast` (500)
 
 **Key Refactoring UI Principles Applied:**
 
-1. **Color System** (variables.css:1-148):
+1. **Color System** (app.css:20-64):
    - *"Don't let lightness kill saturation"*: Lighter/darker shades increase saturation to stay vibrant
    - *"Greys don't have to be grey"*: Blue-tinted greys for warmth (not pure 0% saturation)
    - *"Hue rotation for brightness"*: Darker yellows rotate toward orange to avoid muddy brown
