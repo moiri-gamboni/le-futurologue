@@ -61,8 +61,8 @@ pnpm run format           # Format code with Prettier
 - ✅ All 34 color shades converted from HEX to OKLCH (with Refactoring UI sophistication)
 - ✅ Complete design system migrated to `@theme inline` in `app.css`
 - ✅ shadcn-svelte initialized (Bits UI + Melt UI primitives)
+- ✅ mdsvex removed - +page.svx converted to +page.svelte
 - ⏳ Components will be rebuilt with Tailwind utilities (pending)
-- ⏳ mdsvex will be dropped in favor of regular .svelte files (pending)
 
 **What's Preserved:**
 - ✅ **8px radius** = "approachable professionalism" brand personality
@@ -74,14 +74,13 @@ pnpm run format           # Format code with Prettier
 
 ## Architecture
 
-### Content Strategy: mdsvex (Pending Removal)
+### Content Strategy
 
-The site uses **mdsvex** to enable Markdown-based content authoring with embedded Svelte components:
+The site uses standard Svelte components:
 
-- **Main page**: `src/routes/+page.svx` - Written in Markdown with imported Svelte components
-- **Configuration**: `svelte.config.js` includes `mdsvex()` preprocessor
-- **Supported extensions**: `.svelte` (standard components), `.svx` (mdsvex pages)
-- **Pattern**: Content-heavy pages authored in Markdown can seamlessly embed interactive Svelte components
+- **Main page**: `src/routes/+page.svelte` - Pure Svelte with HTML markup
+- **No preprocessor needed**: Standard SvelteKit with vitePreprocess only
+- **Pattern**: Content rendered with semantic HTML inside Svelte component structure
 
 ### Component Architecture
 
