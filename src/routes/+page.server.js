@@ -2,11 +2,11 @@ import { fail } from '@sveltejs/kit';
 import { Resend } from 'resend';
 import { env } from '$env/dynamic/private';
 
-const resend = new Resend(env.RESEND_API_KEY);
-
 /** @type {import('./$types').Actions} */
 export const actions = {
 	submit: async ({ request }) => {
+		// Initialize Resend at runtime when env is available
+		const resend = new Resend(env.RESEND_API_KEY);
 		const data = await request.formData();
 		const name = data.get('name');
 		const email = data.get('email');
