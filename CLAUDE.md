@@ -221,4 +221,4 @@ The adapter emulates Cloudflare's platform during development. Use `pnpm run dev
 - `wrangler pages dev .svelte-kit/cloudflare` (after running `pnpm run build`)
 
 **Environment Variables:**
-Use Cloudflare's environment variable system. See the [Cloudflare docs](https://developers.cloudflare.com/pages/configuration/build-configuration/) for details.
+This project uses `$env/static/private` for secrets (build-time strategy). Secrets are baked into the JavaScript bundle during build and must be set in Cloudflare Pages dashboard > Settings > Environment Variables. Changing environment variables requires rebuild and redeploy. See the [Cloudflare docs](https://developers.cloudflare.com/pages/configuration/build-configuration/) for details.
