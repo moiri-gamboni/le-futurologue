@@ -19,6 +19,7 @@
 	import logoRec from '$lib/assets/logos/rec.webp';
 	import logoAef from '$lib/assets/logos/aef.png';
 	import logoEurekafe from '$lib/assets/logos/eurekafe.png';
+	import logoTransvision from '$lib/assets/logos/transvision.png';
 
 	// Data
 	const stats = [
@@ -29,6 +30,7 @@
 
 	const logos = [
 		{ id: 'vyv', src: logoVyv, alt: 'Groupe VYV' },
+		{ id: 'transvision', src: logoTransvision, alt: 'TransVision' },
 		{ id: 'esprit', src: logoRec, alt: 'Rencontres Esprit Critique' },
 		{ id: 'ae', src: logoAef, alt: 'Altruisme Efficace France' },
 		{ id: 'eurekafe', src: logoEurekafe, alt: 'Eurêkafé' }
