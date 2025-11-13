@@ -10,6 +10,10 @@
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import FormField from '$lib/components/FormField.svelte';
+	import { enhance } from '$app/forms';
+
+	/** @type {import('./$types').PageProps} */
+	let { form } = $props();
 
 	// Images
 	import heroImage from '$lib/assets/images/IMG_8029.jpeg';
@@ -306,14 +310,34 @@
 <Section id="contact" theme="light" width="sm" padding="md">
 	<SectionHeading>Me contacter</SectionHeading>
 
-	<form method="POST" action="?/submit" class="mb-12 space-y-6">
-		<FormField id="name" name="name" label="Nom" placeholder="Votre nom complet" required />
+	{#if form?.success}
+		<div class="mb-8 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center">
+			<p class="text-green-700 dark:text-green-300">{form.message}</p>
+		</div>
+	{/if}
+
+	{#if form?.error}
+		<div class="mb-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center">
+			<p class="text-red-700 dark:text-red-300">{form.error}</p>
+		</div>
+	{/if}
+
+	<form method="POST" action="?/submit" use:enhance class="mb-12 space-y-6">
+		<FormField
+			id="name"
+			name="name"
+			label="Nom"
+			placeholder="Votre nom complet"
+			value={form?.name ?? ''}
+			required
+		/>
 		<FormField
 			id="email"
 			name="email"
 			type="email"
 			label="Email"
 			placeholder="votre@email.com"
+			value={form?.email ?? ''}
 			required
 		/>
 		<FormField
@@ -321,6 +345,7 @@
 			name="organization"
 			label="Organisation"
 			placeholder="Votre entreprise ou organisation"
+			value={form?.organization ?? ''}
 		/>
 		<FormField
 			id="message"
@@ -329,6 +354,7 @@
 			label="Message"
 			placeholder="Parlez-moi de votre projet de conférence..."
 			rows={5}
+			value={form?.message ?? ''}
 			required
 		/>
 		<Button type="submit" class="w-full" size="lg">Envoyer</Button>

@@ -12,6 +12,7 @@
 		placeholder?: string;
 		required?: boolean;
 		rows?: number;
+		value?: string;
 	}
 
 	let {
@@ -21,15 +22,16 @@
 		type = 'text',
 		placeholder = '',
 		required = false,
-		rows = 5
+		rows = 5,
+		value = ''
 	}: Props = $props();
 </script>
 
 <div class="space-y-2">
 	<Label for={id}>{label}</Label>
 	{#if type === 'textarea'}
-		<Textarea {id} {name} {placeholder} {rows} {required} />
+		<Textarea {id} {name} {placeholder} {rows} {required} {value} />
 	{:else}
-		<Input {id} {name} type={type} {placeholder} {required} />
+		<Input {id} {name} type={type} {placeholder} {required} {value} />
 	{/if}
 </div>
