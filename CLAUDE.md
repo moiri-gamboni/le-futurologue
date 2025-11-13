@@ -10,7 +10,7 @@ Conference speaker website for Shaïman Thürler (Le Futurologue) - AI specialis
 - SvelteKit (Svelte 5 with runes and snippets)
 - Tailwind CSS v4
 - shadcn-svelte components
-- Netlify deployment (adapter-netlify)
+- Cloudflare Pages deployment (adapter-cloudflare)
 
 **Reference Documentation:** `docs/design-plan.md` contains the complete design system specification and component requirements.
 
@@ -206,6 +206,19 @@ Common issues:
 
 ## Deployment
 
-Configured for Netlify (`adapter-netlify`). Build command: `pnpm run build`.
+Configured for Cloudflare Pages (`adapter-cloudflare`).
 
-Form submissions use Netlify Forms (requires `method="POST"` and `data-netlify="true"` attributes).
+**Build Settings:**
+- Build command: `pnpm run build` or `vite build`
+- Build output directory: `.svelte-kit/cloudflare`
+- Framework preset: SvelteKit
+
+**Form Handling:**
+Form submissions require server-side handling via SvelteKit form actions in `+page.server.js` files. See the contact form implementation in `src/routes/+page.svelte` and create a corresponding `+page.server.js` file with form actions.
+
+**Local Development:**
+The adapter emulates Cloudflare's platform during development. Use `pnpm run dev` for development, or test the production build with:
+- `wrangler pages dev .svelte-kit/cloudflare` (after running `pnpm run build`)
+
+**Environment Variables:**
+Use Cloudflare's environment variable system. See the [Cloudflare docs](https://developers.cloudflare.com/pages/configuration/build-configuration/) for details.

@@ -13,7 +13,7 @@ Built with SvelteKit, Tailwind CSS v4, and shadcn-svelte components following [R
 - 🖼️ **Optimized images** - Vite asset imports with automatic optimization
 - 🎯 **Single-page design** - Smooth scrolling, clear CTAs
 - ♿ **Accessible** - ARIA labels, focus states, keyboard navigation
-- 🚀 **Netlify deployment** - Optimized for Netlify with form integration
+- 🚀 **Cloudflare Pages** - Optimized for edge deployment with global distribution
 
 ## Tech Stack
 
@@ -21,7 +21,7 @@ Built with SvelteKit, Tailwind CSS v4, and shadcn-svelte components following [R
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **Components:** [shadcn-svelte](https://www.shadcn-svelte.com/)
 - **Icons:** [Lucide Svelte](https://lucide.dev/)
-- **Deployment:** [Netlify](https://www.netlify.com/) (`adapter-netlify`)
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/) (`adapter-cloudflare`)
 
 ## Getting Started
 
@@ -159,11 +159,30 @@ import heroImage from '$lib/assets/images/hero.jpeg';
 
 ## Deployment
 
-Configured for **Netlify** deployment:
+Configured for **Cloudflare Pages** deployment:
 
-1. Build command: `pnpm run build`
-2. Publish directory: `build`
-3. Form handling: Netlify Forms (built-in)
+### Using Git Integration
+
+1. Connect your repository to Cloudflare Pages
+2. Configure build settings:
+   - **Framework preset:** SvelteKit
+   - **Build command:** `pnpm run build` or `vite build`
+   - **Build output directory:** `.svelte-kit/cloudflare`
+3. Deploy!
+
+### Using Wrangler CLI
+
+```bash
+# Build the project
+pnpm run build
+
+# Deploy to Cloudflare Pages
+wrangler pages deploy .svelte-kit/cloudflare
+```
+
+### Form Handling
+
+Forms require server-side handling via SvelteKit form actions. Create a `+page.server.js` file to handle form submissions. See [SvelteKit form actions documentation](https://svelte.dev/docs/kit/form-actions) for details.
 
 ## Documentation
 
