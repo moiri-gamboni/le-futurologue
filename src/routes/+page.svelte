@@ -16,8 +16,8 @@
 	let { form } = $props();
 
 	// Images
-	import heroImage from '$lib/assets/images/IMG_8029.jpeg';
-	import conferenceImage from '$lib/assets/images/IMG_8028.jpeg';
+	import heroImage from '$lib/assets/images/IMG_8029.jpeg?enhanced';
+	import conferenceImage from '$lib/assets/images/IMG_8028.jpeg?enhanced';
 	import profileImage from '$lib/assets/images/IMG_7197.jpeg';
 	import logoVyv from '$lib/assets/logos/groupe-vyv.svg';
 	import logoRec from '$lib/assets/logos/rec.webp';
@@ -84,10 +84,13 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section
-	class="relative flex min-h-screen items-center justify-center bg-dark-800 bg-cover bg-center"
-	style="background-image: url({heroImage});"
->
+<section class="relative flex min-h-screen items-center justify-center bg-dark-800">
+	<enhanced:img
+		src={heroImage}
+		alt="Shaïman Thürler"
+		class="absolute inset-0 h-full w-full object-cover"
+		sizes="100vw"
+	/>
 	<div class="absolute inset-0 bg-dark-800/85"></div>
 
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
@@ -151,7 +154,7 @@
 	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
 		<div class="order-2 md:order-1">
 			<AspectRatio ratio={4 / 3}>
-				<img
+				<enhanced:img
 					src={conferenceImage}
 					alt="Conférence en action"
 					class="h-full w-full rounded-lg object-cover"
