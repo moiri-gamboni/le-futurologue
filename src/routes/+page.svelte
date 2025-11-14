@@ -6,7 +6,7 @@
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 	import { Separator } from '$lib/components/ui/separator';
 	import { Badge } from '$lib/components/ui/badge';
-	import { ChevronDown } from 'lucide-svelte';
+	import Icon from '@iconify/svelte';
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import FormField from '$lib/components/FormField.svelte';
@@ -46,16 +46,16 @@
 	];
 
 	const socials = [
-		{ id: 'youtube', name: 'YouTube', url: 'https://youtube.com/@lefuturologuepodcast' },
-		{ id: 'instagram', name: 'Instagram', url: 'https://instagram.com/le.futurologue' },
-		{ id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/shaimanthurler' },
-		{ id: 'twitter', name: 'Twitter/X', url: 'https://twitter.com/le_futurologue' },
-		{ id: 'facebook', name: 'Facebook', url: 'https://facebook.com/le.futurologue' },
-		{ id: 'tiktok', name: 'TikTok', url: 'https://tiktok.com/@le.futurologue' },
-		{ id: 'threads', name: 'Threads', url: 'https://threads.net/@le.futurologue' },
-		{ id: 'bluesky', name: 'Bluesky', url: 'https://bsky.app/profile/lefuturologue.bsky.social' },
-		{ id: 'mastodon', name: 'Mastodon', url: 'https://mastodon.social/@le_futurologue' },
-		{ id: 'discord', name: 'Discord', url: 'https://discord.gg/DqfKxvxYYg' }
+		{ id: 'youtube', name: 'YouTube', url: 'https://youtube.com/@lefuturologuepodcast', icon: 'simple-icons:youtube' },
+		{ id: 'instagram', name: 'Instagram', url: 'https://instagram.com/le.futurologue', icon: 'simple-icons:instagram' },
+		{ id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/shaimanthurler', icon: 'simple-icons:linkedin' },
+		{ id: 'twitter', name: 'Twitter/X', url: 'https://twitter.com/le_futurologue', icon: 'simple-icons:x' },
+		{ id: 'facebook', name: 'Facebook', url: 'https://facebook.com/le.futurologue', icon: 'simple-icons:facebook' },
+		{ id: 'tiktok', name: 'TikTok', url: 'https://tiktok.com/@le.futurologue', icon: 'simple-icons:tiktok' },
+		{ id: 'threads', name: 'Threads', url: 'https://threads.net/@le.futurologue', icon: 'simple-icons:threads' },
+		{ id: 'bluesky', name: 'Bluesky', url: 'https://bsky.app/profile/lefuturologue.bsky.social', icon: 'simple-icons:bluesky' },
+		{ id: 'mastodon', name: 'Mastodon', url: 'https://mastodon.social/@le_futurologue', icon: 'simple-icons:mastodon' },
+		{ id: 'discord', name: 'Discord', url: 'https://discord.gg/DqfKxvxYYg', icon: 'simple-icons:discord' }
 	];
 
 	const topics = [
@@ -106,7 +106,7 @@
 		</Button>
 
 		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<ChevronDown class="h-8 w-8 text-white/50" />
+			<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
 		</div>
 	</div>
 </section>
@@ -385,6 +385,7 @@
 					rel="noopener noreferrer"
 					class="border-green-500/20 hover:border-green-500 hover:bg-green-500/10"
 				>
+					<Icon icon={social.icon} class="mr-2 h-4 w-4" />
 					{social.name}
 				</Button>
 			{/each}
