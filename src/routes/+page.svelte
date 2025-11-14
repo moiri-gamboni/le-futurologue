@@ -12,8 +12,7 @@
 	import FormField from '$lib/components/FormField.svelte';
 	import { enhance } from '$app/forms';
 
-	/** @type {import('./$types').PageProps} */
-	let { form } = $props();
+	let { form }: { form?: import('./$types').ActionData } = $props();
 
 	// Images
 	import heroImage from '$lib/assets/images/IMG_8029.jpeg?enhanced';
