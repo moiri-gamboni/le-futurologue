@@ -12,8 +12,15 @@
 	import FormField from '$lib/components/FormField.svelte';
 	import { enhance } from '$app/forms';
 	import Autoplay from 'embla-carousel-autoplay';
+	import { browser } from '$app/environment';
 
 	let { form }: { form?: import('./$types').ActionData } = $props();
+
+	// Detect prefers-reduced-motion
+	let prefersReducedMotion = $state(false);
+	if (browser) {
+		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	}
 
 	// Images
 	import heroImage from '$lib/assets/images/hero.jpeg?enhanced';
@@ -83,11 +90,19 @@
 	/>
 </svelte:head>
 
+<!-- Skip to main content link for keyboard users -->
+<a
+	href="#main-content"
+	class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-green-500 focus:px-4 focus:py-2 focus:text-dark-800 focus:outline-none focus:ring-2 focus:ring-white"
+>
+	Aller au contenu principal
+</a>
+
 <!-- Hero Section -->
-<section class="relative flex min-h-screen items-center justify-center bg-dark-800">
+<header class="relative flex min-h-screen items-center justify-center bg-dark-800">
 	<enhanced:img
 		src={heroImage}
-		alt="Shaïman Thürler"
+		alt="Portrait de Shaïman Thürler, conférencier spécialiste en intelligence artificielle"
 		class="absolute inset-0 h-full w-full object-cover object-center"
 		sizes="100vw"
 	/>
@@ -108,22 +123,27 @@
 	</div>
 
 	<!-- Scroll indicator at bottom of hero section -->
-	<div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
+	<div
+		class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
+		aria-hidden="true"
+	>
 		<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
 	</div>
-</section>
+</header>
 
-<!-- Stats Bar -->
-<Section theme="dark" padding="sm">
-	<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-		{#each stats as stat (stat.id)}
-			<div class="text-center">
-				<div class="mb-2 text-4xl font-bold text-green-500 md:text-5xl">{stat.value}</div>
-				<div class="text-base text-white/70">{stat.label}</div>
-			</div>
-		{/each}
-	</div>
-</Section>
+<main id="main-content">
+	<!-- Stats Bar -->
+	<Section theme="dark" padding="sm">
+		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+			{#each stats as stat (stat.id)}
+				<dl class="text-center">
+					<dt class="sr-only">{stat.label}</dt>
+					<dd class="mb-2 text-4xl font-bold text-green-500 md:text-5xl">{stat.value}</dd>
+					<dt class="text-base text-white/70">{stat.label}</dt>
+				</dl>
+			{/each}
+		</div>
+	</Section>
 
 <!-- Client Logos Carousel -->
 <Section theme="light" padding="sm">
@@ -134,13 +154,17 @@
 			align: 'start',
 			loop: true
 		}}
-		plugins={[
-			Autoplay({
-				delay: 2000,
-				stopOnInteraction: false
-			})
-		]}
+		plugins={prefersReducedMotion
+			? []
+			: [
+					Autoplay({
+						delay: 2000,
+						stopOnInteraction: false
+					})
+				]}
 		class="w-full"
+		aria-label="Logos des organisations où des conférences ont été données"
+		aria-live={prefersReducedMotion ? 'off' : 'polite'}
 	>
 		<Carousel.Content class="-ml-4">
 			{#each [...logos, ...logos] as logo, index (logo.id + '-' + index)}
@@ -164,7 +188,7 @@
 			<AspectRatio ratio={3 / 4}>
 				<enhanced:img
 					src={conferenceImage}
-					alt="Conférence en action"
+					alt="Shaïman Thürler donnant une conférence sur l'intelligence artificielle devant un auditoire"
 					class="h-full w-full rounded-lg object-cover"
 				/>
 			</AspectRatio>
@@ -253,7 +277,10 @@
 		<ul class="grid gap-3 md:grid-cols-2">
 			{#each topics as topic (topic.id)}
 				<li class="flex items-start">
-					<span class="mr-3 mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-500"></span>
+					<span
+						class="mr-3 mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-500"
+						aria-hidden="true"
+					></span>
 					<span class="text-foreground/80">{topic.text}</span>
 				</li>
 			{/each}
@@ -277,15 +304,17 @@
 							href="https://youtube.com/watch?v={video.id}"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="Regarder la conférence {video.title} sur YouTube (ouvre dans un nouvel onglet)"
 						>
 							<AspectRatio ratio={16 / 9}>
 								<img
 									src="https://img.youtube.com/vi/{video.id}/maxresdefault.jpg"
-									alt={video.title}
+									alt="Miniature de la vidéo : {video.title}"
 									class="h-full w-full object-cover transition-transform hover:scale-105"
 								/>
 								<div
 									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
+									aria-hidden="true"
 								>
 									<div
 										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
@@ -322,13 +351,21 @@
 	<SectionHeading>Me contacter</SectionHeading>
 
 	{#if form?.success}
-		<div class="mb-8 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center">
+		<div
+			role="alert"
+			aria-live="polite"
+			class="mb-8 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center"
+		>
 			<p class="text-green-700 dark:text-green-300">{form.message}</p>
 		</div>
 	{/if}
 
 	{#if form?.error}
-		<div class="mb-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center">
+		<div
+			role="alert"
+			aria-live="assertive"
+			class="mb-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center"
+		>
 			<p class="text-red-700 dark:text-red-300">{form.error}</p>
 		</div>
 	{/if}
@@ -340,6 +377,7 @@
 			label="Nom"
 			placeholder="Votre nom complet"
 			value={form?.name ?? ''}
+			autocomplete="name"
 			required
 		/>
 		<FormField
@@ -349,6 +387,7 @@
 			label="Email"
 			placeholder="votre@email.com"
 			value={form?.email ?? ''}
+			autocomplete="email"
 			required
 		/>
 		<FormField
@@ -357,6 +396,7 @@
 			label="Organisation"
 			placeholder="Votre entreprise ou organisation"
 			value={form?.organization ?? ''}
+			autocomplete="organization"
 		/>
 		<FormField
 			id="message"
@@ -393,14 +433,16 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					class="border-green-500/20 hover:border-green-500 hover:bg-green-500/10"
+					aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
 				>
-					<Icon icon={social.icon} class="mr-2 h-4 w-4" />
-					{social.name}
+					<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />
+					<span>{social.name}</span>
 				</Button>
 			{/each}
 		</div>
 	</div>
 </Section>
+</main>
 
 <!-- Footer -->
 <Separator />
