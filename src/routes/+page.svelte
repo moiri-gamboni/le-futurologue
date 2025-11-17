@@ -5,7 +5,6 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 	import { Separator } from '$lib/components/ui/separator';
-	import { Badge } from '$lib/components/ui/badge';
 	import Icon from '@iconify/svelte';
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
@@ -76,9 +75,9 @@
 	];
 
 	const detailsList = [
-		{ id: 'duration', label: 'Durée:', text: 'Adaptable de 15 min à 3h' },
-		{ id: 'location', label: 'Lieu:', text: 'En présentiel (France & international) ou en visio' },
-		{ id: 'format', label: 'Format:', text: 'Pédagogique, approfondi, constructif' }
+		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15 min à 3h' },
+		{ id: 'location', icon: 'lucide:map-pin', text: 'En présentiel (France & international) ou en visio' },
+		{ id: 'format', icon: 'lucide:presentation', text: 'Pédagogique, approfondi et constructif' }
 	];
 </script>
 
@@ -215,8 +214,9 @@
 	</div>
 </Section>
 
-<!-- Value Proposition -->
+<!-- Conferences Section -->
 <Section theme="light" width="xl" padding="md">
+	<!-- Main Conference -->
 	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
 		<div class="order-2 md:order-1">
 			<AspectRatio ratio={3 / 4}>
@@ -237,55 +237,33 @@
 				artificielle. Elle offre un panorama clair et accessible de la trajectoire dans laquelle
 				nous sommes embarqués.
 			</p>
-			<ul class="mb-8 space-y-3 text-lg">
+			<ul class="mb-8 space-y-4">
 				{#each detailsList as detail (detail.id)}
-					<li class="flex items-start">
-						<span class="mr-3 font-semibold text-foreground">{detail.label}</span>
-						<span class="text-foreground/80">{detail.text}</span>
+					<li class="flex items-start gap-3">
+						<Icon icon={detail.icon} class="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
+						<span class="text-base leading-relaxed text-foreground/80">{detail.text}</span>
 					</li>
 				{/each}
 			</ul>
-			<div>
+			<div class="mb-10">
 				<Button href="#contact" size="lg">Réserver une conférence</Button>
 			</div>
-		</div>
-	</div>
-</Section>
 
-<!-- Conference Topics -->
-<Section theme="light" width="md" padding="md">
-	<SectionHeading>Thèmes de conférences</SectionHeading>
-
-	<Card.Root class="mb-8 border-green-500/20 bg-green-500/5">
-		<Card.Header>
-			<div class="mb-2 flex items-center gap-2">
-				<Badge class="bg-green-500 text-dark-800">Conférence principale</Badge>
+			<!-- Other Topics -->
+			<div>
+				<h3 class="mb-4 text-base font-medium text-foreground/70">
+					Autres interventions possibles
+				</h3>
+				<ul class="grid gap-3 md:grid-cols-2 md:gap-x-4 md:gap-y-3">
+					{#each topics as topic (topic.id)}
+						<li class="flex items-start gap-2.5">
+							<Icon icon="lucide:check" class="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" aria-hidden="true" />
+							<span class="text-sm leading-relaxed text-foreground/80">{topic.text}</span>
+						</li>
+					{/each}
+				</ul>
 			</div>
-			<Card.Title class="text-xl md:text-2xl">
-				Le futur et les dangers de l'intelligence artificielle
-			</Card.Title>
-		</Card.Header>
-		<Card.Content>
-			<p class="text-foreground/80">
-				Un panorama clair et accessible de la trajectoire dans laquelle nous sommes embarqués.
-				Point de départ idéal pour comprendre les vrais enjeux derrière le battage médiatique.
-			</p>
-		</Card.Content>
-	</Card.Root>
-
-	<div>
-		<h3 class="mb-6 text-xl font-semibold text-foreground">Autres interventions possibles</h3>
-		<ul class="grid gap-3 md:grid-cols-2">
-			{#each topics as topic (topic.id)}
-				<li class="flex items-start">
-					<span
-						class="mr-3 mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-500"
-						aria-hidden="true"
-					></span>
-					<span class="text-foreground/80">{topic.text}</span>
-				</li>
-			{/each}
-		</ul>
+		</div>
 	</div>
 </Section>
 
