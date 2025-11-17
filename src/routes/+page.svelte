@@ -11,6 +11,7 @@
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import FormField from '$lib/components/FormField.svelte';
 	import { enhance } from '$app/forms';
+	import Autoplay from 'embla-carousel-autoplay';
 
 	let { form }: { form?: import('./$types').ActionData } = $props();
 
@@ -133,6 +134,12 @@
 			align: 'start',
 			loop: true
 		}}
+		plugins={[
+			Autoplay({
+				delay: 2000,
+				stopOnInteraction: false
+			})
+		]}
 		class="w-full"
 	>
 		<Carousel.Content class="-ml-4">
@@ -146,8 +153,6 @@
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-		<Carousel.Previous class="hidden md:flex" />
-		<Carousel.Next class="hidden md:flex" />
 	</Carousel.Root>
 </Section>
 
