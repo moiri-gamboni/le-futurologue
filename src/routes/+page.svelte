@@ -291,10 +291,10 @@
 
 <!-- Media Section -->
 <Section theme="dark" width="xl" padding="md">
-	<SectionHeading theme="dark">Conférences & Interviews</SectionHeading>
+	<SectionHeading theme="dark">Vidéos</SectionHeading>
 
 	<div class="mb-12">
-		<h3 class="mb-6 text-xl font-semibold text-white">Exemples de conférences réalisées</h3>
+		<h3 class="mb-6 text-xl font-semibold text-white">Conférences</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each conferences as video (video.id)}
 				<VideoCard videoId={video.id} alt="Conférence réalisée" />
@@ -303,7 +303,7 @@
 	</div>
 
 	<div class="mb-12">
-		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews données</h3>
+		<h3 class="mb-6 text-xl font-semibold text-white">Interviews</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsGiven as interview (interview.id)}
 				<VideoCard videoId={interview.id} alt={interview.description} description={interview.description} />
@@ -312,7 +312,7 @@
 	</div>
 
 	<div>
-		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews réalisées</h3>
+		<h3 class="mb-6 text-xl font-semibold text-white">Interventions</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsTaken as interview (interview.id)}
 				<VideoCard videoId={interview.id} alt="Interview réalisée" />
