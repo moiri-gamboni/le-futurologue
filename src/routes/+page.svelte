@@ -87,7 +87,7 @@
 	<enhanced:img
 		src={heroImage}
 		alt="Shaïman Thürler"
-		class="absolute inset-0 h-full w-full object-cover"
+		class="absolute inset-0 h-full w-full object-cover object-center"
 		sizes="100vw"
 	/>
 	<div class="absolute inset-0 bg-dark-800/85"></div>
@@ -104,10 +104,11 @@
 		<Button href="#contact" size="lg" class="text-base font-semibold shadow-lg shadow-green-500/30">
 			Me contacter &rarr;
 		</Button>
+	</div>
 
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+	<!-- Scroll indicator at bottom of hero section -->
+	<div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
 			<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
-		</div>
 	</div>
 </section>
 
