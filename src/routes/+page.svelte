@@ -97,7 +97,7 @@
 	];
 
 	const detailsList = [
-		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15&#8239;min à 3&#8239;h' },
+		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15\u202Fmin à 3\u202Fh' },
 		{ id: 'location', icon: 'lucide:map-pin', text: 'En présentiel (France & international) ou en visio' },
 		{ id: 'format', icon: 'lucide:presentation', text: 'Pédagogique, approfondi et constructif' }
 	];
