@@ -126,6 +126,8 @@
 
 <!-- Client Logos Carousel -->
 <Section theme="light" padding="sm">
+	<SectionHeading>Quelques conférences réalisées</SectionHeading>
+
 	<Carousel.Root
 		opts={{
 			align: 'start',
