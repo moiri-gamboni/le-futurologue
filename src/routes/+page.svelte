@@ -153,7 +153,7 @@
 <Section theme="light" width="xl" padding="md">
 	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
 		<div class="order-2 md:order-1">
-			<AspectRatio ratio={4 / 3}>
+			<AspectRatio ratio={3 / 4}>
 				<enhanced:img
 					src={conferenceImage}
 					alt="Conférence en action"
