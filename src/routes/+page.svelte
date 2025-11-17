@@ -181,6 +181,40 @@
 	</Carousel.Root>
 </Section>
 
+<!-- About Section -->
+<Section theme="dark" width="md" padding="md">
+	<div class="text-center">
+		<div class="mb-8 flex justify-center">
+			<Avatar.Root class="h-32 w-32 border-4 border-green-500/20 md:h-40 md:w-40">
+				<Avatar.Image src={profileImage} alt="Shaïman Thürler" />
+				<Avatar.Fallback class="bg-green-500 text-2xl font-bold text-dark-800">ST</Avatar.Fallback
+				>
+			</Avatar.Root>
+		</div>
+
+		<SectionHeading theme="dark">Qui suis-je ?</SectionHeading>
+
+		<div class="mb-8 space-y-4 text-lg leading-relaxed text-white/90">
+			<p>
+				Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone dédié à l'intelligence artificielle.
+			</p>
+			<p>
+				À travers des interviews avec des experts de premier plan, j'explore en profondeur les enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
+			</p>
+			<p>
+				Mon ambition est simple : proposer des analyses rigoureuses, accessibles et tournées vers l'avenir, pour mieux comprendre l'impact que l'intelligence artificielle aura sur nos sociétés.
+			</p>
+			<p>
+				Que ce soit par le biais de mes vidéos, mes conférences ou mes interventions publiques, je m'attache à rendre ces enjeux compréhensibles et à fournir des clés de lecture essentielles pour les années à venir.
+			</p>
+		</div>
+
+		<Button variant="secondary" href="https://youtube.com/@lefuturologuepodcast" size="lg">
+			Voir ma chaîne YouTube &rarr;
+		</Button>
+	</div>
+</Section>
+
 <!-- Value Proposition -->
 <Section theme="light" width="xl" padding="md">
 	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
@@ -215,40 +249,6 @@
 				<Button href="#contact" size="lg">Réserver une conférence</Button>
 			</div>
 		</div>
-	</div>
-</Section>
-
-<!-- About Section -->
-<Section theme="dark" width="md" padding="md">
-	<div class="text-center">
-		<div class="mb-8 flex justify-center">
-			<Avatar.Root class="h-32 w-32 border-4 border-green-500/20 md:h-40 md:w-40">
-				<Avatar.Image src={profileImage} alt="Shaïman Thürler" />
-				<Avatar.Fallback class="bg-green-500 text-2xl font-bold text-dark-800">ST</Avatar.Fallback
-				>
-			</Avatar.Root>
-		</div>
-
-		<SectionHeading theme="dark">Qui suis-je ?</SectionHeading>
-
-		<div class="mb-8 space-y-4 text-lg leading-relaxed text-white/90">
-			<p>
-				Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone dédié à l'intelligence artificielle.
-			</p>
-			<p>
-				À travers des interviews avec des experts de premier plan, j'explore en profondeur les enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
-			</p>
-			<p>
-				Mon ambition est simple : proposer des analyses rigoureuses, accessibles et tournées vers l'avenir, pour mieux comprendre l'impact que l'intelligence artificielle aura sur nos sociétés.
-			</p>
-			<p>
-				Que ce soit par le biais de mes vidéos, mes conférences ou mes interventions publiques, je m'attache à rendre ces enjeux compréhensibles et à fournir des clés de lecture essentielles pour les années à venir.
-			</p>
-		</div>
-
-		<Button variant="secondary" href="https://youtube.com/@lefuturologuepodcast" size="lg">
-			Voir ma chaîne YouTube &rarr;
-		</Button>
 	</div>
 </Section>
 
