@@ -97,7 +97,7 @@
 	];
 
 	const detailsList = [
-		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15 min à 3h' },
+		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15&#8239;min à 3&#8239;h' },
 		{ id: 'location', icon: 'lucide:map-pin', text: 'En présentiel (France & international) ou en visio' },
 		{ id: 'format', icon: 'lucide:presentation', text: 'Pédagogique, approfondi et constructif' }
 	];
@@ -213,7 +213,7 @@
 			</Avatar.Root>
 		</div>
 
-		<SectionHeading theme="dark">Qui suis-je ?</SectionHeading>
+		<SectionHeading theme="dark">Qui suis-je&#8239;?</SectionHeading>
 
 		<div class="mb-8 space-y-4 text-lg leading-relaxed text-white/90">
 			<p>
@@ -388,7 +388,7 @@
 
 	<div class="mb-12 text-center">
 		<p class="text-foreground/70">
-			<strong class="font-semibold text-foreground">Email:</strong>
+			<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
 			<a href="mailto:contact@lefuturologue.com" class="ml-2 text-green-500 hover:underline">
 				contact@lefuturologue.com
 			</a>
