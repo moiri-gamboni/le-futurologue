@@ -52,6 +52,27 @@
 		{ id: 'sCRh9Pd8z_k' }
 	];
 
+	const interviewsGiven = [
+		{
+			id: 'Fks-t_3w1vw',
+			description: 'Jennifer Prendki, docteure en physique des particules et ex directrice du département data de Google DeepMind.'
+		},
+		{
+			id: '97H71XMy4EI',
+			description: 'Axelle Arquié, docteure en économie, spécialiste du marché du travail et cofondatrice de l\'Observatoire des Emplois Menacés et Émergents.'
+		},
+		{
+			id: '_wr55txHiYs',
+			description: 'Charbel-Raphaël Segerie, ingénieur et chercheur en IA, expert IA auprès de l\'OCDE, directeur du Centre pour la Sécurité de l\'IA.'
+		}
+	];
+
+	const interviewsTaken = [
+		{ id: '3_af3JN898w' },
+		{ id: '9cG0pJU10xs' },
+		{ id: '2n8bJWO5_yY' }
+	];
+
 	const socials = [
 		{ id: 'youtube', name: 'YouTube', url: 'https://youtube.com/@lefuturologuepodcast', icon: 'simple-icons:youtube' },
 		{ id: 'instagram', name: 'Instagram', url: 'https://instagram.com/le.futurologue', icon: 'simple-icons:instagram' },
@@ -310,14 +331,83 @@
 		</div>
 	</div>
 
-	<div class="text-center">
-		<Button
-			variant="outline"
-			href="https://youtube.com/playlist?list=PLNMPbCcPxm0ed03TEQ2_Cy0cUsnIUd_nZ"
-			class="border-white/20 text-white hover:bg-white/10"
-		>
-			Voir toutes les interviews données &rarr;
-		</Button>
+	<div class="mb-12">
+		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews données</h3>
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{#each interviewsGiven as interview (interview.id)}
+				<Card.Root
+					class="overflow-hidden border-white/10 bg-dark-700/50 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+				>
+					<Card.Content class="p-0">
+						<a
+							href="https://youtube.com/watch?v={interview.id}"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<AspectRatio ratio={16 / 9}>
+								<img
+									src="https://img.youtube.com/vi/{interview.id}/maxresdefault.jpg"
+									alt={interview.description}
+									class="h-full w-full object-cover transition-transform hover:scale-105"
+								/>
+								<div
+									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
+								>
+									<div
+										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
+									>
+										<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M8 5v14l11-7z" />
+										</svg>
+									</div>
+								</div>
+							</AspectRatio>
+						</a>
+					</Card.Content>
+					<Card.Footer class="p-4">
+						<p class="text-sm text-white/90">{interview.description}</p>
+					</Card.Footer>
+				</Card.Root>
+			{/each}
+		</div>
+	</div>
+
+	<div>
+		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews réalisées</h3>
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{#each interviewsTaken as interview (interview.id)}
+				<Card.Root
+					class="overflow-hidden border-white/10 bg-dark-700/50 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+				>
+					<Card.Content class="p-0">
+						<a
+							href="https://youtube.com/watch?v={interview.id}"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<AspectRatio ratio={16 / 9}>
+								<img
+									src="https://img.youtube.com/vi/{interview.id}/maxresdefault.jpg"
+									alt="Interview réalisée"
+									class="h-full w-full object-cover transition-transform hover:scale-105"
+								/>
+								<div
+									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
+								>
+									<div
+										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
+									>
+										<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M8 5v14l11-7z" />
+										</svg>
+									</div>
+								</div>
+							</AspectRatio>
+						</a>
+					</Card.Content>
+				</Card.Root>
+			{/each}
+		</div>
 	</div>
 </Section>
 
