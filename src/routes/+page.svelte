@@ -34,9 +34,9 @@
 
 	// Data
 	const stats = [
-		{ id: 'videos', value: '180+', label: 'vidéos' },
+		{ id: 'videos', value: '280+', label: 'vidéos' },
 		{ id: 'followers', value: '80K+', label: 'abonnés' },
-		{ id: 'listens', value: '170K+', label: 'écoutes/mois' }
+		{ id: 'views', value: '11M+', label: 'vues' }
 	];
 
 	const logos = [
