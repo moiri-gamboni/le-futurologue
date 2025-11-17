@@ -360,7 +360,7 @@
 			name="email"
 			type="email"
 			label="Email"
-			placeholder="votre@email.com"
+			placeholder="exemple@email.com"
 			value={form?.email ?? ''}
 			autocomplete="email"
 			required
