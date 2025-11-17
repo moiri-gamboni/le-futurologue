@@ -47,9 +47,9 @@
 	];
 
 	const conferences = [
-		{ id: 'yusjUh-2a7E', title: 'TransVision 2022' },
-		{ id: 'xnBLgKEs9aM', title: 'Rencontres Esprit Critique' },
-		{ id: 'sCRh9Pd8z_k', title: 'Altruisme Efficace France' }
+		{ id: 'yusjUh-2a7E' },
+		{ id: 'xnBLgKEs9aM' },
+		{ id: 'sCRh9Pd8z_k' }
 	];
 
 	const socials = [
@@ -283,12 +283,11 @@
 							href="https://youtube.com/watch?v={video.id}"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="Regarder la conférence {video.title} sur YouTube (ouvre dans un nouvel onglet)"
 						>
 							<AspectRatio ratio={16 / 9}>
 								<img
 									src="https://img.youtube.com/vi/{video.id}/maxresdefault.jpg"
-									alt="Miniature de la vidéo : {video.title}"
+									alt="Conférence réalisée"
 									class="h-full w-full object-cover transition-transform hover:scale-105"
 								/>
 								<div
@@ -306,9 +305,6 @@
 							</AspectRatio>
 						</a>
 					</Card.Content>
-					<Card.Footer class="p-4">
-						<p class="text-sm text-white/90">{video.title}</p>
-					</Card.Footer>
 				</Card.Root>
 			{/each}
 		</div>
