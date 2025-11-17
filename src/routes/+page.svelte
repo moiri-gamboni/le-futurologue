@@ -297,7 +297,7 @@
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each conferences as video (video.id)}
 				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
 				>
 					<Card.Content class="p-0">
 						<a
@@ -336,7 +336,7 @@
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsGiven as interview (interview.id)}
 				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
 				>
 					<Card.Content class="p-0">
 						<a
@@ -364,8 +364,8 @@
 							</AspectRatio>
 						</a>
 					</Card.Content>
-					<Card.Footer class="p-4">
-						<p class="text-sm text-white/90">{interview.description}</p>
+					<Card.Footer class="px-6 py-4">
+						<p class="text-sm leading-relaxed text-white/90">{interview.description}</p>
 					</Card.Footer>
 				</Card.Root>
 			{/each}
@@ -377,7 +377,7 @@
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsTaken as interview (interview.id)}
 				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
 				>
 					<Card.Content class="p-0">
 						<a
