@@ -15,7 +15,7 @@
 	let { form }: { form?: import('./$types').ActionData } = $props();
 
 	// Images
-	import heroImage from '$lib/assets/images/IMG_8029.jpeg?enhanced';
+	import heroImage from '$lib/assets/images/hero.jpeg?enhanced';
 	import conferenceImage from '$lib/assets/images/IMG_8028.jpeg?enhanced';
 	import profileImage from '$lib/assets/images/IMG_7197.jpeg';
 	import logoVyv from '$lib/assets/logos/groupe-vyv.svg';
@@ -108,7 +108,7 @@
 
 	<!-- Scroll indicator at bottom of hero section -->
 	<div class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-			<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
+		<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
 	</div>
 </section>
 

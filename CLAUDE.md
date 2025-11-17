@@ -93,7 +93,7 @@ Three reusable wrapper components eliminate repetition:
 All images imported from `$lib/assets/` for Vite optimization:
 
 ```typescript
-import heroImage from '$lib/assets/images/IMG_8029.jpeg';
+import heroImage from '$lib/assets/images/hero.jpeg';
 import logoVyv from '$lib/assets/logos/groupe-vyv.svg';
 
 // Usage in templates
@@ -102,6 +102,8 @@ import logoVyv from '$lib/assets/logos/groupe-vyv.svg';
 ```
 
 **Benefits:** Automatic optimization, cache busting, type safety, build-time validation.
+
+**Naming Convention:** Use semantic, descriptive filenames (e.g., `hero.jpeg`, `profile.jpeg`) instead of camera-generated names (e.g., `IMG_8029.jpeg`).
 
 ### Svelte 5 Patterns
 
