@@ -146,8 +146,8 @@
 			{#each [...logos, ...logos] as logo, index (logo.id + '-' + index)}
 				<Carousel.Item class="basis-1/2 pl-4 md:basis-1/3 lg:basis-1/4">
 					<div class="flex flex-col items-center justify-center gap-3">
-						<div class="flex h-20 items-center justify-center">
-							<img src={logo.src} alt={logo.alt} class="max-h-16 object-contain" />
+						<div class="flex h-20 w-full items-center justify-center px-4">
+							<img src={logo.src} alt={logo.alt} class="h-auto max-h-16 w-auto max-w-full object-contain" />
 						</div>
 						<p class="text-center text-sm text-foreground/70">{logo.alt}</p>
 					</div>
