@@ -22,7 +22,7 @@
 		<Card.Content class="p-0">
 			<div class="relative aspect-video overflow-hidden">
 				<img
-					src="https://img.youtube.com/vi/{videoId}/maxresdefault.jpg"
+					src="https://img.youtube.com/vi/{videoId}/sddefault.jpg"
 					{alt}
 					class="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
