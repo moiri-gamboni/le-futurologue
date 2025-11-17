@@ -9,6 +9,7 @@
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import FormField from '$lib/components/FormField.svelte';
+	import VideoCard from '$lib/components/VideoCard.svelte';
 	import { enhance } from '$app/forms';
 	import Autoplay from 'embla-carousel-autoplay';
 	import { browser } from '$app/environment';
@@ -296,37 +297,7 @@
 		<h3 class="mb-6 text-xl font-semibold text-white">Exemples de conférences réalisées</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each conferences as video (video.id)}
-				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
-				>
-					<Card.Content class="p-0">
-						<a
-							href="https://youtube.com/watch?v={video.id}"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<AspectRatio ratio={16 / 9}>
-								<img
-									src="https://img.youtube.com/vi/{video.id}/maxresdefault.jpg"
-									alt="Conférence réalisée"
-									class="h-full w-full object-cover transition-transform hover:scale-105"
-								/>
-								<div
-									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
-									aria-hidden="true"
-								>
-									<div
-										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
-									>
-										<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M8 5v14l11-7z" />
-										</svg>
-									</div>
-								</div>
-							</AspectRatio>
-						</a>
-					</Card.Content>
-				</Card.Root>
+				<VideoCard videoId={video.id} alt="Conférence réalisée" />
 			{/each}
 		</div>
 	</div>
@@ -335,39 +306,7 @@
 		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews données</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsGiven as interview (interview.id)}
-				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
-				>
-					<Card.Content class="p-0">
-						<a
-							href="https://youtube.com/watch?v={interview.id}"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<AspectRatio ratio={16 / 9}>
-								<img
-									src="https://img.youtube.com/vi/{interview.id}/maxresdefault.jpg"
-									alt={interview.description}
-									class="h-full w-full object-cover transition-transform hover:scale-105"
-								/>
-								<div
-									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
-								>
-									<div
-										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
-									>
-										<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M8 5v14l11-7z" />
-										</svg>
-									</div>
-								</div>
-							</AspectRatio>
-						</a>
-					</Card.Content>
-					<Card.Footer class="px-6 py-4">
-						<p class="text-sm leading-relaxed text-white/90">{interview.description}</p>
-					</Card.Footer>
-				</Card.Root>
+				<VideoCard videoId={interview.id} alt={interview.description} description={interview.description} />
 			{/each}
 		</div>
 	</div>
@@ -376,36 +315,7 @@
 		<h3 class="mb-6 text-xl font-semibold text-white">Exemples d'interviews réalisées</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsTaken as interview (interview.id)}
-				<Card.Root
-					class="overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
-				>
-					<Card.Content class="p-0">
-						<a
-							href="https://youtube.com/watch?v={interview.id}"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<AspectRatio ratio={16 / 9}>
-								<img
-									src="https://img.youtube.com/vi/{interview.id}/maxresdefault.jpg"
-									alt="Interview réalisée"
-									class="h-full w-full object-cover transition-transform hover:scale-105"
-								/>
-								<div
-									class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity hover:opacity-100"
-								>
-									<div
-										class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90"
-									>
-										<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
-											<path d="M8 5v14l11-7z" />
-										</svg>
-									</div>
-								</div>
-							</AspectRatio>
-						</a>
-					</Card.Content>
-				</Card.Root>
+				<VideoCard videoId={interview.id} alt="Interview réalisée" />
 			{/each}
 		</div>
 	</div>
