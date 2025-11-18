@@ -220,7 +220,7 @@
 				Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone dédié à l'intelligence artificielle.
 			</p>
 			<p>
-				À travers des interviews avec des experts de premier plan, j'explore en profondeur les enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
+				Au travers d'interviews avec des experts de premier plan, j'explore en profondeur les enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
 			</p>
 			<p>
 				Mon ambition est simple : proposer des analyses rigoureuses, accessibles et tournées vers l'avenir, pour mieux comprendre l'impact que l'intelligence artificielle aura sur nos sociétés.
