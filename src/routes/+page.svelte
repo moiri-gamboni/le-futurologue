@@ -230,7 +230,13 @@
 			</p>
 		</div>
 
-		<Button variant="secondary" href="https://youtube.com/@lefuturologuepodcast" size="lg">
+		<Button
+			variant="secondary"
+			href="https://youtube.com/@lefuturologuepodcast"
+			target="_blank"
+			rel="noopener noreferrer"
+			size="lg"
+		>
 			Voir ma chaîne YouTube &rarr;
 		</Button>
 	</div>
