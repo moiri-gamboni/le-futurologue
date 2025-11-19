@@ -10,6 +10,43 @@
  * Personality: The Sage/Explorer - Expert knowledge made accessible
  */
 
+/* === SELF-HOSTED FONTS === */
+/* Performance optimization: Self-hosting eliminates 670ms render-blocking from Google Fonts CDN */
+
+/* Inter - UI Font (Body text, buttons, labels) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin/inter-v20-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin/inter-v20-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin/inter-v20-latin-700.woff2') format('woff2');
+}
+
+/* Space Grotesk - Display Font (Headings, stats, emphasis) */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-v22-latin/space-grotesk-v22-latin-700.woff2') format('woff2');
+}
+
 :root {
   /* === Brand Identity === */
   /* Radius: 8px = approachable professionalism (not cold 0px, not playful 20px+) */
@@ -251,5 +288,19 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  /* Typography System: Space Grotesk for headings, Inter for body */
+  /* Refactoring UI: Display font for impact, UI font for legibility */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  }
+
+  /* Apply Space Grotesk to bold text for visual consistency */
+  /* Stats numbers, emphasis text, and other bold elements get display font */
+  strong,
+  b,
+  .font-bold {
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
   }
 }

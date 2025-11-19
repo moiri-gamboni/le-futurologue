@@ -7,11 +7,29 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+	<!-- Preload critical fonts for optimal performance -->
+	<!-- Eliminates 670ms render-blocking delay from Google Fonts CDN -->
 	<link
-		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-		rel="stylesheet"
+		rel="preload"
+		href="/fonts/inter-v20-latin/inter-v20-latin-regular.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/inter-v20-latin/inter-v20-latin-600.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/space-grotesk-v22-latin/space-grotesk-v22-latin-700.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
 	/>
 </svelte:head>
 
