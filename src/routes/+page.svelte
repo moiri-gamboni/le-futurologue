@@ -365,7 +365,7 @@
 	<div class="mb-12 text-center">
 		<p class="text-foreground/70">
 			<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
-			<a href="mailto:contact@lefuturologue.com" class="ml-2 text-green-800 hover:underline">
+			<a href="mailto:contact@lefuturologue.com" class="text-green-800 hover:underline">
 				contact@lefuturologue.com
 			</a>
 		</p>
