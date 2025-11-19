@@ -22,6 +22,30 @@
 		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	}
 
+	// Autoplay plugin instance
+	const autoplay = Autoplay({
+		delay: 3000,
+		stopOnInteraction: false
+	});
+
+	// Reset autoplay timer on navigation
+	import type { CarouselAPI } from '$lib/components/ui/carousel/context';
+	let carouselApi = $state<CarouselAPI>();
+
+	$effect(() => {
+		if (!carouselApi) return;
+
+		const onSelect = () => {
+			autoplay.reset();
+		};
+
+		carouselApi.on('select', onSelect);
+
+		return () => {
+			carouselApi?.off('select', onSelect);
+		};
+	});
+
 	// Images
 	import heroImage from '$lib/assets/images/hero.jpeg?enhanced';
 	import conferenceImage from '$lib/assets/images/IMG_8028.jpeg?enhanced';
@@ -176,14 +200,8 @@
 			align: 'start',
 			loop: true
 		}}
-		plugins={prefersReducedMotion
-			? []
-			: [
-					Autoplay({
-						delay: 3000,
-						stopOnInteraction: false
-					})
-				]}
+		plugins={prefersReducedMotion ? [] : [autoplay]}
+		setApi={(api) => (carouselApi = api)}
 		class="w-full"
 		aria-label="Logos des organisations où des conférences ont été données"
 		aria-live={prefersReducedMotion ? 'off' : 'polite'}
