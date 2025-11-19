@@ -192,7 +192,7 @@
 
 <!-- Client Logos Carousel -->
 <Section theme="light" padding="sm">
-	<SectionHeading>Quelques conférences réalisées</SectionHeading>
+	<SectionHeading>Ils m'ont fait confiance</SectionHeading>
 
 	<div class="mx-auto max-w-[480px] md:max-w-[720px] lg:max-w-[960px]">
 		<Carousel.Root
