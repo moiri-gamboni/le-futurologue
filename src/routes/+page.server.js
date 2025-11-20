@@ -46,13 +46,12 @@ export const actions = {
 
 		try {
 			// Send email via Resend
-			await resend.emails.send({
-				from: 'Le Futurologue <contact@send.lefuturologue.com>',
+			const { data: emailData, error } = await resend.emails.send({
+				from: 'Le Futurologue <contact@lefuturologue.com>',
 				to: ['contact@lefuturologue.com'],
 				replyTo: email.toString(),
-				subject: `Nouveau message de ${name.toString()}${organization ? ` (${organization.toString()})` : ''}`,
+				subject: `Formulaire de contact : ${name.toString()}${organization ? ` (${organization.toString()})` : ''}`,
 				html: `
-					<h2>Nouveau message de contact</h2>
 					<p><strong>Nom:</strong> ${name.toString()}</p>
 					<p><strong>Email:</strong> ${email.toString()}</p>
 					${organization ? `<p><strong>Organisation:</strong> ${organization.toString()}</p>` : ''}
@@ -62,6 +61,19 @@ export const actions = {
 				`
 			});
 
+			// Check if Resend API returned an error
+			if (error) {
+				console.error('Resend API error:', error);
+				return fail(500, {
+					error: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement par email.',
+					name: name.toString(),
+					email: email.toString(),
+					organization: organization?.toString() || '',
+					message: message.toString()
+				});
+			}
+
+			console.log('Email sent successfully:', emailData);
 			return {
 				success: true,
 				message: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
