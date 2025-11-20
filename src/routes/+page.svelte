@@ -22,9 +22,7 @@
 	}
 
 	// Images
-	import heroImage from '$lib/assets/images/hero.jpeg?enhanced';
-	import conferenceImage from '$lib/assets/images/IMG_8028.jpeg?enhanced';
-	import profileImage from '$lib/assets/images/IMG_7197.jpeg';
+	import profileImage from '$lib/assets/images/avatar.jpeg';
 	import logoVyv from '$lib/assets/logos/groupe-vyv.svg';
 	import logoRec from '$lib/assets/logos/rec.webp';
 	import logoAef from '$lib/assets/logos/aef.png';
@@ -121,10 +119,11 @@
 <!-- Hero Section -->
 <header class="relative flex min-h-screen items-center justify-center bg-dark-800">
 	<enhanced:img
-		src={heroImage}
+		src="$lib/assets/images/hero.jpeg?w=3840;2560;1920;1280"
 		alt="Portrait de Shaïman Thürler, conférencier spécialiste en intelligence artificielle"
 		class="absolute inset-0 h-full w-full object-cover object-center"
-		sizes="100vw"
+		sizes="(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, 100vw"
+		fetchpriority="high"
 	/>
 	<div class="absolute inset-0 bg-dark-800/85"></div>
 
@@ -219,9 +218,10 @@
 		<div class="order-2 md:order-1">
 			<AspectRatio ratio={3 / 4}>
 				<enhanced:img
-					src={conferenceImage}
+					src="$lib/assets/images/portrait.jpeg?w=1200;900;600"
 					alt="Shaïman Thürler donnant une conférence sur l'intelligence artificielle devant un auditoire"
 					class="h-full w-full rounded-lg object-cover"
+					sizes="(min-width: 768px) 576px, 100vw"
 				/>
 			</AspectRatio>
 		</div>
