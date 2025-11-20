@@ -47,8 +47,8 @@ export const actions = {
 		try {
 			// Send email via Resend
 			await resend.emails.send({
-				from: 'Le Futurologue Contact <onboarding@resend.dev>', // Replace with your verified domain
-				to: ['contact@lefuturologue.com'], // Replace with your actual email
+				from: 'Le Futurologue <contact@send.lefuturologue.com>',
+				to: ['contact@lefuturologue.com'],
 				replyTo: email.toString(),
 				subject: `Nouveau message de ${name.toString()}${organization ? ` (${organization.toString()})` : ''}`,
 				html: `
