@@ -232,7 +232,7 @@
 			</h2>
 			<p class="mb-6 text-lg leading-relaxed text-foreground/80">
 				Ma conférence la plus demandée explore le futur et les dangers de l'intelligence
-				artificielle. Elle offre un panorama clair et accessible de la trajectoire dans laquelle
+				artificielle. Elle offre un panorama clair et accessible de la trajectoire sur laquelle
 				nous sommes embarqués.
 			</p>
 			<ul class="mb-8 space-y-4">
