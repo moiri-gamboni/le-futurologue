@@ -400,5 +400,11 @@
 <!-- Footer -->
 <Separator />
 <footer class="bg-background py-8 text-center">
-	<p class="text-sm text-foreground/60">© 2025 Le Futurologue. Tous droits réservés.</p>
+	<p class="text-sm text-foreground/60">
+		© 2025 Le Futurologue. Tous droits réservés.
+		<span class="mx-2">·</span>
+		<a href="/confidentialite" class="underline transition-colors hover:text-foreground/80"
+			>Politique de confidentialité</a
+		>
+	</p>
 </footer>
