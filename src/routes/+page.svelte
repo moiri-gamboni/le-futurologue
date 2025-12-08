@@ -28,6 +28,7 @@
 	import logoAef from '$lib/assets/logos/aef.png';
 	import logoEurekafe from '$lib/assets/logos/eurekafe.png';
 	import logoTransvision from '$lib/assets/logos/transvision.png';
+	import logoPauseia from '$lib/assets/logos/pauseia.svg';
 
 	// Data
 	const stats = [
@@ -41,7 +42,8 @@
 		{ id: 'transvision', src: logoTransvision, alt: 'TransVision' },
 		{ id: 'esprit', src: logoRec, alt: 'Rencontres Esprit Critique' },
 		{ id: 'ae', src: logoAef, alt: 'Altruisme Efficace France' },
-		{ id: 'eurekafe', src: logoEurekafe, alt: 'Eurêkafé' }
+		{ id: 'eurekafe', src: logoEurekafe, alt: 'Eurêkafé' },
+		{ id: 'pauseia', src: logoPauseia, alt: 'Pause IA' }
 	];
 
 	const conferences = [
