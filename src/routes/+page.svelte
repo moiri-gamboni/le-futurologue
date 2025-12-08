@@ -406,5 +406,13 @@
 		<a href="/confidentialite" class="underline transition-colors hover:text-foreground/80"
 			>Politique de confidentialité</a
 		>
+		<span class="mx-2">·</span>
+		Site par
+		<a
+			href="https://www.linkedin.com/in/moiri-gamboni/"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="underline transition-colors hover:text-foreground/80">Moïri Gamboni</a
+		>
 	</p>
 </footer>
