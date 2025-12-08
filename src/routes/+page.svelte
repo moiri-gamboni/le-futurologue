@@ -254,7 +254,7 @@
 				<h3 class="mb-4 text-base font-medium text-foreground/70">
 					Autres interventions possibles
 				</h3>
-				<ul class="grid gap-3 md:grid-cols-2 md:gap-x-4 md:gap-y-3">
+				<ul class="grid gap-3 xl:grid-cols-2 xl:gap-x-4 xl:gap-y-3">
 					{#each topics as topic (topic.id)}
 						<li class="flex items-start gap-2.5">
 							<Icon icon="lucide:check" class="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" aria-hidden="true" />
