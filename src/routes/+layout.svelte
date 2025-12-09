@@ -12,8 +12,8 @@
 	<link rel="apple-touch-icon" href={appleTouchIcon} />
 
 	<!-- Open Graph -->
-	<meta property="og:title" content="Shaïman Thürler - Conférencier IA | Le Futurologue" />
-	<meta property="og:description" content="Conférences sur l'intelligence artificielle, le futur du travail et les enjeux technologiques. Fondateur du plus grand podcast francophone sur l'IA." />
+	<meta property="og:title" content="Shaïman Thürler - Conférencier spécialiste en IA" />
+	<meta property="og:description" content="Conférences claires, accessibles et rigoureuses sur les enjeux de l'intelligence artificielle." />
 	<meta property="og:url" content="https://lefuturologue.com" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Le Futurologue" />
@@ -25,8 +25,8 @@
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content={openGraphImage} />
-	<meta name="twitter:title" content="Shaïman Thürler - Conférencier IA | Le Futurologue" />
-	<meta name="twitter:description" content="Conférences sur l'intelligence artificielle, le futur du travail et les enjeux technologiques." />
+	<meta name="twitter:title" content="Shaïman Thürler - Conférencier spécialiste en IA" />
+	<meta name="twitter:description" content="Conférences claires, accessibles et rigoureuses sur les enjeux de l'intelligence artificielle." />
 	<meta name="twitter:site" content="@le_futurologue" />
 	<meta name="twitter:creator" content="@le_futurologue" />
 

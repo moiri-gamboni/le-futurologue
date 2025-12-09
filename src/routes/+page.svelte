@@ -103,10 +103,10 @@
 </script>
 
 <svelte:head>
-	<title>Shaïman Thürler - Conférencier spécialiste en IA | Le Futurologue</title>
+	<title>Shaïman Thürler - Conférencier spécialiste en IA</title>
 	<meta
 		name="description"
-		content="Conférences sur l'intelligence artificielle, le futur du travail et les enjeux technologiques. Fondateur du plus grand podcast francophone sur l'IA."
+		content="Conférences claires, accessibles et rigoureuses sur les enjeux de l'intelligence artificielle."
 	/>
 </svelte:head>
 
