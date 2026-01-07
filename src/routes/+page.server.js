@@ -76,7 +76,7 @@ export const actions = {
 			console.log('Email sent successfully:', emailData);
 			return {
 				success: true,
-				message: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
+				successMessage: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
 			};
 		} catch (error) {
 			console.error('Error sending email:', error);

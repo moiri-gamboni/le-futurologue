@@ -309,7 +309,7 @@
 			aria-live="polite"
 			class="mb-8 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center"
 		>
-			<p class="text-green-700 dark:text-green-300">{form.message}</p>
+			<p class="text-green-700 dark:text-green-300">{form.successMessage}</p>
 		</div>
 	{/if}
 
