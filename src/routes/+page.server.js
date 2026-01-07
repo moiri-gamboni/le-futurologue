@@ -106,7 +106,15 @@ export const actions = {
 
 			// Check if Resend API returned an error
 			if (error) {
-				console.error('Resend API error:', error);
+				console.error(JSON.stringify({
+					event: 'contact_form_error',
+					source: 'resend_api',
+					error: {
+						name: error.name,
+						message: error.message,
+						statusCode: error.statusCode
+					}
+				}));
 				const userMessage = getResendErrorMessage(error);
 				return fail(error.statusCode || 500, {
 					error: userMessage,
@@ -117,13 +125,23 @@ export const actions = {
 				});
 			}
 
-			console.log('Email sent successfully:', emailData);
+			console.log(JSON.stringify({
+				event: 'contact_form_success',
+				emailId: emailData?.id
+			}));
 			return {
 				success: true,
 				successMessage: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
 			};
 		} catch (error) {
-			console.error('Error sending email:', error);
+			console.error(JSON.stringify({
+				event: 'contact_form_error',
+				source: 'unexpected',
+				error: {
+					message: error instanceof Error ? error.message : 'Unknown error',
+					stack: error instanceof Error ? error.stack : undefined
+				}
+			}));
 			return fail(500, {
 				error: 'Une erreur inattendue est survenue. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.',
 				name: name.toString(),
