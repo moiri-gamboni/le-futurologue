@@ -10,7 +10,7 @@ Conference speaker website for Shaïman Thürler (Le Futurologue) - AI specialis
 - SvelteKit (Svelte 5 with runes and snippets)
 - Tailwind CSS v4
 - shadcn-svelte components
-- Cloudflare Pages deployment (adapter-cloudflare)
+- Cloudflare Workers deployment (adapter-cloudflare)
 
 **Reference Documentation:** `docs/design-plan.md` contains the complete design system specification and component requirements.
 
@@ -208,19 +208,32 @@ Common issues:
 
 ## Deployment
 
-Configured for Cloudflare Pages (`adapter-cloudflare`).
+Configured for Cloudflare Workers (`adapter-cloudflare`).
 
 **Build Settings:**
-- Build command: `pnpm run build` or `vite build`
+- Build command: `pnpm run build`
+- Deploy command: `wrangler deploy`
 - Build output directory: `.svelte-kit/cloudflare`
-- Framework preset: SvelteKit
+
+**Git Integration:**
+Workers supports automatic deployments from GitHub/GitLab. Configure via Cloudflare Dashboard > Workers & Pages > Settings > Builds > Git integration.
+
+**Manual Deployment:**
+```bash
+pnpm run build
+wrangler deploy
+```
 
 **Form Handling:**
-Form submissions require server-side handling via SvelteKit form actions in `+page.server.js` files. See the contact form implementation in `src/routes/+page.svelte` and create a corresponding `+page.server.js` file with form actions.
+Form submissions require server-side handling via SvelteKit form actions in `+page.server.js` files. See the contact form implementation in `src/routes/+page.svelte`.
 
 **Local Development:**
 The adapter emulates Cloudflare's platform during development. Use `pnpm run dev` for development, or test the production build with:
-- `wrangler pages dev .svelte-kit/cloudflare` (after running `pnpm run build`)
+- `wrangler dev` (after running `pnpm run build`)
 
 **Environment Variables:**
-This project uses `$env/static/private` for secrets (build-time strategy). Secrets are baked into the JavaScript bundle during build and must be set in Cloudflare Pages dashboard > Settings > Environment Variables. Changing environment variables requires rebuild and redeploy. See the [Cloudflare docs](https://developers.cloudflare.com/pages/configuration/build-configuration/) for details.
+Secrets must be set via Wrangler or Cloudflare Dashboard:
+```bash
+wrangler secret put RESEND_API_KEY
+```
+Or via Dashboard: Worker > Settings > Variables and Secrets. This project uses `$env/static/private` for secrets (build-time strategy).

@@ -13,7 +13,7 @@ Built with SvelteKit, Tailwind CSS v4, and shadcn-svelte components following [R
 - 🖼️ **Optimized images** - Vite asset imports with automatic optimization
 - 🎯 **Single-page design** - Smooth scrolling, clear CTAs
 - ♿ **Accessible** - ARIA labels, focus states, keyboard navigation
-- 🚀 **Cloudflare Pages** - Optimized for edge deployment with global distribution
+- 🚀 **Cloudflare Workers** - Optimized for edge deployment with global distribution
 
 ## Tech Stack
 
@@ -21,7 +21,7 @@ Built with SvelteKit, Tailwind CSS v4, and shadcn-svelte components following [R
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **Components:** [shadcn-svelte](https://www.shadcn-svelte.com/)
 - **Icons:** [Lucide Svelte](https://lucide.dev/)
-- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/) (`adapter-cloudflare`)
+- **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/) (`adapter-cloudflare`)
 
 ## Getting Started
 
@@ -159,16 +159,17 @@ import heroImage from '$lib/assets/images/hero.jpeg';
 
 ## Deployment
 
-Configured for **Cloudflare Pages** deployment:
+Configured for **Cloudflare Workers** deployment:
 
 ### Using Git Integration
 
-1. Connect your repository to Cloudflare Pages
-2. Configure build settings:
-   - **Framework preset:** SvelteKit
-   - **Build command:** `pnpm run build` or `vite build`
+1. Go to Cloudflare Dashboard > Workers & Pages
+2. Create or select your Worker
+3. Go to Settings > Builds > Git integration
+4. Connect your GitHub/GitLab repository
+5. Configure build settings:
+   - **Build command:** `pnpm run build`
    - **Build output directory:** `.svelte-kit/cloudflare`
-3. Deploy!
 
 ### Using Wrangler CLI
 
@@ -176,13 +177,13 @@ Configured for **Cloudflare Pages** deployment:
 # Build the project
 pnpm run build
 
-# Deploy to Cloudflare Pages
-wrangler pages deploy .svelte-kit/cloudflare
+# Deploy to Cloudflare Workers
+wrangler deploy
 ```
 
 ### Form Handling
 
-Forms require server-side handling via SvelteKit form actions. Create a `+page.server.js` file to handle form submissions. See [SvelteKit form actions documentation](https://svelte.dev/docs/kit/form-actions) for details.
+Forms require server-side handling via SvelteKit form actions. See [SvelteKit form actions documentation](https://svelte.dev/docs/kit/form-actions) for details.
 
 ## Documentation
 
