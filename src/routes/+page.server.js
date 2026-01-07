@@ -4,6 +4,49 @@ import { RESEND_API_KEY } from '$env/static/private';
 
 const resend = new Resend(RESEND_API_KEY);
 
+/**
+ * Maps Resend API errors to user-friendly French messages
+ * @param {{ name?: string, message?: string, statusCode?: number | null }} error
+ * @returns {string}
+ */
+function getResendErrorMessage(error) {
+	const errorName = error.name || '';
+	const errorMessage = error.message || '';
+
+	// Invalid reply-to email format
+	if (errorName === 'validation_error' && errorMessage.toLowerCase().includes('reply_to')) {
+		return 'L\'adresse email fournie n\'est pas valide. Veuillez vérifier le format (ex: exemple@email.com).';
+	}
+
+	// Other invalid email format errors
+	if (errorName === 'validation_error' && errorMessage.toLowerCase().includes('email')) {
+		return 'L\'adresse email fournie n\'est pas valide. Veuillez vérifier et réessayer.';
+	}
+
+	// Generic validation error
+	if (errorName === 'validation_error') {
+		return 'Les informations saisies contiennent une erreur. Veuillez vérifier et réessayer.';
+	}
+
+	// Rate limits and quotas (account-level, not user's fault)
+	if (errorName === 'rate_limit_exceeded' || errorName === 'daily_quota_exceeded' || errorName === 'monthly_quota_exceeded') {
+		return 'Le service de messagerie est temporairement surchargé. Veuillez réessayer dans quelques minutes ou nous contacter à contact@lefuturologue.com.';
+	}
+
+	// Server errors
+	if (error.statusCode === 500 || errorName === 'application_error' || errorName === 'internal_server_error') {
+		return 'Le service de messagerie rencontre un problème. Veuillez réessayer dans quelques instants ou nous contacter à contact@lefuturologue.com.';
+	}
+
+	// Security error
+	if (errorName === 'security_error') {
+		return 'Votre message n\'a pas pu être envoyé pour des raisons de sécurité. Veuillez nous contacter directement à contact@lefuturologue.com.';
+	}
+
+	// Default fallback
+	return 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.';
+}
+
 /** @type {import('./$types').Actions} */
 export const actions = {
 	submit: async ({ request }) => {
@@ -64,8 +107,9 @@ export const actions = {
 			// Check if Resend API returned an error
 			if (error) {
 				console.error('Resend API error:', error);
-				return fail(500, {
-					error: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement par email.',
+				const userMessage = getResendErrorMessage(error);
+				return fail(error.statusCode || 500, {
+					error: userMessage,
 					name: name.toString(),
 					email: email.toString(),
 					organization: organization?.toString() || '',
@@ -81,7 +125,7 @@ export const actions = {
 		} catch (error) {
 			console.error('Error sending email:', error);
 			return fail(500, {
-				error: 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement par email.',
+				error: 'Une erreur inattendue est survenue. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.',
 				name: name.toString(),
 				email: email.toString(),
 				organization: organization?.toString() || '',
