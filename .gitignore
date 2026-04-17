@@ -22,6 +22,9 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
+# Catch-all for any *.env credential files (e.g. .brevo.env)
+*.env
+!example.env
 
 # Vite
 vite.config.js.timestamp-*
