@@ -57,7 +57,11 @@
 				<Carousel.Item class="basis-60 pl-4">
 					<figure class="flex flex-col items-center justify-center gap-3">
 						<div class="flex h-20 w-full items-center justify-center px-4">
-							<img src={logo.src} alt={logo.alt} class="h-auto max-h-16 w-auto max-w-full object-contain" />
+							<img
+								src={logo.src}
+								alt={logo.alt}
+								class="h-auto max-h-16 w-auto max-w-full object-contain"
+							/>
 						</div>
 						<figcaption class="text-center text-sm text-foreground/70">{logo.alt}</figcaption>
 					</figure>
@@ -65,10 +69,18 @@
 			{/each}
 		</Carousel.Content>
 		<div class="mt-6 flex justify-center gap-4 xl:hidden">
-			<Carousel.Previous class="relative left-auto top-auto translate-y-0 size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground" />
-			<Carousel.Next class="relative right-auto top-auto translate-y-0 size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground" />
+			<Carousel.Previous
+				class="relative top-auto left-auto size-12 translate-y-0 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+			/>
+			<Carousel.Next
+				class="relative top-auto right-auto size-12 translate-y-0 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+			/>
 		</div>
-		<Carousel.Previous class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex" />
-		<Carousel.Next class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex" />
+		<Carousel.Previous
+			class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex"
+		/>
+		<Carousel.Next
+			class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex"
+		/>
 	</Carousel.Root>
 </div>

@@ -83,6 +83,7 @@ The design system uses **34 carefully crafted shades** following Refactoring UI 
 - **Blue-tinted greys:** `--grey-900` to `--grey-100` - subtle warmth, NOT pure grey
 
 **Key principles:**
+
 1. ✨ Saturation increases at lightness extremes (prevents washed-out/muddy colors)
 2. 🎨 Greys have blue undertone (warmer, more professional)
 3. 🌈 Darker yellows rotate toward orange (avoids muddy brown)
@@ -132,18 +133,12 @@ Three reusable wrappers eliminate code repetition:
 ```svelte
 <!-- Section wrapper -->
 <Section theme="dark" width="lg" padding="md">
-  <SectionHeading>My Heading</SectionHeading>
-  <!-- Content -->
+	<SectionHeading>My Heading</SectionHeading>
+	<!-- Content -->
 </Section>
 
 <!-- Form fields -->
-<FormField
-  id="email"
-  name="email"
-  type="email"
-  label="Email"
-  required
-/>
+<FormField id="email" name="email" type="email" label="Email" required />
 ```
 
 ### Image Imports

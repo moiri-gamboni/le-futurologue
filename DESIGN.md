@@ -10,24 +10,24 @@ Brand-named swatches (red, burgundy, peach, cream) are anchors on two hue famili
 
 Hue anchored 10–27°, chroma peaks at 500.
 
-| Token | Hex | Role |
-|---|---|---|
-| `red-100` | ≈ #fcd4d5 | Soft pink — banner bg, disabled-tint |
-| `red-300` | ≈ #f7797f | Muted red — disabled state |
-| `red-500` | `#e30713` | **Brand anchor** — primary CTA, signal |
-| `red-700` | `#420318` | **Brand anchor** — burgundy foreground, focus ring |
+| Token     | Hex       | Role                                                |
+| --------- | --------- | --------------------------------------------------- |
+| `red-100` | ≈ #fcd4d5 | Soft pink — banner bg, disabled-tint                |
+| `red-300` | ≈ #f7797f | Muted red — disabled state                          |
+| `red-500` | `#e30713` | **Brand anchor** — primary CTA, signal              |
+| `red-700` | `#420318` | **Brand anchor** — burgundy foreground, focus ring  |
 | `red-900` | `#2b0212` | **Brand anchor** — gradient-A dark end, burgundy bg |
 
 ### Warm scale (low-chroma neutral; hue rotates 10→45→15)
 
-| Token | Hex | Role |
-|---|---|---|
-| `warm-50` | ≈ #fff7f5 | Near-white |
+| Token      | Hex       | Role                                       |
+| ---------- | --------- | ------------------------------------------ |
+| `warm-50`  | ≈ #fff7f5 | Near-white                                 |
 | `warm-100` | `#ffebeb` | **Brand anchor** — cream, default light bg |
-| `warm-200` | `#f7e7df` | **Brand anchor** — gradient-B light end |
-| `warm-300` | `#f9c2a4` | **Brand anchor** — peach, accent surface |
-| `warm-500` | ≈ #c68670 | Terracotta divider on cream |
-| `warm-700` | ≈ #6e2a28 | Subtle warm-dark on cream |
+| `warm-200` | `#f7e7df` | **Brand anchor** — gradient-B light end    |
+| `warm-300` | `#f9c2a4` | **Brand anchor** — peach, accent surface   |
+| `warm-500` | ≈ #c68670 | Terracotta divider on cream                |
+| `warm-700` | ≈ #6e2a28 | Subtle warm-dark on cream                  |
 
 ### Gradients
 
@@ -40,18 +40,18 @@ Hue anchored 10–27°, chroma peaks at 500.
 
 Document WCAG contrast for every foreground/background pairing the site actually uses. **Never place red on burgundy for small text.** **Never place peach on cream for text in any size.**
 
-| FG | BG | Contrast | Grade | Notes |
-|---|---|---:|---|---|
-| `warm-100` cream | `red-700` burgundy | ~14:1 | AAA | Default section text on burgundy |
-| `warm-100` cream | `red-900` | ~17:1 | AAA | Deepest burgundy, strongest contrast |
-| `warm-100` cream | `red-500` | ~5.6:1 | AA | Large text only (≥18 pt); use for CTA label |
-| `warm-300` peach | `red-700` | ~8.8:1 | AAA | Stats numbers, peach on burgundy |
-| `warm-300` peach | `red-900` | ~9.4:1 | AAA | Same, deeper bg |
-| `red-500` red | `warm-100` cream | ~4.8:1 | AA | Body links ≥14 pt; small text should use `red-700` instead |
-| `red-700` burgundy | `warm-100` cream | ~14:1 | AAA | Default foreground on cream |
-| `red-700` burgundy | `warm-300` peach | ~8.7:1 | AAA | |
-| `red-500` red | `red-700` burgundy | ~2.9:1 | **FAIL** | Never for small text. Graphic elements only. |
-| `warm-300` peach | `warm-100` cream | ~1.3:1 | **FAIL** | Never for text. Decorative surfaces only. |
+| FG                 | BG                 | Contrast | Grade    | Notes                                                      |
+| ------------------ | ------------------ | -------: | -------- | ---------------------------------------------------------- |
+| `warm-100` cream   | `red-700` burgundy |    ~14:1 | AAA      | Default section text on burgundy                           |
+| `warm-100` cream   | `red-900`          |    ~17:1 | AAA      | Deepest burgundy, strongest contrast                       |
+| `warm-100` cream   | `red-500`          |   ~5.6:1 | AA       | Large text only (≥18 pt); use for CTA label                |
+| `warm-300` peach   | `red-700`          |   ~8.8:1 | AAA      | Stats numbers, peach on burgundy                           |
+| `warm-300` peach   | `red-900`          |   ~9.4:1 | AAA      | Same, deeper bg                                            |
+| `red-500` red      | `warm-100` cream   |   ~4.8:1 | AA       | Body links ≥14 pt; small text should use `red-700` instead |
+| `red-700` burgundy | `warm-100` cream   |    ~14:1 | AAA      | Default foreground on cream                                |
+| `red-700` burgundy | `warm-300` peach   |   ~8.7:1 | AAA      |                                                            |
+| `red-500` red      | `red-700` burgundy |   ~2.9:1 | **FAIL** | Never for small text. Graphic elements only.               |
+| `warm-300` peach   | `warm-100` cream   |   ~1.3:1 | **FAIL** | Never for text. Decorative surfaces only.                  |
 
 ## Typography
 
@@ -103,7 +103,7 @@ Defined in `@layer utilities` in `src/app.css`.
 - `Section` — theme prop is `'cream' | 'burgundy' | 'peach'`. Other props: `width`, `padding`, `grain`, `decoration` (Snippet positioned absolutely outside the max-width wrapper — use for bleeding-art moments).
 - `SectionHeading` — same theme union.
 - `Logo` — discriminated-union variant: `'wordmark-cream' | 'wordmark-burgundy' | 'wordmark-gradient' | 'logo-tete'`. Use `priority` for above-the-fold.
-- Shadcn ui/* components re-skin automatically via the preserved `--primary`, `--background`, `--foreground` etc. semantic contract. Do not edit them.
+- Shadcn ui/\* components re-skin automatically via the preserved `--primary`, `--background`, `--foreground` etc. semantic contract. Do not edit them.
 
 ## Usage rules
 

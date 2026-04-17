@@ -7,3 +7,13 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Brand source kit + analysis artifacts (both gitignored locally)
+/artistic-direction/
+/scripts/
+/plans/
+
+# Generated / editor
+/.claude/
+/.rodney/
+/.svelte-kit/

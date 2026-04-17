@@ -47,58 +47,107 @@
 		{ id: 'pauseia', src: logoPauseia, alt: 'Pause IA' }
 	];
 
-	const conferences = [
-		{ id: 'yusjUh-2a7E' },
-		{ id: 'xnBLgKEs9aM' },
-		{ id: 'sCRh9Pd8z_k' }
-	];
+	const conferences = [{ id: 'yusjUh-2a7E' }, { id: 'xnBLgKEs9aM' }, { id: 'sCRh9Pd8z_k' }];
 
 	const interviewsGiven = [
 		{
 			id: 'Fks-t_3w1vw',
-			description: 'Jennifer Prendki, docteure en physique des particules et ex directrice du département data de Google DeepMind.'
+			description:
+				'Jennifer Prendki, docteure en physique des particules et ex directrice du département data de Google DeepMind.'
 		},
 		{
 			id: '97H71XMy4EI',
-			description: 'Axelle Arquié, docteure en économie, spécialiste du marché du travail et cofondatrice de l\'Observatoire des Emplois Menacés et Émergents.'
+			description:
+				"Axelle Arquié, docteure en économie, spécialiste du marché du travail et cofondatrice de l'Observatoire des Emplois Menacés et Émergents."
 		},
 		{
 			id: '_wr55txHiYs',
-			description: 'Charbel-Raphaël Segerie, ingénieur et chercheur en IA, expert IA auprès de l\'OCDE, directeur du Centre pour la Sécurité de l\'IA.'
+			description:
+				"Charbel-Raphaël Segerie, ingénieur et chercheur en IA, expert IA auprès de l'OCDE, directeur du Centre pour la Sécurité de l'IA."
 		}
 	];
 
-	const interviewsTaken = [
-		{ id: '3_af3JN898w' },
-		{ id: '9cG0pJU10xs' },
-		{ id: '2n8bJWO5_yY' }
-	];
+	const interviewsTaken = [{ id: '3_af3JN898w' }, { id: '9cG0pJU10xs' }, { id: '2n8bJWO5_yY' }];
 
 	const socials = [
-		{ id: 'youtube', name: 'YouTube', url: 'https://youtube.com/@lefuturologuepodcast', icon: 'simple-icons:youtube' },
-		{ id: 'instagram', name: 'Instagram', url: 'https://instagram.com/le.futurologue', icon: 'simple-icons:instagram' },
-		{ id: 'linkedin', name: 'LinkedIn', url: 'https://linkedin.com/in/shaimanthurler', icon: 'simple-icons:linkedin' },
-		{ id: 'twitter', name: 'Twitter/X', url: 'https://twitter.com/le_futurologue', icon: 'simple-icons:x' },
-		{ id: 'facebook', name: 'Facebook', url: 'https://facebook.com/le.futurologue', icon: 'simple-icons:facebook' },
-		{ id: 'tiktok', name: 'TikTok', url: 'https://tiktok.com/@le.futurologue', icon: 'simple-icons:tiktok' },
-		{ id: 'threads', name: 'Threads', url: 'https://threads.net/@le.futurologue', icon: 'simple-icons:threads' },
-		{ id: 'bluesky', name: 'Bluesky', url: 'https://bsky.app/profile/lefuturologue.bsky.social', icon: 'simple-icons:bluesky' },
-		{ id: 'mastodon', name: 'Mastodon', url: 'https://mastodon.social/@le_futurologue', icon: 'simple-icons:mastodon' },
-		{ id: 'discord', name: 'Discord', url: 'https://discord.gg/DqfKxvxYYg', icon: 'simple-icons:discord' }
+		{
+			id: 'youtube',
+			name: 'YouTube',
+			url: 'https://youtube.com/@lefuturologuepodcast',
+			icon: 'simple-icons:youtube'
+		},
+		{
+			id: 'instagram',
+			name: 'Instagram',
+			url: 'https://instagram.com/le.futurologue',
+			icon: 'simple-icons:instagram'
+		},
+		{
+			id: 'linkedin',
+			name: 'LinkedIn',
+			url: 'https://linkedin.com/in/shaimanthurler',
+			icon: 'simple-icons:linkedin'
+		},
+		{
+			id: 'twitter',
+			name: 'Twitter/X',
+			url: 'https://twitter.com/le_futurologue',
+			icon: 'simple-icons:x'
+		},
+		{
+			id: 'facebook',
+			name: 'Facebook',
+			url: 'https://facebook.com/le.futurologue',
+			icon: 'simple-icons:facebook'
+		},
+		{
+			id: 'tiktok',
+			name: 'TikTok',
+			url: 'https://tiktok.com/@le.futurologue',
+			icon: 'simple-icons:tiktok'
+		},
+		{
+			id: 'threads',
+			name: 'Threads',
+			url: 'https://threads.net/@le.futurologue',
+			icon: 'simple-icons:threads'
+		},
+		{
+			id: 'bluesky',
+			name: 'Bluesky',
+			url: 'https://bsky.app/profile/lefuturologue.bsky.social',
+			icon: 'simple-icons:bluesky'
+		},
+		{
+			id: 'mastodon',
+			name: 'Mastodon',
+			url: 'https://mastodon.social/@le_futurologue',
+			icon: 'simple-icons:mastodon'
+		},
+		{
+			id: 'discord',
+			name: 'Discord',
+			url: 'https://discord.gg/DqfKxvxYYg',
+			icon: 'simple-icons:discord'
+		}
 	];
 
 	const topics = [
 		{ id: 'work', text: 'Le futur du travail' },
-		{ id: 'geopolitics', text: 'Les enjeux géopolitiques de l\'IA' },
+		{ id: 'geopolitics', text: "Les enjeux géopolitiques de l'IA" },
 		{ id: 'sovereignty', text: 'La souveraineté numérique' },
 		{ id: 'robotics', text: 'La robotique' },
-		{ id: 'psychology', text: 'Les impacts psychologiques de l\'IA' },
+		{ id: 'psychology', text: "Les impacts psychologiques de l'IA" },
 		{ id: 'custom', text: 'Thèmes sur mesure selon vos besoins' }
 	];
 
 	const detailsList = [
 		{ id: 'duration', icon: 'lucide:clock', text: 'Adaptable de 15\u202Fmin à 3\u202Fh' },
-		{ id: 'location', icon: 'lucide:map-pin', text: 'En présentiel (France & international) ou en visio' },
+		{
+			id: 'location',
+			icon: 'lucide:map-pin',
+			text: 'En présentiel (France & international) ou en visio'
+		},
 		{ id: 'format', icon: 'lucide:presentation', text: 'Pédagogique, approfondi et constructif' }
 	];
 </script>
@@ -114,7 +163,7 @@
 <!-- Skip to main content link for keyboard users -->
 <a
 	href="#main-content"
-	class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-red-500 focus:px-4 focus:py-2 focus:text-warm-100 focus:outline-none focus:ring-2 focus:ring-warm-100"
+	class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-red-500 focus:px-4 focus:py-2 focus:text-warm-100 focus:ring-2 focus:ring-warm-100 focus:outline-none"
 >
 	Aller au contenu principal
 </a>
@@ -133,32 +182,25 @@
 	/>
 	<!-- Bottom-weighted burgundy scrim — ensures text contrast in the bottom half where the gradient is darker -->
 	<div
-		class="to-red-900/90 absolute inset-0 bg-gradient-to-b from-transparent from-40%"
+		class="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-red-900/90"
 		aria-hidden="true"
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
-		<p
-			class="rise text-warm-300 mb-4 text-sm uppercase tracking-[0.3em]"
-			style="--delay: 0ms"
-		>
+		<p class="rise mb-4 text-sm tracking-[0.3em] text-warm-300 uppercase" style="--delay: 0ms">
 			Le Futurologue
 		</p>
 		<h1
-			class="rise text-warm-100 mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl md:tracking-tighter"
+			class="rise mb-6 text-5xl leading-tight font-bold tracking-tight text-warm-100 md:text-7xl md:tracking-tighter"
 			style="--delay: 120ms"
 		>
 			Shaïman Thürler
 		</h1>
-		<p class="rise text-warm-100/85 mb-12 text-xl md:text-2xl" style="--delay: 240ms">
+		<p class="rise mb-12 text-xl text-warm-100/85 md:text-2xl" style="--delay: 240ms">
 			Conférencier spécialiste en intelligence artificielle
 		</p>
 		<div class="rise" style="--delay: 360ms">
-			<Button
-				href="#contact"
-				size="lg"
-				class="shadow-cta text-base font-semibold"
-			>
+			<Button href="#contact" size="lg" class="text-base font-semibold shadow-cta">
 				Me contacter &rarr;
 			</Button>
 		</div>
@@ -170,7 +212,7 @@
 		style="--delay: 480ms"
 		aria-hidden="true"
 	>
-		<Icon icon="lucide:chevron-down" class="text-warm-100/60 h-8 w-8" />
+		<Icon icon="lucide:chevron-down" class="h-8 w-8 text-warm-100/60" />
 	</div>
 </header>
 
@@ -181,266 +223,292 @@
 			{#each stats as stat (stat.id)}
 				<dl class="text-center">
 					<dt class="sr-only">{stat.label}</dt>
-					<dd class="text-warm-300 mb-1 text-3xl font-bold sm:text-4xl md:text-5xl">{stat.value}</dd>
-					<dt class="text-warm-100/70 text-xs sm:text-sm md:text-base">{stat.label}</dt>
+					<dd class="mb-1 text-3xl font-bold text-warm-300 sm:text-4xl md:text-5xl">
+						{stat.value}
+					</dd>
+					<dt class="text-xs text-warm-100/70 sm:text-sm md:text-base">{stat.label}</dt>
 				</dl>
 			{/each}
 		</div>
 	</Section>
 
-<!-- Client Logos Carousel -->
-<Section theme="cream" padding="sm">
-	<SectionHeading>Ils m'ont fait confiance</SectionHeading>
+	<!-- Client Logos Carousel -->
+	<Section theme="cream" padding="sm">
+		<SectionHeading>Ils m'ont fait confiance</SectionHeading>
 
-	<LogoCarousel {logos} {prefersReducedMotion} />
-</Section>
+		<LogoCarousel {logos} {prefersReducedMotion} />
+	</Section>
 
-<!-- About Section (with asymmetric logo-tete bleeding off the right edge) -->
-{#snippet aboutDecoration()}
-	<Logo
-		variant="logo-tete"
-		alt=""
-		class="pointer-events-none absolute right-[-10%] top-1/2 z-0 hidden w-[260px] max-w-none -translate-y-1/2 opacity-40 md:block lg:right-[-6%] lg:w-[320px] lg:opacity-50"
-	/>
-{/snippet}
-<Section
-	theme="burgundy"
-	width="md"
-	padding="md"
-	class="overflow-hidden"
-	decoration={aboutDecoration}
->
-	<div class="text-center">
-		<div class="mb-8 flex justify-center">
-			<Avatar.Root class="border-red-500/30 h-32 w-32 border-4 md:h-40 md:w-40">
-				<Avatar.Image src={profileImage} alt="Shaïman Thürler" />
-				<Avatar.Fallback class="bg-red-500 text-warm-100 text-2xl font-bold">ST</Avatar.Fallback>
-			</Avatar.Root>
-		</div>
-
-		<SectionHeading theme="burgundy">Qui suis-je&#8239;?</SectionHeading>
-
-		<div class="text-warm-100/90 mb-8 space-y-4 text-lg leading-relaxed">
-			<p>
-				Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone dédié à l'intelligence artificielle.
-			</p>
-			<p>
-				Au travers d'interviews avec des experts de premier plan, j'explore en profondeur les enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
-			</p>
-			<p>
-				Mon ambition est simple : proposer des analyses rigoureuses, accessibles et tournées vers l'avenir, pour mieux comprendre l'impact que l'intelligence artificielle aura sur nos sociétés.
-			</p>
-			<p>
-				Que ce soit par le biais de mes vidéos, mes conférences ou mes interventions publiques, je m'attache à rendre ces enjeux compréhensibles et à fournir des clés de lecture essentielles pour les années à venir.
-			</p>
-		</div>
-
-		<Button
-			variant="outline"
-			href="https://youtube.com/@lefuturologuepodcast"
-			target="_blank"
-			rel="noopener noreferrer"
-			size="lg"
-			class="border-warm-100/40 bg-transparent text-warm-100 hover:bg-warm-100 hover:text-red-700"
-		>
-			Voir ma chaîne YouTube &rarr;
-		</Button>
-	</div>
-</Section>
-
-<!-- Conferences Section -->
-<Section theme="cream" width="xl" padding="md">
-	<!-- Main Conference -->
-	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
-		<div class="order-2 md:order-1">
-			<AspectRatio ratio={3 / 4}>
-				<enhanced:img
-					src="$lib/assets/images/portrait.jpeg?w=1200;900;600"
-					alt="Shaïman Thürler donnant une conférence sur l'intelligence artificielle devant un auditoire"
-					class="h-full w-full rounded-lg object-cover"
-					sizes="(min-width: 768px) 576px, 100vw"
-				/>
-			</AspectRatio>
-		</div>
-
-		<div class="order-1 flex flex-col justify-center md:order-2">
-			<h2 class="mb-6 text-3xl font-bold leading-tight text-foreground md:text-4xl">
-				Ma conférence
-			</h2>
-			<p class="mb-6 text-lg leading-relaxed text-foreground/80">
-				Ma conférence la plus demandée explore le futur et les dangers de l'intelligence
-				artificielle. Elle offre un panorama clair et accessible de la trajectoire sur laquelle
-				nous sommes embarqués.
-			</p>
-			<ul class="mb-8 space-y-4">
-				{#each detailsList as detail (detail.id)}
-					<li class="flex items-start gap-3">
-						<Icon icon={detail.icon} class="text-red-500 mt-0.5 h-5 w-5 flex-shrink-0" aria-hidden="true" />
-						<span class="text-base leading-relaxed text-foreground/80">{detail.text}</span>
-					</li>
-				{/each}
-			</ul>
-			<div class="mb-10">
-				<Button href="#contact" size="lg">Réserver une conférence</Button>
+	<!-- About Section (with asymmetric logo-tete bleeding off the right edge) -->
+	{#snippet aboutDecoration()}
+		<Logo
+			variant="logo-tete"
+			alt=""
+			class="pointer-events-none absolute top-1/2 right-[-10%] z-0 hidden w-[260px] max-w-none -translate-y-1/2 opacity-40 md:block lg:right-[-6%] lg:w-[320px] lg:opacity-50"
+		/>
+	{/snippet}
+	<Section
+		theme="burgundy"
+		width="md"
+		padding="md"
+		class="overflow-hidden"
+		decoration={aboutDecoration}
+	>
+		<div class="text-center">
+			<div class="mb-8 flex justify-center">
+				<Avatar.Root class="h-32 w-32 border-4 border-red-500/30 md:h-40 md:w-40">
+					<Avatar.Image src={profileImage} alt="Shaïman Thürler" />
+					<Avatar.Fallback class="bg-red-500 text-2xl font-bold text-warm-100">ST</Avatar.Fallback>
+				</Avatar.Root>
 			</div>
 
-			<!-- Other Topics -->
-			<div>
-				<h3 class="mb-4 text-base font-medium text-foreground/70">
-					Autres interventions possibles
-				</h3>
-				<ul class="grid gap-3 xl:grid-cols-2 xl:gap-x-4 xl:gap-y-3">
-					{#each topics as topic (topic.id)}
-						<li class="flex items-start gap-2.5">
-							<Icon icon="lucide:check" class="text-red-500 mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden="true" />
-							<span class="text-sm leading-relaxed text-foreground/80">{topic.text}</span>
+			<SectionHeading theme="burgundy">Qui suis-je&#8239;?</SectionHeading>
+
+			<div class="mb-8 space-y-4 text-lg leading-relaxed text-warm-100/90">
+				<p>
+					Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone
+					dédié à l'intelligence artificielle.
+				</p>
+				<p>
+					Au travers d'interviews avec des experts de premier plan, j'explore en profondeur les
+					enjeux contemporains de l'IA afin de construire une vision globale et cohérente.
+				</p>
+				<p>
+					Mon ambition est simple : proposer des analyses rigoureuses, accessibles et tournées vers
+					l'avenir, pour mieux comprendre l'impact que l'intelligence artificielle aura sur nos
+					sociétés.
+				</p>
+				<p>
+					Que ce soit par le biais de mes vidéos, mes conférences ou mes interventions publiques, je
+					m'attache à rendre ces enjeux compréhensibles et à fournir des clés de lecture
+					essentielles pour les années à venir.
+				</p>
+			</div>
+
+			<Button
+				variant="outline"
+				href="https://youtube.com/@lefuturologuepodcast"
+				target="_blank"
+				rel="noopener noreferrer"
+				size="lg"
+				class="border-warm-100/40 bg-transparent text-warm-100 hover:bg-warm-100 hover:text-red-700"
+			>
+				Voir ma chaîne YouTube &rarr;
+			</Button>
+		</div>
+	</Section>
+
+	<!-- Conferences Section -->
+	<Section theme="cream" width="xl" padding="md">
+		<!-- Main Conference -->
+		<div class="grid gap-12 md:grid-cols-2 md:gap-16">
+			<div class="order-2 md:order-1">
+				<AspectRatio ratio={3 / 4}>
+					<enhanced:img
+						src="$lib/assets/images/portrait.jpeg?w=1200;900;600"
+						alt="Shaïman Thürler donnant une conférence sur l'intelligence artificielle devant un auditoire"
+						class="h-full w-full rounded-lg object-cover"
+						sizes="(min-width: 768px) 576px, 100vw"
+					/>
+				</AspectRatio>
+			</div>
+
+			<div class="order-1 flex flex-col justify-center md:order-2">
+				<h2 class="mb-6 text-3xl leading-tight font-bold text-foreground md:text-4xl">
+					Ma conférence
+				</h2>
+				<p class="mb-6 text-lg leading-relaxed text-foreground/80">
+					Ma conférence la plus demandée explore le futur et les dangers de l'intelligence
+					artificielle. Elle offre un panorama clair et accessible de la trajectoire sur laquelle
+					nous sommes embarqués.
+				</p>
+				<ul class="mb-8 space-y-4">
+					{#each detailsList as detail (detail.id)}
+						<li class="flex items-start gap-3">
+							<Icon
+								icon={detail.icon}
+								class="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500"
+								aria-hidden="true"
+							/>
+							<span class="text-base leading-relaxed text-foreground/80">{detail.text}</span>
 						</li>
 					{/each}
 				</ul>
+				<div class="mb-10">
+					<Button href="#contact" size="lg">Réserver une conférence</Button>
+				</div>
+
+				<!-- Other Topics -->
+				<div>
+					<h3 class="mb-4 text-base font-medium text-foreground/70">
+						Autres interventions possibles
+					</h3>
+					<ul class="grid gap-3 xl:grid-cols-2 xl:gap-x-4 xl:gap-y-3">
+						{#each topics as topic (topic.id)}
+							<li class="flex items-start gap-2.5">
+								<Icon
+									icon="lucide:check"
+									class="mt-0.5 h-4 w-4 flex-shrink-0 text-red-500"
+									aria-hidden="true"
+								/>
+								<span class="text-sm leading-relaxed text-foreground/80">{topic.text}</span>
+							</li>
+						{/each}
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-</Section>
+	</Section>
 
-<!-- Media Section -->
-<Section theme="burgundy" width="xl" padding="md" grain>
-	<SectionHeading theme="burgundy">Vidéos</SectionHeading>
+	<!-- Media Section -->
+	<Section theme="burgundy" width="xl" padding="md" grain>
+		<SectionHeading theme="burgundy">Vidéos</SectionHeading>
 
-	<div class="mb-12">
-		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Conférences</h3>
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each conferences as video (video.id)}
-				<VideoCard videoId={video.id} alt="Conférence réalisée" />
-			{/each}
+		<div class="mb-12">
+			<h3 class="mb-6 text-xl font-semibold text-warm-100">Conférences</h3>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each conferences as video (video.id)}
+					<VideoCard videoId={video.id} alt="Conférence réalisée" />
+				{/each}
+			</div>
 		</div>
-	</div>
 
-	<div class="mb-12">
-		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Interviews</h3>
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each interviewsGiven as interview (interview.id)}
-				<VideoCard videoId={interview.id} alt={interview.description} description={interview.description} />
-			{/each}
+		<div class="mb-12">
+			<h3 class="mb-6 text-xl font-semibold text-warm-100">Interviews</h3>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each interviewsGiven as interview (interview.id)}
+					<VideoCard
+						videoId={interview.id}
+						alt={interview.description}
+						description={interview.description}
+					/>
+				{/each}
+			</div>
 		</div>
-	</div>
 
-	<div>
-		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Interventions</h3>
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each interviewsTaken as interview (interview.id)}
-				<VideoCard videoId={interview.id} alt="Interview réalisée" />
-			{/each}
+		<div>
+			<h3 class="mb-6 text-xl font-semibold text-warm-100">Interventions</h3>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each interviewsTaken as interview (interview.id)}
+					<VideoCard videoId={interview.id} alt="Interview réalisée" />
+				{/each}
+			</div>
 		</div>
-	</div>
-</Section>
+	</Section>
 
-<!-- Contact Section -->
-<Section id="contact" theme="cream" width="sm" padding="md">
-	<SectionHeading>Me contacter</SectionHeading>
+	<!-- Contact Section -->
+	<Section id="contact" theme="cream" width="sm" padding="md">
+		<SectionHeading>Me contacter</SectionHeading>
 
-	{#if form?.success}
-		<div
-			role="alert"
-			aria-live="polite"
-			class="border-warm-300/40 bg-warm-300/20 mb-8 rounded-lg border p-4 text-center"
-		>
-			<p class="text-red-700">{form.successMessage}</p>
-		</div>
-	{/if}
+		{#if form?.success}
+			<div
+				role="alert"
+				aria-live="polite"
+				class="mb-8 rounded-lg border border-warm-300/40 bg-warm-300/20 p-4 text-center"
+			>
+				<p class="text-red-700">{form.successMessage}</p>
+			</div>
+		{/if}
 
-	{#if form?.error}
-		<div
-			role="alert"
-			aria-live="assertive"
-			class="border-destructive/30 bg-destructive/10 mb-8 rounded-lg border p-4 text-center"
-		>
-			<p class="text-destructive">{form.error}</p>
-		</div>
-	{/if}
+		{#if form?.error}
+			<div
+				role="alert"
+				aria-live="assertive"
+				class="mb-8 rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-center"
+			>
+				<p class="text-destructive">{form.error}</p>
+			</div>
+		{/if}
 
-	<form method="POST" action="?/submit" use:enhance class="mb-12 space-y-6">
-		<FormField
-			id="name"
-			name="name"
-			label="Nom"
-			placeholder="Votre nom complet"
-			value={form?.name ?? ''}
-			autocomplete="name"
-			required
-		/>
-		<FormField
-			id="email"
-			name="email"
-			type="email"
-			label="Email"
-			placeholder="exemple@email.com"
-			value={form?.email ?? ''}
-			autocomplete="email"
-			required
-		/>
-		<FormField
-			id="organization"
-			name="organization"
-			label="Organisation"
-			placeholder="Votre entreprise ou organisation"
-			value={form?.organization ?? ''}
-			autocomplete="organization"
-		/>
-		<FormField
-			id="message"
-			name="message"
-			type="textarea"
-			label="Message"
-			placeholder="Parlez-moi de votre projet de conférence..."
-			rows={5}
-			value={form?.message ?? ''}
-			required
-		/>
-		<Button type="submit" class="w-full" size="lg">Envoyer</Button>
-	</form>
+		<form method="POST" action="?/submit" use:enhance class="mb-12 space-y-6">
+			<FormField
+				id="name"
+				name="name"
+				label="Nom"
+				placeholder="Votre nom complet"
+				value={form?.name ?? ''}
+				autocomplete="name"
+				required
+			/>
+			<FormField
+				id="email"
+				name="email"
+				type="email"
+				label="Email"
+				placeholder="exemple@email.com"
+				value={form?.email ?? ''}
+				autocomplete="email"
+				required
+			/>
+			<FormField
+				id="organization"
+				name="organization"
+				label="Organisation"
+				placeholder="Votre entreprise ou organisation"
+				value={form?.organization ?? ''}
+				autocomplete="organization"
+			/>
+			<FormField
+				id="message"
+				name="message"
+				type="textarea"
+				label="Message"
+				placeholder="Parlez-moi de votre projet de conférence..."
+				rows={5}
+				value={form?.message ?? ''}
+				required
+			/>
+			<Button type="submit" class="w-full" size="lg">Envoyer</Button>
+		</form>
 
-	<div class="mb-12 text-center">
-		<p class="text-foreground/70">
-			<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
-			<a href="mailto:contact@lefuturologue.com" class="text-red-500 transition-colors hover:text-red-700">
-				contact@lefuturologue.com
-			</a>
-		</p>
-	</div>
-
-	<div>
-		<h3 class="mb-6 text-center text-xl font-semibold text-foreground">
-			Retrouvez-moi sur les réseaux sociaux
-		</h3>
-		<div class="flex flex-wrap justify-center gap-3">
-			{#each socials as social (social.id)}
-				<Button
-					variant="outline"
-					size="sm"
-					href={social.url}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="border-warm-500/40 hover:border-red-500 hover:bg-red-500/10"
-					aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
+		<div class="mb-12 text-center">
+			<p class="text-foreground/70">
+				<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
+				<a
+					href="mailto:contact@lefuturologue.com"
+					class="text-red-500 transition-colors hover:text-red-700"
 				>
-					<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />
-					<span>{social.name}</span>
-				</Button>
-			{/each}
+					contact@lefuturologue.com
+				</a>
+			</p>
 		</div>
-	</div>
-</Section>
+
+		<div>
+			<h3 class="mb-6 text-center text-xl font-semibold text-foreground">
+				Retrouvez-moi sur les réseaux sociaux
+			</h3>
+			<div class="flex flex-wrap justify-center gap-3">
+				{#each socials as social (social.id)}
+					<Button
+						variant="outline"
+						size="sm"
+						href={social.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="border-warm-500/40 hover:border-red-500 hover:bg-red-500/10"
+						aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
+					>
+						<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />
+						<span>{social.name}</span>
+					</Button>
+				{/each}
+			</div>
+		</div>
+	</Section>
 </main>
 
 <!-- Footer -->
 <Separator />
 <footer class="bg-background px-6 py-10 text-center">
 	<Logo variant="wordmark-burgundy" class="mx-auto mb-5 h-7 w-auto opacity-80" />
-	<div class="text-foreground/60 flex flex-col items-center gap-2 text-sm md:flex-row md:justify-center md:gap-0">
+	<div
+		class="flex flex-col items-center gap-2 text-sm text-foreground/60 md:flex-row md:justify-center md:gap-0"
+	>
 		<span>© 2025 Le Futurologue. Tous droits réservés.</span>
 		<span class="hidden md:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
-		<a href={resolve('/confidentialite')} class="underline transition-colors hover:text-foreground/80"
-			>Politique de confidentialité</a
+		<a
+			href={resolve('/confidentialite')}
+			class="underline transition-colors hover:text-foreground/80">Politique de confidentialité</a
 		>
 		<span class="hidden md:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
 		<span>

@@ -11,7 +11,7 @@
 </script>
 
 <Card.Root
-	class="bg-red-700/40 group overflow-hidden border border-warm-100/15 py-0 shadow-md transition-all hover:border-warm-100/40 hover:bg-red-700/55 hover:shadow-lg hover:shadow-red-500/10"
+	class="group overflow-hidden border border-warm-100/15 bg-red-700/40 py-0 shadow-md transition-all hover:border-warm-100/40 hover:bg-red-700/55 hover:shadow-lg hover:shadow-red-500/10"
 >
 	<a
 		href="https://youtube.com/watch?v={videoId}"
@@ -27,7 +27,7 @@
 					class="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 				<div
-					class="bg-red-900/50 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+					class="absolute inset-0 flex items-center justify-center bg-red-900/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 				>
 					<div class="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/90">
 						<svg class="h-8 w-8 text-warm-100" fill="currentColor" viewBox="0 0 24 24">
