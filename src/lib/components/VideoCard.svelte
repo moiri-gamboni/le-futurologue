@@ -11,7 +11,7 @@
 </script>
 
 <Card.Root
-	class="group overflow-hidden border-white/10 bg-dark-700/50 py-0 transition-all hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10"
+	class="bg-red-900/60 group overflow-hidden border-warm-100/10 py-0 transition-all hover:border-red-500/30 hover:shadow-lg hover:shadow-red-500/10"
 >
 	<a
 		href="https://youtube.com/watch?v={videoId}"
@@ -27,10 +27,10 @@
 					class="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 				<div
-					class="absolute inset-0 flex items-center justify-center bg-dark-900/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+					class="bg-red-900/50 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 				>
-					<div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/90">
-						<svg class="h-8 w-8 text-dark-800" fill="currentColor" viewBox="0 0 24 24">
+					<div class="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/90">
+						<svg class="h-8 w-8 text-warm-100" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M8 5v14l11-7z" />
 						</svg>
 					</div>
@@ -39,7 +39,7 @@
 		</Card.Content>
 		{#if description}
 			<Card.Footer class="px-6 py-4">
-				<p class="text-sm leading-relaxed text-white/90">{description}</p>
+				<p class="text-sm leading-relaxed text-warm-100/90">{description}</p>
 			</Card.Footer>
 		{/if}
 	</a>

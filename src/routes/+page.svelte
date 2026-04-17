@@ -113,13 +113,13 @@
 <!-- Skip to main content link for keyboard users -->
 <a
 	href="#main-content"
-	class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-green-500 focus:px-4 focus:py-2 focus:text-dark-800 focus:outline-none focus:ring-2 focus:ring-white"
+	class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-red-500 focus:px-4 focus:py-2 focus:text-warm-100 focus:outline-none focus:ring-2 focus:ring-warm-100"
 >
 	Aller au contenu principal
 </a>
 
 <!-- Hero Section -->
-<header class="relative flex min-h-screen items-center justify-center bg-dark-800">
+<header class="bg-red-900 relative flex min-h-screen items-center justify-center overflow-hidden">
 	<enhanced:img
 		src="$lib/assets/images/hero.jpeg?w=3840;2560;1920;1280"
 		alt="Portrait de Shaïman Thürler, conférencier spécialiste en intelligence artificielle"
@@ -127,18 +127,18 @@
 		sizes="(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, 100vw"
 		fetchpriority="high"
 	/>
-	<div class="absolute inset-0 bg-dark-800/85"></div>
+	<div class="bg-red-900/85 absolute inset-0"></div>
 
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
 		<h1
-			class="mb-6 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl md:tracking-tighter"
+			class="text-warm-100 mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl md:tracking-tighter"
 		>
 			Shaïman Thürler
 		</h1>
-		<p class="mb-12 text-xl text-white/80 md:text-2xl">
+		<p class="text-warm-100/80 mb-12 text-xl md:text-2xl">
 			Conférencier spécialiste en intelligence artificielle
 		</p>
-		<Button href="#contact" size="lg" class="text-base font-semibold shadow-lg shadow-green-500/30">
+		<Button href="#contact" size="lg" class="shadow-cta text-base font-semibold">
 			Me contacter &rarr;
 		</Button>
 	</div>
@@ -148,45 +148,44 @@
 		class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
 		aria-hidden="true"
 	>
-		<Icon icon="lucide:chevron-down" class="h-8 w-8 text-white/50" />
+		<Icon icon="lucide:chevron-down" class="text-warm-100/50 h-8 w-8" />
 	</div>
 </header>
 
 <main id="main-content">
 	<!-- Stats Bar -->
-	<Section theme="dark" padding="sm">
+	<Section theme="burgundy" padding="sm">
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
 			{#each stats as stat (stat.id)}
 				<dl class="text-center">
 					<dt class="sr-only">{stat.label}</dt>
-					<dd class="mb-2 text-4xl font-bold text-green-500 md:text-5xl">{stat.value}</dd>
-					<dt class="text-base text-white/70">{stat.label}</dt>
+					<dd class="text-warm-300 mb-2 text-4xl font-bold md:text-5xl">{stat.value}</dd>
+					<dt class="text-warm-100/70 text-base">{stat.label}</dt>
 				</dl>
 			{/each}
 		</div>
 	</Section>
 
 <!-- Client Logos Carousel -->
-<Section theme="light" padding="sm">
+<Section theme="cream" padding="sm">
 	<SectionHeading>Ils m'ont fait confiance</SectionHeading>
 
 	<LogoCarousel {logos} {prefersReducedMotion} />
 </Section>
 
 <!-- About Section -->
-<Section theme="dark" width="md" padding="md">
+<Section theme="burgundy" width="md" padding="md">
 	<div class="text-center">
 		<div class="mb-8 flex justify-center">
-			<Avatar.Root class="h-32 w-32 border-4 border-green-500/20 md:h-40 md:w-40">
+			<Avatar.Root class="border-red-500/30 h-32 w-32 border-4 md:h-40 md:w-40">
 				<Avatar.Image src={profileImage} alt="Shaïman Thürler" />
-				<Avatar.Fallback class="bg-green-500 text-2xl font-bold text-dark-800">ST</Avatar.Fallback
-				>
+				<Avatar.Fallback class="bg-red-500 text-warm-100 text-2xl font-bold">ST</Avatar.Fallback>
 			</Avatar.Root>
 		</div>
 
-		<SectionHeading theme="dark">Qui suis-je&#8239;?</SectionHeading>
+		<SectionHeading theme="burgundy">Qui suis-je&#8239;?</SectionHeading>
 
-		<div class="mb-8 space-y-4 text-lg leading-relaxed text-white/90">
+		<div class="text-warm-100/90 mb-8 space-y-4 text-lg leading-relaxed">
 			<p>
 				Fondateur du média Le Futurologue, j'anime aujourd'hui le plus grand podcast francophone dédié à l'intelligence artificielle.
 			</p>
@@ -214,7 +213,7 @@
 </Section>
 
 <!-- Conferences Section -->
-<Section theme="light" width="xl" padding="md">
+<Section theme="cream" width="xl" padding="md">
 	<!-- Main Conference -->
 	<div class="grid gap-12 md:grid-cols-2 md:gap-16">
 		<div class="order-2 md:order-1">
@@ -240,7 +239,7 @@
 			<ul class="mb-8 space-y-4">
 				{#each detailsList as detail (detail.id)}
 					<li class="flex items-start gap-3">
-						<Icon icon={detail.icon} class="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
+						<Icon icon={detail.icon} class="text-red-500 mt-0.5 h-5 w-5 flex-shrink-0" aria-hidden="true" />
 						<span class="text-base leading-relaxed text-foreground/80">{detail.text}</span>
 					</li>
 				{/each}
@@ -257,7 +256,7 @@
 				<ul class="grid gap-3 xl:grid-cols-2 xl:gap-x-4 xl:gap-y-3">
 					{#each topics as topic (topic.id)}
 						<li class="flex items-start gap-2.5">
-							<Icon icon="lucide:check" class="mt-0.5 h-4 w-4 flex-shrink-0 text-green-500" aria-hidden="true" />
+							<Icon icon="lucide:check" class="text-red-500 mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden="true" />
 							<span class="text-sm leading-relaxed text-foreground/80">{topic.text}</span>
 						</li>
 					{/each}
@@ -268,11 +267,11 @@
 </Section>
 
 <!-- Media Section -->
-<Section theme="dark" width="xl" padding="md">
-	<SectionHeading theme="dark">Vidéos</SectionHeading>
+<Section theme="burgundy" width="xl" padding="md">
+	<SectionHeading theme="burgundy">Vidéos</SectionHeading>
 
 	<div class="mb-12">
-		<h3 class="mb-6 text-xl font-semibold text-white">Conférences</h3>
+		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Conférences</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each conferences as video (video.id)}
 				<VideoCard videoId={video.id} alt="Conférence réalisée" />
@@ -281,7 +280,7 @@
 	</div>
 
 	<div class="mb-12">
-		<h3 class="mb-6 text-xl font-semibold text-white">Interviews</h3>
+		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Interviews</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsGiven as interview (interview.id)}
 				<VideoCard videoId={interview.id} alt={interview.description} description={interview.description} />
@@ -290,7 +289,7 @@
 	</div>
 
 	<div>
-		<h3 class="mb-6 text-xl font-semibold text-white">Interventions</h3>
+		<h3 class="text-warm-100 mb-6 text-xl font-semibold">Interventions</h3>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each interviewsTaken as interview (interview.id)}
 				<VideoCard videoId={interview.id} alt="Interview réalisée" />
@@ -300,16 +299,16 @@
 </Section>
 
 <!-- Contact Section -->
-<Section id="contact" theme="light" width="sm" padding="md">
+<Section id="contact" theme="cream" width="sm" padding="md">
 	<SectionHeading>Me contacter</SectionHeading>
 
 	{#if form?.success}
 		<div
 			role="alert"
 			aria-live="polite"
-			class="mb-8 rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center"
+			class="border-warm-300/40 bg-warm-300/20 mb-8 rounded-lg border p-4 text-center"
 		>
-			<p class="text-green-700 dark:text-green-300">{form.successMessage}</p>
+			<p class="text-red-700">{form.successMessage}</p>
 		</div>
 	{/if}
 
@@ -317,9 +316,9 @@
 		<div
 			role="alert"
 			aria-live="assertive"
-			class="mb-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center"
+			class="border-destructive/30 bg-destructive/10 mb-8 rounded-lg border p-4 text-center"
 		>
-			<p class="text-red-700 dark:text-red-300">{form.error}</p>
+			<p class="text-destructive">{form.error}</p>
 		</div>
 	{/if}
 
@@ -367,7 +366,7 @@
 	<div class="mb-12 text-center">
 		<p class="text-foreground/70">
 			<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
-			<a href="mailto:contact@lefuturologue.com" class="text-green-800 hover:underline">
+			<a href="mailto:contact@lefuturologue.com" class="text-red-500 transition-colors hover:text-red-700">
 				contact@lefuturologue.com
 			</a>
 		</p>
@@ -385,7 +384,7 @@
 					href={social.url}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="border-green-500/20 hover:border-green-500 hover:bg-green-500/10"
+					class="border-warm-500/40 hover:border-red-500 hover:bg-red-500/10"
 					aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
 				>
 					<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />

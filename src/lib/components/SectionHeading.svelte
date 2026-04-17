@@ -3,14 +3,18 @@
 
 	interface Props {
 		level?: 'h1' | 'h2' | 'h3';
-		theme?: 'light' | 'dark';
+		theme?: 'cream' | 'burgundy' | 'peach';
 		class?: string;
 		children: Snippet;
 	}
 
-	let { level = 'h2', theme = 'light', class: className = '', children }: Props = $props();
+	let { level = 'h2', theme = 'cream', class: className = '', children }: Props = $props();
 
-	const textColor = theme === 'dark' ? 'text-white' : 'text-foreground';
+	const textColor = {
+		cream: 'text-foreground',
+		burgundy: 'text-warm-100',
+		peach: 'text-foreground'
+	}[theme];
 	const baseClasses = `mb-12 text-center text-3xl font-bold ${textColor} md:text-4xl ${className}`;
 </script>
 

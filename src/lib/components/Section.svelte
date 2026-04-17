@@ -2,16 +2,30 @@
 	import { type Snippet } from 'svelte';
 
 	interface Props {
-		theme?: 'light' | 'dark';
+		theme?: 'cream' | 'burgundy' | 'peach';
 		width?: 'sm' | 'md' | 'lg' | 'xl';
 		padding?: 'sm' | 'md' | 'lg';
+		grain?: boolean;
 		id?: string;
+		class?: string;
 		children: Snippet;
 	}
 
-	let { theme = 'light', width = 'lg', padding = 'lg', id, children }: Props = $props();
+	let {
+		theme = 'cream',
+		width = 'lg',
+		padding = 'lg',
+		grain = false,
+		id,
+		class: className = '',
+		children
+	}: Props = $props();
 
-	const bgClass = theme === 'dark' ? 'bg-dark-800' : 'bg-background';
+	const bgClass = {
+		cream: 'bg-background',
+		burgundy: 'bg-red-900',
+		peach: 'bg-gradient-soft'
+	}[theme];
 
 	const widthClasses = {
 		sm: 'max-w-2xl',
@@ -27,8 +41,11 @@
 	};
 </script>
 
-<section {id} class="{bgClass} {paddingClasses[padding]}">
-	<div class="mx-auto {widthClasses[width]} px-8">
+<section
+	{id}
+	class="relative {bgClass} {paddingClasses[padding]} {grain ? 'grain' : ''} {className}"
+>
+	<div class="relative z-10 mx-auto {widthClasses[width]} px-8">
 		{@render children()}
 	</div>
 </section>

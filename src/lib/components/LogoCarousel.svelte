@@ -65,10 +65,10 @@
 			{/each}
 		</Carousel.Content>
 		<div class="mt-6 flex justify-center gap-4 xl:hidden">
-			<Carousel.Previous class="relative left-auto top-auto translate-y-0 border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10" />
-			<Carousel.Next class="relative right-auto top-auto translate-y-0 border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10" />
+			<Carousel.Previous class="relative left-auto top-auto translate-y-0 border-warm-500/40 bg-background hover:border-primary hover:bg-primary/10" />
+			<Carousel.Next class="relative right-auto top-auto translate-y-0 border-warm-500/40 bg-background hover:border-primary hover:bg-primary/10" />
 		</div>
-		<Carousel.Previous class="hidden border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10 xl:flex" />
-		<Carousel.Next class="hidden border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10 xl:flex" />
+		<Carousel.Previous class="hidden border-warm-500/40 bg-background hover:border-primary hover:bg-primary/10 xl:flex" />
+		<Carousel.Next class="hidden border-warm-500/40 bg-background hover:border-primary hover:bg-primary/10 xl:flex" />
 	</Carousel.Root>
 </div>
