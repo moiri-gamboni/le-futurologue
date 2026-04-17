@@ -176,7 +176,7 @@
 
 <main id="main-content">
 	<!-- Stats Bar -->
-	<Section theme="burgundy" padding="sm">
+	<Section theme="burgundy" padding="sm" grain>
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
 			{#each stats as stat (stat.id)}
 				<dl class="text-center">
@@ -195,8 +195,21 @@
 	<LogoCarousel {logos} {prefersReducedMotion} />
 </Section>
 
-<!-- About Section -->
-<Section theme="burgundy" width="md" padding="md">
+<!-- About Section (with asymmetric logo-tete bleeding off the right edge) -->
+{#snippet aboutDecoration()}
+	<Logo
+		variant="logo-tete"
+		alt=""
+		class="pointer-events-none absolute right-[-6%] top-1/2 z-0 hidden w-[420px] max-w-none -translate-y-1/2 opacity-90 md:block lg:right-[-3%] lg:w-[520px]"
+	/>
+{/snippet}
+<Section
+	theme="burgundy"
+	width="md"
+	padding="md"
+	class="overflow-hidden"
+	decoration={aboutDecoration}
+>
 	<div class="text-center">
 		<div class="mb-8 flex justify-center">
 			<Avatar.Root class="border-red-500/30 h-32 w-32 border-4 md:h-40 md:w-40">
@@ -289,7 +302,7 @@
 </Section>
 
 <!-- Media Section -->
-<Section theme="burgundy" width="xl" padding="md">
+<Section theme="burgundy" width="xl" padding="md" grain>
 	<SectionHeading theme="burgundy">Vidéos</SectionHeading>
 
 	<div class="mb-12">

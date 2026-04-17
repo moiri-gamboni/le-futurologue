@@ -2,7 +2,7 @@
 	import wordmarkCream from '$lib/assets/brand/wordmark-cream.png';
 	import wordmarkBurgundy from '$lib/assets/brand/wordmark-burgundy.png';
 	import wordmarkGradient from '$lib/assets/brand/wordmark-gradient.png';
-	import logoTete from '$lib/assets/brand/logo-tete.jpg';
+	import logoTete from '$lib/assets/brand/logo-tete.png';
 
 	type Variant = 'wordmark-cream' | 'wordmark-burgundy' | 'wordmark-gradient' | 'logo-tete';
 

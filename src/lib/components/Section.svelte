@@ -8,6 +8,8 @@
 		grain?: boolean;
 		id?: string;
 		class?: string;
+		/** Absolute-positioned decoration rendered outside the max-width wrapper (use for bleeding art). */
+		decoration?: Snippet;
 		children: Snippet;
 	}
 
@@ -18,6 +20,7 @@
 		grain = false,
 		id,
 		class: className = '',
+		decoration,
 		children
 	}: Props = $props();
 
@@ -45,6 +48,9 @@
 	{id}
 	class="relative {bgClass} {paddingClasses[padding]} {grain ? 'grain' : ''} {className}"
 >
+	{#if decoration}
+		{@render decoration()}
+	{/if}
 	<div class="relative z-10 mx-auto {widthClasses[width]} px-8">
 		{@render children()}
 	</div>
