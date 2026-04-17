@@ -11,7 +11,7 @@
 </script>
 
 <Card.Root
-	class="bg-red-900/60 group overflow-hidden border-warm-100/10 py-0 transition-all hover:border-red-500/30 hover:shadow-lg hover:shadow-red-500/10"
+	class="bg-red-700/40 group overflow-hidden border border-warm-100/15 py-0 shadow-md transition-all hover:border-warm-100/40 hover:bg-red-700/55 hover:shadow-lg hover:shadow-red-500/10"
 >
 	<a
 		href="https://youtube.com/watch?v={videoId}"

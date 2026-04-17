@@ -121,7 +121,7 @@
 
 <!-- Hero Section -->
 <header
-	class="bg-gradient-hero relative flex min-h-screen items-center justify-center overflow-hidden"
+	class="bg-gradient-hero relative flex min-h-[100svh] items-center justify-center overflow-hidden"
 >
 	<!-- Photo underlay — multiply-blended so the warm palette bleeds through the portrait -->
 	<enhanced:img
@@ -157,7 +157,7 @@
 			<Button
 				href="#contact"
 				size="lg"
-				class="shadow-cta border-gradient-hero text-base font-semibold"
+				class="shadow-cta text-base font-semibold"
 			>
 				Me contacter &rarr;
 			</Button>
@@ -166,7 +166,7 @@
 
 	<!-- Scroll indicator at bottom of hero section -->
 	<div
-		class="rise absolute bottom-8 left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
+		class="rise absolute bottom-[max(env(safe-area-inset-bottom),2rem)] left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
 		style="--delay: 480ms"
 		aria-hidden="true"
 	>
@@ -177,12 +177,12 @@
 <main id="main-content">
 	<!-- Stats Bar -->
 	<Section theme="burgundy" padding="sm" grain>
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+		<div class="grid grid-cols-3 gap-4 md:gap-8">
 			{#each stats as stat (stat.id)}
 				<dl class="text-center">
 					<dt class="sr-only">{stat.label}</dt>
-					<dd class="text-warm-300 mb-2 text-4xl font-bold md:text-5xl">{stat.value}</dd>
-					<dt class="text-warm-100/70 text-base">{stat.label}</dt>
+					<dd class="text-warm-300 mb-1 text-3xl font-bold sm:text-4xl md:text-5xl">{stat.value}</dd>
+					<dt class="text-warm-100/70 text-xs sm:text-sm md:text-base">{stat.label}</dt>
 				</dl>
 			{/each}
 		</div>
@@ -236,11 +236,12 @@
 		</div>
 
 		<Button
-			variant="secondary"
+			variant="outline"
 			href="https://youtube.com/@lefuturologuepodcast"
 			target="_blank"
 			rel="noopener noreferrer"
 			size="lg"
+			class="border-warm-100/40 bg-transparent text-warm-100 hover:bg-warm-100 hover:text-red-700"
 		>
 			Voir ma chaîne YouTube &rarr;
 		</Button>
@@ -433,21 +434,23 @@
 
 <!-- Footer -->
 <Separator />
-<footer class="bg-background py-10 text-center">
+<footer class="bg-background px-6 py-10 text-center">
 	<Logo variant="wordmark-burgundy" class="mx-auto mb-5 h-7 w-auto opacity-80" />
-	<p class="text-foreground/60 text-sm">
-		© 2025 Le Futurologue. Tous droits réservés.
-		<span class="mx-2">·</span>
+	<div class="text-foreground/60 flex flex-col items-center gap-2 text-sm md:flex-row md:justify-center md:gap-0">
+		<span>© 2025 Le Futurologue. Tous droits réservés.</span>
+		<span class="hidden md:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
 		<a href={resolve('/confidentialite')} class="underline transition-colors hover:text-foreground/80"
 			>Politique de confidentialité</a
 		>
-		<span class="mx-2">·</span>
-		Site par
-		<a
-			href="https://www.linkedin.com/in/moiri-gamboni/"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="underline transition-colors hover:text-foreground/80">Moïri Gamboni</a
-		>
-	</p>
+		<span class="hidden md:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
+		<span>
+			Site par
+			<a
+				href="https://www.linkedin.com/in/moiri-gamboni/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="underline transition-colors hover:text-foreground/80">Moïri Gamboni</a
+			>
+		</span>
+	</div>
 </footer>
