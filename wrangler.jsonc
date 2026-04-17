@@ -1,15 +1,21 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "le-futurologue",
-  "main": ".svelte-kit/cloudflare/_worker.js",
-  "assets": {
-    "directory": ".svelte-kit/cloudflare",
-    "binding": "ASSETS"
-  },
-  "compatibility_date": "2025-11-13",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1
-  }
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "le-futurologue",
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"assets": {
+		"directory": ".svelte-kit/cloudflare",
+		"binding": "ASSETS"
+	},
+	"compatibility_date": "2025-11-13",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": false,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
+			"invocation_logs": true
+		}
+	}
 }
