@@ -47,5 +47,15 @@ export default defineConfig(
 		rules: {
 			'svelte/no-navigation-without-resolve': 'off'
 		}
+	},
+	{
+		// +layout.svelte injects JSON-LD (SEO structured data) via {@html}.
+		// The content is assembled in +layout.ts from a typed object with
+		// `<` escaped as \u003c, so there's no realistic XSS vector — the
+		// rule is a categorical flag, not a true risk here.
+		files: ['src/routes/+layout.svelte'],
+		rules: {
+			'svelte/no-at-html-tags': 'off'
+		}
 	}
 );
