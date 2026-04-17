@@ -70,17 +70,17 @@
 		</Carousel.Content>
 		<div class="mt-6 flex justify-center gap-4 xl:hidden">
 			<Carousel.Previous
-				class="relative top-auto left-auto size-12 translate-y-0 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+				class="relative top-auto left-auto size-10 translate-y-0 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground"
 			/>
 			<Carousel.Next
-				class="relative top-auto right-auto size-12 translate-y-0 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground"
+				class="relative top-auto right-auto size-10 translate-y-0 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground"
 			/>
 		</div>
 		<Carousel.Previous
-			class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex"
+			class="hidden size-10 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground xl:flex"
 		/>
 		<Carousel.Next
-			class="hidden size-12 border-2 border-primary/20 bg-background text-primary shadow-md transition hover:border-primary hover:bg-primary hover:text-primary-foreground xl:flex"
+			class="hidden size-10 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground xl:flex"
 		/>
 	</Carousel.Root>
 </div>

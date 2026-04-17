@@ -10,12 +10,16 @@
 
 	let { level = 'h2', theme = 'cream', class: className = '', children }: Props = $props();
 
-	const textColor = {
-		cream: 'text-foreground',
-		burgundy: 'text-warm-100',
-		peach: 'text-foreground'
-	}[theme];
-	const baseClasses = `mb-12 text-center text-3xl font-bold ${textColor} md:text-4xl ${className}`;
+	const textColor = $derived(
+		{
+			cream: 'text-foreground',
+			burgundy: 'text-warm-100',
+			peach: 'text-foreground'
+		}[theme]
+	);
+	const baseClasses = $derived(
+		`mb-12 text-center text-3xl font-bold ${textColor} md:text-4xl ${className}`
+	);
 </script>
 
 <svelte:element this={level} class={baseClasses}>
