@@ -200,7 +200,7 @@
 	<Logo
 		variant="logo-tete"
 		alt=""
-		class="pointer-events-none absolute right-[-6%] top-1/2 z-0 hidden w-[420px] max-w-none -translate-y-1/2 opacity-90 md:block lg:right-[-3%] lg:w-[520px]"
+		class="pointer-events-none absolute right-[-10%] top-1/2 z-0 hidden w-[260px] max-w-none -translate-y-1/2 opacity-40 md:block lg:right-[-6%] lg:w-[320px] lg:opacity-50"
 	/>
 {/snippet}
 <Section
@@ -433,8 +433,9 @@
 
 <!-- Footer -->
 <Separator />
-<footer class="bg-background py-8 text-center">
-	<p class="text-sm text-foreground/60">
+<footer class="bg-background py-10 text-center">
+	<Logo variant="wordmark-burgundy" class="mx-auto mb-5 h-7 w-auto opacity-80" />
+	<p class="text-foreground/60 text-sm">
 		© 2025 Le Futurologue. Tous droits réservés.
 		<span class="mx-2">·</span>
 		<a href="/confidentialite" class="underline transition-colors hover:text-foreground/80"
