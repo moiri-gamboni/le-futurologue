@@ -167,7 +167,7 @@ let { theme = 'cream', children }: Props = $props();
 
 ### shadcn-svelte Integration
 
-Components installed: `accordion`, `aspect-ratio`, `avatar`, `badge`, `button`, `card`, `carousel`, `input`, `label`, `separator`, `sonner`, `textarea`
+Components installed: `accordion`, `aspect-ratio`, `avatar`, `badge`, `button`, `card`, `carousel`, `input`, `label`, `separator`, `textarea`
 
 **Adding new components:**
 ```bash

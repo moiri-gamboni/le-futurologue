@@ -12,6 +12,7 @@
 	import Logo from '$lib/components/Logo.svelte';
 	import { enhance } from '$app/forms';
 	import { browser } from '$app/environment';
+	import { resolve } from '$app/paths';
 
 	let { form }: { form?: import('./$types').ActionData } = $props();
 
@@ -437,7 +438,7 @@
 	<p class="text-foreground/60 text-sm">
 		© 2025 Le Futurologue. Tous droits réservés.
 		<span class="mx-2">·</span>
-		<a href="/confidentialite" class="underline transition-colors hover:text-foreground/80"
+		<a href={resolve('/confidentialite')} class="underline transition-colors hover:text-foreground/80"
 			>Politique de confidentialité</a
 		>
 		<span class="mx-2">·</span>

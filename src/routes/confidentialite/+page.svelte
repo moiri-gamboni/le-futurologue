@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
+	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -80,7 +81,7 @@
 		<h2 class="text-foreground mt-8 text-xl font-semibold">Contact</h2>
 		<p class="text-foreground/75 mt-4">
 			Pour toute question concernant cette politique de confidentialité, vous pouvez me contacter
-			via le <a href="/#contact" class="text-red-500 underline hover:text-red-700"
+			via le <a href="{resolve('/')}#contact" class="text-red-500 underline hover:text-red-700"
 				>formulaire de contact</a
 			>.
 		</p>
@@ -90,7 +91,7 @@
 
 	<div class="mt-12 text-center">
 		<a
-			href="/"
+			href={resolve('/')}
 			class="text-red-500 inline-flex items-center gap-2 transition-colors hover:text-red-700"
 		>
 			← Retour à l'accueil
