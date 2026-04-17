@@ -32,3 +32,16 @@ vite.config.ts.timestamp-*
 
 # Rodney (browser automation scoped to this dir)
 .rodney/
+
+# Brand source kit — raw PDFs, AI files, original photos, fonts.
+# Too big for git. The subsetted woff2s + curated brand assets that
+# actually ship live under static/fonts/ and src/lib/assets/brand/.
+/artistic-direction/
+
+# Design-phase analysis artifacts (JSON dumps, Python exploration
+# scripts, session notes). Kept locally for reference; not part of
+# the runtime.
+/scripts/
+
+# Local plan files (per-feature implementation plans).
+/plans/
