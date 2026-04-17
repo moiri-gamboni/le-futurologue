@@ -12,7 +12,10 @@ Conference speaker website for Shaïman Thürler (Le Futurologue) - AI specialis
 - shadcn-svelte components
 - Cloudflare Workers deployment (adapter-cloudflare)
 
-**Reference Documentation:** `docs/design-plan.md` contains the complete design system specification and component requirements.
+**Reference Documentation:**
+- `DESIGN.md` — current design system spec (palette, typography, contrast matrix, signature utilities, usage rules).
+- `plans/rebrand.md` — April 2026 rebrand implementation plan.
+- `artistic-direction/analysis.md` — brand asset analysis + decisions that shaped the current system.
 
 ## Development Commands
 
@@ -35,54 +38,81 @@ pnpm run preview            # Preview production build
 
 ## Architecture
 
-### Design System (app.css)
+### Design System (app.css + DESIGN.md)
 
-The entire design system lives in `src/app.css` with **34 hand-picked color shades** following Refactoring UI principles:
+The entire design system lives in `src/app.css` with **17 primitives on two hue families**, following Refactoring UI principles. See `DESIGN.md` for the full contrast matrix, type scale, and usage rules.
 
-**Color System:**
-- Dark backgrounds: `--dark-900` through `--dark-300` (7 shades, pure greys)
-- Green accent (brand): `--green-900` through `--green-100` (9 shades) - `--green-500` is primary CTA
-- Yellow accent: `--yellow-900` through `--yellow-100` (9 shades) - `--yellow-500` is secondary
-- Blue-tinted greys: `--grey-900` through `--grey-100` (9 shades) - **NOT pure grey**, subtle blue undertone for warmth
+**Palette — 2 scales, not 4:**
+- **Red scale (saturated accent):** `red-100 / 300 / 500 / 700 / 900`. Anchors: `red-500 = #e30713` (CTA), `red-700 = #420318` (burgundy), `red-900 = #2b0212` (gradient-A dark end, burgundy bg).
+- **Warm scale (low-chroma neutral, hue rotates 10→45→15):** `warm-50 / 100 / 200 / 300 / 500 / 700`. Anchors: `warm-100 = #ffebeb` (cream, default bg), `warm-200 = #f7e7df` (gradient-B light), `warm-300 = #f9c2a4` (peach).
+- **Gradient A (signature):** `linear-gradient(180deg, red-500 → red-900)`. Utilities: `.bg-gradient-hero`, `.bg-gradient-hero-diagonal`, `.bg-gradient-hero-radial`, `.text-gradient-hero`, `.border-gradient-hero`.
+- **Gradient B (soft):** `linear-gradient(135deg, warm-300 → warm-200)`. Utility: `.bg-gradient-soft`.
 
-**Key Principles Applied:**
-1. **Don't let lightness kill saturation** - Extreme shades have higher saturation to maintain vibrancy
-2. **Greys aren't grey** - Blue tint (saturation 0.01 not 0) for professional, tech-appropriate feel
-3. **Hue rotation** - Darker yellows rotate toward orange to avoid muddy brown
+**Shadcn semantic contract preserved** (no edits to `ui/*` needed):
+- `--primary: red-500`, `--primary-foreground: warm-100`
+- `--background: warm-100`, `--foreground: red-700`
+- `--accent: warm-300`, `--ring: red-700` (burgundy, not red, so focus rings stay visible on red CTAs)
+- `--destructive: oklch(0.5 0.22 18)` (darker than brand red, distinguishable for form errors)
 
-**Border Radius:** 8px everywhere (`--radius: 0.5rem`) for approachable professionalism
+**Typography:**
+- Body / UI: **Metropolis** (SIL OFL; Regular, Italic, Medium, Bold self-hosted in `static/fonts/metropolis/`). Accessed via `--font-sans` / `font-sans`.
+- Display: **Squanova** (original A25-Squanova is permissive per author; confirmed with designer). Uppercase-only by design. Accessed via `--font-display` / `font-display`.
+- Hand-picked type scale: 12/14/16/18/20/24/30/40/60/80 px (see `DESIGN.md`).
 
-**Usage:** Use Tailwind utilities like `bg-dark-800`, `text-green-500`, `border-grey-300`. Avoid creating new color variables.
+**Shadow tokens** are **burgundy-tinted** rgba (not neutral black) so they integrate with the warm palette. Red CTAs use `--shadow-cta` specifically — red-tinted shadow on cream reads muddy.
+
+**Border Radius:** 8px everywhere (`--radius: 0.5rem`).
+
+**Signature utilities** in `@layer utilities`: `.grain` (inline-SVG fractal-noise overlay at 5% opacity, apply to burgundy sections), `.rise` (CSS-only page-load stagger with `--delay` inline style, respects `prefers-reduced-motion`).
+
+**Usage:** Use Tailwind utilities like `bg-red-900`, `text-warm-100`, `border-warm-500`, `bg-primary`, `text-foreground`. For derived states prefer shadcn semantic tokens (`bg-primary/10`, `text-foreground/75`) over raw scale tokens. **Never** pair red on burgundy for small text. **Never** pair peach on cream for text.
 
 ### Component Architecture
 
-Three reusable wrapper components eliminate repetition:
+Four reusable wrapper components eliminate repetition:
 
-**Section.svelte** - Standardized section wrapper
+**Section.svelte** — Standardized section wrapper
 ```svelte
-<Section theme="light|dark" width="sm|md|lg|xl" padding="sm|md|lg" id="contact">
+<Section
+  theme="cream|burgundy|peach"
+  width="sm|md|lg|xl"
+  padding="sm|md|lg"
+  grain={true|false}
+  id="contact"
+  class="overflow-hidden"
+  decoration={mySnippet}
+>
   <!-- Content -->
 </Section>
 ```
-- Handles background colors, max-width constraints, and vertical padding
-- Replaces 8+ repeated section patterns
+- `theme`: `cream` (bg-background), `burgundy` (bg-red-900), or `peach` (bg-gradient-soft).
+- `grain`: adds fractal-noise overlay on burgundy sections.
+- `decoration`: a `Snippet` rendered absolutely OUTSIDE the max-width wrapper, for bleeding-art moments (e.g. the About-section logo-tête).
 
-**SectionHeading.svelte** - Consistent headings
+**SectionHeading.svelte** — Consistent headings
 ```svelte
-<SectionHeading level="h2|h3" theme="light|dark">
+<SectionHeading level="h2|h3" theme="cream|burgundy|peach">
   Heading text
 </SectionHeading>
 ```
 
-**FormField.svelte** - Form fields with labels
+**Logo.svelte** — Brand mark with typed variant API
+```svelte
+<Logo
+  variant="wordmark-cream|wordmark-burgundy|wordmark-gradient|logo-tete"
+  alt="Le Futurologue"
+  priority={true|false}
+  class="h-8 w-auto"
+/>
+```
+- Variants are a discriminated union — invalid values fail at compile time.
+- Use `priority` for above-the-fold rendering (sets `loading="eager"` + `fetchpriority="high"`).
+
+**FormField.svelte** — Form fields with labels
 ```svelte
 <FormField
-  id="email"
-  name="email"
-  type="text|email|textarea"
-  label="Email"
-  placeholder="..."
-  required
+  id="email" name="email" type="text|email|textarea"
+  label="Email" placeholder="..." required
 />
 ```
 
@@ -118,11 +148,11 @@ let doubled = $derived(count * 2);  // NOT: $: doubled = count * 2
 **Props (components):**
 ```typescript
 interface Props {
-  theme?: 'light' | 'dark';
+  theme?: 'cream' | 'burgundy' | 'peach';
   children: Snippet;  // For slot content
 }
 
-let { theme = 'light', children }: Props = $props();
+let { theme = 'cream', children }: Props = $props();
 ```
 
 **Rendering snippets:**
