@@ -94,25 +94,24 @@
 }
 </script>`}
 
-	<!-- Preload critical fonts for optimal performance -->
-	<!-- Eliminates 670ms render-blocking delay from Google Fonts CDN -->
+	<!-- Preload critical brand fonts for optimal performance -->
 	<link
 		rel="preload"
-		href="/fonts/inter-v20-latin/inter-v20-latin-regular.woff2"
+		href="/fonts/metropolis/metropolis-regular.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/inter-v20-latin/inter-v20-latin-600.woff2"
+		href="/fonts/metropolis/metropolis-bold.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/space-grotesk-v22-latin/space-grotesk-v22-latin-700.woff2"
+		href="/fonts/squanova/squanova-regular.woff2"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
