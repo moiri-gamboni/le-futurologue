@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 	import { Separator } from '$lib/components/ui/separator';
