@@ -10,6 +10,7 @@
 	import FormField from '$lib/components/FormField.svelte';
 	import VideoCard from '$lib/components/VideoCard.svelte';
 	import LogoCarousel from '$lib/components/LogoCarousel.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 	import { enhance } from '$app/forms';
 	import { browser } from '$app/environment';
 
@@ -119,36 +120,57 @@
 </a>
 
 <!-- Hero Section -->
-<header class="bg-red-900 relative flex min-h-screen items-center justify-center overflow-hidden">
+<header
+	class="bg-gradient-hero relative flex min-h-screen items-center justify-center overflow-hidden"
+>
+	<!-- Photo underlay — multiply-blended so the warm palette bleeds through the portrait -->
 	<enhanced:img
 		src="$lib/assets/images/hero.jpeg?w=3840;2560;1920;1280"
 		alt="Portrait de Shaïman Thürler, conférencier spécialiste en intelligence artificielle"
-		class="absolute inset-0 h-full w-full object-cover object-center"
+		class="absolute inset-0 h-full w-full object-cover object-center opacity-55 mix-blend-multiply"
 		sizes="(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, 100vw"
 		fetchpriority="high"
 	/>
-	<div class="bg-red-900/85 absolute inset-0"></div>
+	<!-- Bottom-weighted burgundy scrim — ensures text contrast in the bottom half where the gradient is darker -->
+	<div
+		class="to-red-900/90 absolute inset-0 bg-gradient-to-b from-transparent from-40%"
+		aria-hidden="true"
+	></div>
 
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
+		<p
+			class="rise text-warm-300 mb-4 text-sm uppercase tracking-[0.3em]"
+			style="--delay: 0ms"
+		>
+			Le Futurologue
+		</p>
 		<h1
-			class="text-warm-100 mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl md:tracking-tighter"
+			class="rise text-warm-100 mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl md:tracking-tighter"
+			style="--delay: 120ms"
 		>
 			Shaïman Thürler
 		</h1>
-		<p class="text-warm-100/80 mb-12 text-xl md:text-2xl">
+		<p class="rise text-warm-100/85 mb-12 text-xl md:text-2xl" style="--delay: 240ms">
 			Conférencier spécialiste en intelligence artificielle
 		</p>
-		<Button href="#contact" size="lg" class="shadow-cta text-base font-semibold">
-			Me contacter &rarr;
-		</Button>
+		<div class="rise" style="--delay: 360ms">
+			<Button
+				href="#contact"
+				size="lg"
+				class="shadow-cta border-gradient-hero text-base font-semibold"
+			>
+				Me contacter &rarr;
+			</Button>
+		</div>
 	</div>
 
 	<!-- Scroll indicator at bottom of hero section -->
 	<div
-		class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
+		class="rise absolute bottom-8 left-1/2 z-10 -translate-x-1/2 motion-safe:animate-bounce"
+		style="--delay: 480ms"
 		aria-hidden="true"
 	>
-		<Icon icon="lucide:chevron-down" class="text-warm-100/50 h-8 w-8" />
+		<Icon icon="lucide:chevron-down" class="text-warm-100/60 h-8 w-8" />
 	</div>
 </header>
 
