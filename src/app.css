@@ -2,6 +2,19 @@
 @import 'tw-animate-css';
 
 /**
+ * Neutralize `dark:` utilities. Tailwind v4's default `dark:` variant
+ * matches `@media (prefers-color-scheme: dark)`, which means every
+ * shadcn `dark:*` class we inherit fires when the viewer's OS is in
+ * dark mode — e.g. `dark:hover:bg-input/50` on the Button base paints a
+ * 50% terracotta fill on hover that overrides our brand hover colors.
+ *
+ * Binding `dark:` to `.dark *` (which we never add to the DOM) makes
+ * every inherited `dark:*` class inert. The site is intentionally
+ * single-theme (warm, always) per DESIGN.md.
+ */
+@custom-variant dark (&:is(.dark *));
+
+/**
  * Le Futurologue Design System — April 2026 rebrand.
  *
  * Two hue families, not four. Brand-named swatches (red / burgundy / peach /
