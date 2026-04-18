@@ -208,12 +208,21 @@
 		aria-hidden="true"
 	></div>
 
+	<!-- Mobile: wordmark pinned near the top of the hero, clear of the notch. -->
+	<Logo
+		variant="wordmark-cream"
+		alt="Le Futurologue"
+		priority
+		class="rise absolute top-[max(env(safe-area-inset-top),3.5rem)] left-1/2 z-10 h-10 w-auto -translate-x-1/2 md:hidden"
+	/>
+
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
+		<!-- Desktop: wordmark inline above the name, as the first item of the centered block. -->
 		<Logo
 			variant="wordmark-cream"
 			alt="Le Futurologue"
 			priority
-			class="rise mx-auto mb-6 h-10 w-auto md:mb-8 md:h-14"
+			class="rise mx-auto mb-8 hidden h-14 w-auto md:block"
 		/>
 		<h1
 			class="rise mb-6 text-5xl leading-tight font-bold tracking-tight text-warm-100 md:text-7xl md:tracking-tighter"
