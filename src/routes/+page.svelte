@@ -14,6 +14,7 @@
 	import { enhance } from '$app/forms';
 	import { browser } from '$app/environment';
 	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
 
 	let { form }: { form?: import('./$types').ActionData } = $props();
 
@@ -22,6 +23,25 @@
 	if (browser) {
 		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	}
+
+	// Gate the hero `.rise` stagger on fonts + hero image being ready.
+	// Without this the animation can finish before Metropolis swaps in
+	// (FOUT) or before the photo underlay paints.
+	let heroReady = $state(false);
+	onMount(async () => {
+		const img = document.querySelector<HTMLImageElement>('header picture img');
+		const imgReady = img ? img.decode().catch(() => undefined) : Promise.resolve();
+		const fontsReady =
+			'fonts' in document
+				? Promise.all([
+						document.fonts.load('400 1em Metropolis'),
+						document.fonts.load('700 1em Metropolis')
+					]).catch(() => undefined)
+				: Promise.resolve();
+		const safety = new Promise<void>((resolve) => setTimeout(resolve, 2000));
+		await Promise.race([Promise.all([fontsReady, imgReady]), safety]);
+		heroReady = true;
+	});
 
 	// Images
 	import profileImage from '$lib/assets/images/avatar.jpeg';
@@ -172,6 +192,7 @@
 <!-- Hero Section -->
 <header
 	class="bg-gradient-hero relative flex min-h-[100svh] items-center justify-center overflow-hidden"
+	class:ready={heroReady}
 >
 	<!-- Photo underlay — multiply-blended so the warm palette bleeds through the portrait -->
 	<enhanced:img

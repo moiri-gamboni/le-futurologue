@@ -309,11 +309,25 @@
 	}
 
 	/* Staggered page-load reveal — apply `.rise` to children, pass --delay
-	   via inline style. Respects prefers-reduced-motion. */
+	   via inline style. Respects prefers-reduced-motion.
+
+	   In the hero, the stagger is held at the pre-animation state until
+	   the <header> gets a `.ready` class (added by +page.svelte's onMount
+	   once fonts + the photo underlay have loaded). Clearing the
+	   animation while paused and re-applying it when .ready lands gives
+	   a fresh t=0 start with the correct delay; a `paused → running`
+	   toggle instead lets the browser's animation clock advance in the
+	   background, producing a visible lag after unpause. Other `.rise`
+	   consumers (outside <header>) play immediately on load. */
 	@media (prefers-reduced-motion: no-preference) {
 		.rise {
 			animation: rise 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 			animation-delay: var(--delay, 0ms);
+		}
+		header:not(.ready) .rise {
+			animation: none;
+			opacity: 0;
+			transform: translateY(8px);
 		}
 	}
 	@keyframes rise {
