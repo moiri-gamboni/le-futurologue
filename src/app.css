@@ -103,6 +103,7 @@
 	--red-100: oklch(0.94 0.06 22); /* ≈ #fcd4d5 — soft pink, banner bg */
 	--red-300: oklch(0.78 0.18 25); /* ≈ #f7797f — muted red, disabled */
 	--red-500: oklch(0.58 0.24 27); /* = #e30713 — BRAND ANCHOR, primary CTA */
+	--red-600: oklch(0.45 0.2 22); /* Deep crimson ≈ #a9001a — calmer CTA surface, fills the L=0.58→0.20 gap. Chroma bumped (vs linear 0.18) so darker shade stays rich, per Refactoring UI "don't let lightness kill saturation". */
 	--red-700: oklch(0.2 0.1 10); /* = #420318 — BRAND ANCHOR, burgundy */
 	--red-900: oklch(0.14 0.08 10); /* = #2b0212 — BRAND ANCHOR, gradient-A dark end */
 
@@ -131,9 +132,9 @@
 	--card-foreground: var(--red-700);
 	--popover: var(--warm-100);
 	--popover-foreground: var(--red-700);
-	--primary: var(--red-500);
-	/* --primary-foreground must be white (not cream) for WCAG AA on red-500: white hits 4.88:1, cream was 4.26:1 (FAIL). */
-	--primary-foreground: var(--white);
+	--primary: var(--red-600);
+	/* Peach-tinted off-white for CTA text. Originally tuned for red-500 (where pure white at 4.80:1 read as glare); on red-600 it lands at 7.37:1 (AAA). Hue 40 matches warm-300, so the text shares chroma with the bg and doesn't vibrate. */
+	--primary-foreground: oklch(1 0.035 40);
 	--accent: var(--warm-300);
 	--accent-foreground: var(--red-700);
 	--secondary: var(--red-700);
@@ -172,6 +173,7 @@
 	--color-red-100: var(--red-100);
 	--color-red-300: var(--red-300);
 	--color-red-500: var(--red-500);
+	--color-red-600: var(--red-600);
 	--color-red-700: var(--red-700);
 	--color-red-900: var(--red-900);
 

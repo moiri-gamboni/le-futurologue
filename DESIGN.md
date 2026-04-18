@@ -14,7 +14,8 @@ Hue anchored 10–27°, chroma peaks at 500.
 | --------- | --------- | --------------------------------------------------- |
 | `red-100` | ≈ #fcd4d5 | Soft pink — banner bg, disabled-tint                |
 | `red-300` | ≈ #f7797f | Muted red — disabled state                          |
-| `red-500` | `#e30713` | **Brand anchor** — primary CTA, signal              |
+| `red-500` | `#e30713` | **Brand anchor** — logo, accents, gradient-A top, signal |
+| `red-600` | ≈ #a9001a | Deep crimson — `--primary` / CTA surface. Chroma boosted (0.20, not linear 0.18) so darker shade stays rich. |
 | `red-700` | `#420318` | **Brand anchor** — burgundy foreground, focus ring  |
 | `red-900` | `#2b0212` | **Brand anchor** — gradient-A dark end, burgundy bg |
 
@@ -44,7 +45,9 @@ Document WCAG contrast for every foreground/background pairing the site actually
 | ------------------ | ------------------ | -------: | -------- | ---------------------------------------------------------- |
 | `warm-100` cream   | `red-700` burgundy |    ~14:1 | AAA      | Default section text on burgundy                           |
 | `warm-100` cream   | `red-900`          |    ~17:1 | AAA      | Deepest burgundy, strongest contrast                       |
-| `warm-100` cream   | `red-500`          |   ~5.6:1 | AA       | Large text only (≥18 pt); use for CTA label                |
+| `warm-100` cream   | `red-500`          |   ~4.1:1 | **FAIL** | Fails AA — never place text on `red-500`. Use `red-600` for CTA surfaces. |
+| primary-fg peach   | `red-600`          |  ~7.37:1 | AAA      | CTA label on `--primary`. Peach off-white (`oklch(1 0.035 40)` ≈ #fff8ee) keeps the warm-family tone while clearing AAA on the calmer red-600. |
+| `warm-100` cream   | `red-600`          |   ~6.7:1 | AA+      | Natural alternative for CTA text if a stronger brand tone is desired. |
 | `warm-300` peach   | `red-700`          |   ~8.8:1 | AAA      | Stats numbers, peach on burgundy                           |
 | `warm-300` peach   | `red-900`          |   ~9.4:1 | AAA      | Same, deeper bg                                            |
 | `red-500` red      | `warm-100` cream   |   ~4.8:1 | AA       | Body links ≥14 pt; small text should use `red-700` instead |

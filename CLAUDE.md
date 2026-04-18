@@ -46,14 +46,14 @@ The entire design system lives in `src/app.css` with **17 primitives on two hue 
 
 **Palette — 2 scales, not 4:**
 
-- **Red scale (saturated accent):** `red-100 / 300 / 500 / 700 / 900`. Anchors: `red-500 = #e30713` (CTA), `red-700 = #420318` (burgundy), `red-900 = #2b0212` (gradient-A dark end, burgundy bg).
+- **Red scale (saturated accent):** `red-100 / 300 / 500 / 600 / 700 / 900`. Anchors: `red-500 = #e30713` (logo, accents, gradient-A top), `red-600 ≈ #a9001a` (CTA surface, `--primary`), `red-700 = #420318` (burgundy), `red-900 = #2b0212` (gradient-A dark end, burgundy bg).
 - **Warm scale (low-chroma neutral, hue rotates 10→45→15):** `warm-50 / 100 / 200 / 300 / 500 / 700`. Anchors: `warm-100 = #ffebeb` (cream, default bg), `warm-200 = #f7e7df` (gradient-B light), `warm-300 = #f9c2a4` (peach).
 - **Gradient A (signature):** `linear-gradient(180deg, red-500 → red-900)`. Utilities: `.bg-gradient-hero`, `.bg-gradient-hero-diagonal`, `.bg-gradient-hero-radial`, `.text-gradient-hero`, `.border-gradient-hero`.
 - **Gradient B (soft):** `linear-gradient(135deg, warm-300 → warm-200)`. Utility: `.bg-gradient-soft`.
 
 **Shadcn semantic contract preserved** (no edits to `ui/*` needed):
 
-- `--primary: red-500`, `--primary-foreground: warm-100`
+- `--primary: red-600`, `--primary-foreground: oklch(1 0.035 40)` (peach off-white ≈ #fff8ee — 7.37:1 AAA on red-600; red-600 is the calmer CTA surface, red-500 is reserved for logo/accents)
 - `--background: warm-100`, `--foreground: red-700`
 - `--accent: warm-300`, `--ring: red-700` (burgundy, not red, so focus rings stay visible on red CTAs)
 - `--destructive: oklch(0.5 0.22 18)` (darker than brand red, distinguishable for form errors)
