@@ -8,6 +8,10 @@ bun.lockb
 # Miscellaneous
 /static/
 
+# shadcn-svelte vendored components — kept as the CLI emits them so
+# `npx shadcn-svelte add` upgrades apply without reformatting conflicts.
+/src/lib/components/ui/
+
 # Brand source kit + analysis artifacts (both gitignored locally)
 /artistic-direction/
 /scripts/

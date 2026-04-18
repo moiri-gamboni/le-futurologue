@@ -12,6 +12,12 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
+	{
+		// shadcn-svelte vendored components are kept as the CLI emits them;
+		// linting them would flag their own conventions (forwarded `href`
+		// props, unused type parameters, etc.) that we don't own.
+		ignores: ['src/lib/components/ui/**']
+	},
 	js.configs.recommended,
 	...ts.configs.recommended,
 	...svelte.configs.recommended,
@@ -36,16 +42,6 @@ export default defineConfig(
 				parser: ts.parser,
 				svelteConfig
 			}
-		}
-	},
-	{
-		// shadcn-svelte components are vendored as-is. Their Button / Link-like
-		// primitives forward `href` as a prop, so the static-analysis rule that
-		// wants callers to wrap href in resolve() fires on a forwarded value.
-		// Callers are responsible for resolve() at the call site.
-		files: ['src/lib/components/ui/**/*.svelte'],
-		rules: {
-			'svelte/no-navigation-without-resolve': 'off'
 		}
 	},
 	{
