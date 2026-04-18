@@ -35,7 +35,7 @@
 				href="https://www.simpleanalytics.com"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-red-500 underline hover:text-red-700">Simple Analytics</a
+				class="text-red-700 underline hover:text-red-500">Simple Analytics</a
 			>, un service d'analyse respectueux de la vie privée. Simple Analytics :
 		</p>
 		<ul class="mt-4 list-inside list-disc space-y-2 text-foreground/75">
@@ -60,7 +60,7 @@
 				href="https://resend.com"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-red-500 underline hover:text-red-700">Resend</a
+				class="text-red-700 underline hover:text-red-500">Resend</a
 			>, un service conforme au RGPD. Resend conserve les métadonnées des emails (adresses, objet,
 			contenu) pour permettre le suivi de livraison. Ces données sont supprimées dans les 90 jours
 			suivant la fermeture du compte. Voir leur
@@ -68,7 +68,7 @@
 				href="https://resend.com/legal/privacy-policy"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-red-500 underline hover:text-red-700">politique de confidentialité</a
+				class="text-red-700 underline hover:text-red-500">politique de confidentialité</a
 			>.
 		</p>
 
@@ -82,7 +82,7 @@
 		<h2 class="mt-8 text-xl font-semibold text-foreground">Contact</h2>
 		<p class="mt-4 text-foreground/75">
 			Pour toute question concernant cette politique de confidentialité, vous pouvez me contacter
-			via le <a href="{resolve('/')}#contact" class="text-red-500 underline hover:text-red-700"
+			via le <a href="{resolve('/')}#contact" class="text-red-700 underline hover:text-red-500"
 				>formulaire de contact</a
 			>.
 		</p>
@@ -93,7 +93,7 @@
 	<div class="mt-12 text-center">
 		<a
 			href={resolve('/')}
-			class="inline-flex items-center gap-2 text-red-500 transition-colors hover:text-red-700"
+			class="inline-flex items-center gap-2 text-red-700 transition-colors hover:text-red-500"
 		>
 			← Retour à l'accueil
 		</a>

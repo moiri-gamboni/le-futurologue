@@ -187,9 +187,12 @@
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-3xl px-8 text-center">
-		<p class="rise mb-4 text-sm tracking-[0.3em] text-warm-300 uppercase" style="--delay: 0ms">
-			Le Futurologue
-		</p>
+		<Logo
+			variant="wordmark-cream"
+			alt="Le Futurologue"
+			priority
+			class="rise mx-auto mb-6 h-10 w-auto md:mb-8 md:h-14"
+		/>
 		<h1
 			class="rise mb-6 text-5xl leading-tight font-bold tracking-tight text-warm-100 md:text-7xl md:tracking-tighter"
 			style="--delay: 120ms"
@@ -466,7 +469,7 @@
 				<strong class="font-semibold text-foreground">Email&nbsp;:</strong>
 				<a
 					href="mailto:contact@lefuturologue.com"
-					class="text-red-500 transition-colors hover:text-red-700"
+					class="text-red-700 transition-colors hover:text-red-500"
 				>
 					contact@lefuturologue.com
 				</a>
@@ -477,22 +480,24 @@
 			<h3 class="mb-6 text-center text-xl font-semibold text-foreground">
 				Retrouvez-moi sur les réseaux sociaux
 			</h3>
-			<div class="flex flex-wrap justify-center gap-3">
+			<ul class="mx-auto grid max-w-md grid-cols-2 gap-2 sm:max-w-xl sm:grid-cols-3 md:grid-cols-5">
 				{#each socials as social (social.id)}
-					<Button
-						variant="outline"
-						size="sm"
-						href={social.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="border-warm-500/40 hover:border-red-500 hover:bg-red-500/10"
-						aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
-					>
-						<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />
-						<span>{social.name}</span>
-					</Button>
+					<li>
+						<Button
+							variant="outline"
+							size="sm"
+							href={social.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="w-full border-warm-500/40 hover:border-red-500 hover:bg-red-500/10"
+							aria-label="Visiter {social.name} (ouvre dans un nouvel onglet)"
+						>
+							<Icon icon={social.icon} class="mr-2 h-4 w-4" aria-hidden="true" />
+							<span>{social.name}</span>
+						</Button>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</div>
 	</Section>
 </main>
