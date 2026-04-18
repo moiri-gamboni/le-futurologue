@@ -68,19 +68,23 @@
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-		<div class="mt-6 flex justify-center gap-4 xl:hidden">
+		<div class="mt-6 flex justify-center gap-6 xl:hidden">
 			<Carousel.Previous
-				class="relative top-auto left-auto size-10 translate-y-0 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground"
+				variant="ghost"
+				class="relative top-auto left-auto size-10 translate-y-0 rounded-none border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary [&_svg]:size-6"
 			/>
 			<Carousel.Next
-				class="relative top-auto right-auto size-10 translate-y-0 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground"
+				variant="ghost"
+				class="relative top-auto right-auto size-10 translate-y-0 rounded-none border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary [&_svg]:size-6"
 			/>
 		</div>
 		<Carousel.Previous
-			class="hidden size-10 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground xl:flex"
+			variant="ghost"
+			class="hidden size-10 rounded-none border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary xl:flex [&_svg]:size-6"
 		/>
 		<Carousel.Next
-			class="hidden size-10 border-0 bg-transparent text-foreground/40 shadow-none transition hover:bg-foreground/5 hover:text-foreground xl:flex"
+			variant="ghost"
+			class="hidden size-10 rounded-none border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary xl:flex [&_svg]:size-6"
 		/>
 	</Carousel.Root>
 </div>
