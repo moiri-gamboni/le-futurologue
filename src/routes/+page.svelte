@@ -174,7 +174,7 @@
 >
 	<!-- Photo underlay — multiply-blended so the warm palette bleeds through the portrait -->
 	<enhanced:img
-		src="$lib/assets/images/hero.jpeg?w=3840;2560;1920;1280"
+		src="$lib/assets/images/hero.jpeg?w=3840;2560;1920;1280&quality=80"
 		alt="Portrait de Shaïman Thürler, conférencier spécialiste en intelligence artificielle"
 		class="absolute inset-0 h-full w-full object-cover object-center opacity-55 mix-blend-multiply"
 		sizes="(min-width: 1920px) 1920px, (min-width: 1280px) 1280px, 100vw"
@@ -308,7 +308,7 @@
 			<div class="order-2 md:order-1">
 				<AspectRatio ratio={3 / 4}>
 					<enhanced:img
-						src="$lib/assets/images/portrait.jpeg?w=1200;900;600"
+						src="$lib/assets/images/portrait.jpeg?w=1200;900;600&quality=80"
 						alt="Shaïman Thürler donnant une conférence sur l'intelligence artificielle devant un auditoire"
 						class="h-full w-full rounded-lg object-cover"
 						sizes="(min-width: 768px) 576px, 100vw"
