@@ -4,6 +4,7 @@
 	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
 	import { Separator } from '$lib/components/ui/separator';
 	import Icon from '@iconify/svelte';
+	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import FormField from '$lib/components/FormField.svelte';
@@ -204,7 +205,8 @@
 		</p>
 		<div class="rise" style="--delay: 360ms">
 			<Button href="#contact" size="lg" class="text-base font-semibold shadow-cta">
-				Me contacter &rarr;
+				Me contacter
+				<ArrowRightIcon aria-hidden="true" />
 			</Button>
 		</div>
 	</div>
@@ -296,7 +298,8 @@
 				size="lg"
 				class="border-warm-100/40 bg-transparent text-warm-100 hover:bg-warm-100 hover:text-red-700"
 			>
-				Voir ma chaîne YouTube &rarr;
+				Voir ma chaîne YouTube
+				<ArrowRightIcon aria-hidden="true" />
 			</Button>
 		</div>
 	</Section>

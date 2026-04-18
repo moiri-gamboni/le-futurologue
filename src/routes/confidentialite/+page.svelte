@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Section from '$lib/components/Section.svelte';
 	import SectionHeading from '$lib/components/SectionHeading.svelte';
+	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
 	import { resolve } from '$app/paths';
 </script>
 
@@ -95,7 +96,8 @@
 			href={resolve('/')}
 			class="inline-flex items-center gap-2 text-red-700 transition-colors hover:text-red-500"
 		>
-			← Retour à l'accueil
+			<ArrowLeftIcon class="h-4 w-4" aria-hidden="true" />
+			Retour à l'accueil
 		</a>
 	</div>
 </Section>
