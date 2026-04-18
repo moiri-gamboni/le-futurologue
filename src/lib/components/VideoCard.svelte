@@ -8,16 +8,6 @@
 	}
 
 	let { videoId, alt, description }: Props = $props();
-
-	// YouTube only generates `maxresdefault.jpg` (1280x720 16:9) when the
-	// upload was >=720p. Older videos return 404 there — fall back to
-	// `hqdefault.jpg` (480x360, 4:3 letterboxed) which is always available.
-	let maxresFailed = $state(false);
-	const thumbUrl = $derived(
-		maxresFailed
-			? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-			: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-	);
 </script>
 
 <Card.Root
@@ -32,9 +22,8 @@
 		<Card.Content class="p-0">
 			<div class="relative aspect-video overflow-hidden">
 				<img
-					src={thumbUrl}
+					src="https://img.youtube.com/vi/{videoId}/sddefault.jpg"
 					{alt}
-					onerror={() => (maxresFailed = true)}
 					class="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 				<div
