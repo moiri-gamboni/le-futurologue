@@ -12,6 +12,12 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default defineConfig(
 	includeIgnoreFile(gitignorePath),
+	{
+		// shadcn-svelte vendored components are kept as the CLI emits them;
+		// linting them would flag their own conventions (forwarded `href`
+		// props, unused type parameters, etc.) that we don't own.
+		ignores: ['src/lib/components/ui/**']
+	},
 	js.configs.recommended,
 	...ts.configs.recommended,
 	...svelte.configs.recommended,
@@ -36,6 +42,16 @@ export default defineConfig(
 				parser: ts.parser,
 				svelteConfig
 			}
+		}
+	},
+	{
+		// +layout.svelte injects JSON-LD (SEO structured data) via {@html}.
+		// The content is assembled in +layout.ts from a typed object with
+		// `<` escaped as \u003c, so there's no realistic XSS vector — the
+		// rule is a categorical flag, not a true risk here.
+		files: ['src/routes/+layout.svelte'],
+		rules: {
+			'svelte/no-at-html-tags': 'off'
 		}
 	}
 );

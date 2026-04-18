@@ -1,306 +1,370 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
+/**
+ * Neutralize `dark:` utilities. Tailwind v4's default `dark:` variant
+ * matches `@media (prefers-color-scheme: dark)`, which means every
+ * shadcn `dark:*` class we inherit fires when the viewer's OS is in
+ * dark mode — e.g. `dark:hover:bg-input/50` on the Button base paints a
+ * 50% terracotta fill on hover that overrides our brand hover colors.
+ *
+ * Binding `dark:` to `.dark *` (which we never add to the DOM) makes
+ * every inherited `dark:*` class inert. The site is intentionally
+ * single-theme (warm, always) per DESIGN.md.
+ */
 @custom-variant dark (&:is(.dark *));
 
 /**
- * Le Futurologue Design System
- * Based on Refactoring UI principles
- * Brand: Green (#4ada56) = growth/technology, Yellow (#fae60b) = energy/innovation
- * Personality: The Sage/Explorer - Expert knowledge made accessible
+ * Le Futurologue Design System — April 2026 rebrand.
+ *
+ * Two hue families, not four. Brand-named swatches (red / burgundy / peach /
+ * cream) are anchors on two scales:
+ *
+ *   Red scale (saturated accent): red-100 / 300 / 500 / 700 / 900
+ *     500 = #e30713 (brand anchor) — CTAs, signal
+ *     700 = #420318 (brand anchor) — burgundy text, ring
+ *     900 = #2b0212 (brand anchor) — gradient-A dark end, burgundy bg
+ *
+ *   Warm scale (low-chroma warm neutral): warm-50..700
+ *     100 = #ffebeb (brand anchor) — cream, default light bg
+ *     200 = #f7e7df (brand anchor) — gradient-B light end
+ *     300 = #f9c2a4 (brand anchor) — peach, accent surface
+ *
+ * Gradient A (red→burgundy-near-black) is the signature brand treatment.
+ * Use vertical orientation on live text surfaces so bottom-aligned content
+ * lands on the reliably-dark half.
+ *
+ * Contrast rules (WCAG):
+ *   cream/burgundy   ≈ 14:1  AAA
+ *   cream/red-900    ≈ 17:1  AAA
+ *   peach/burgundy   ≈ 8.8:1 AAA
+ *   red/cream        ≈ 4.8:1 AA (≥18pt only; use burgundy for body links)
+ *   red/burgundy     ≈ 2.9:1 FAIL — never for small text
+ *   peach/cream      ≈ 1.3:1 FAIL — never for text in any size
  */
 
-/* === SELF-HOSTED FONTS === */
-/* Performance optimization: Self-hosting eliminates 670ms render-blocking from Google Fonts CDN */
-
-/* Inter - UI Font (Body text, buttons, labels) */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/inter-v20-latin/inter-v20-latin-regular.woff2') format('woff2');
-}
+/* =========================================================================
+   Fonts
+   ========================================================================= */
 
 @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/inter-v20-latin/inter-v20-latin-600.woff2') format('woff2');
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis/metropolis-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	unicode-range: U+0020-007F, U+00A0-017F, U+2000-206F, U+20AC;
+}
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis/metropolis-regular-italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+	unicode-range: U+0020-007F, U+00A0-017F, U+2000-206F, U+20AC;
+}
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis/metropolis-medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	unicode-range: U+0020-007F, U+00A0-017F, U+2000-206F, U+20AC;
+}
+@font-face {
+	font-family: 'Metropolis';
+	src: url('/fonts/metropolis/metropolis-bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	unicode-range: U+0020-007F, U+00A0-017F, U+2000-206F, U+20AC;
+}
+@font-face {
+	font-family: 'Squanova';
+	src: url('/fonts/squanova/squanova-regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	/* Squanova is uppercase-only and lacks some codepoints (Latin Extended-A,
+	   U+202F). Restrict it so the browser falls through to Metropolis for
+	   missing glyphs. */
+	unicode-range: U+0020-007E, U+00A0-00FF, U+2018-201E, U+20AC;
 }
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/inter-v20-latin/inter-v20-latin-700.woff2') format('woff2');
-}
-
-/* Space Grotesk - Display Font (Headings, stats, emphasis) */
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/space-grotesk-v22-latin/space-grotesk-v22-latin-700.woff2') format('woff2');
-}
+/* =========================================================================
+   Primitives + semantic tokens
+   ========================================================================= */
 
 :root {
-  /* === Brand Identity === */
-  /* Radius: 8px = approachable professionalism (not cold 0px, not playful 20px+) */
-  --radius: 0.5rem; /* 8px - matches design-plan.md line 130 */
+	/* Radius: 8px — approachable professionalism (unchanged from prior brand) */
+	--radius: 0.5rem;
 
-  /* === COMPLETE COLOR SYSTEM (34 shades from design-plan.md) === */
+	/* --- Red scale (saturated accent) --- */
+	--red-100: oklch(0.94 0.06 22); /* ≈ #fcd4d5 — soft pink, banner bg */
+	--red-300: oklch(0.78 0.18 25); /* ≈ #f7797f — muted red, disabled */
+	--red-500: oklch(0.58 0.24 27); /* = #e30713 — BRAND ANCHOR, primary CTA */
+	--red-600: oklch(
+		0.45 0.2 22
+	); /* Deep crimson ≈ #a9001a — calmer CTA surface, fills the L=0.58→0.20 gap. Chroma bumped (vs linear 0.18) so darker shade stays rich, per Refactoring UI "don't let lightness kill saturation". */
+	--red-700: oklch(0.2 0.1 10); /* = #420318 — BRAND ANCHOR, burgundy */
+	--red-900: oklch(0.14 0.08 10); /* = #2b0212 — BRAND ANCHOR, gradient-A dark end */
 
-  /* Dark Background System (7 shades) - Pure greys for backgrounds */
-  --dark-900: oklch(0 0 0);           /* #000000 - pure black */
-  --dark-800: oklch(0.04 0 0);        /* #0a0a0a - primary dark background */
-  --dark-700: oklch(0.08 0 0);        /* #141414 */
-  --dark-600: oklch(0.11 0 0);        /* #1a1a1a - text on light backgrounds */
-  --dark-500: oklch(0.13 0 0);        /* #202020 */
-  --dark-400: oklch(0.16 0 0);        /* #262626 */
-  --dark-300: oklch(0.18 0 0);        /* #2a2a2a */
+	/* --- Warm scale (low-chroma warm neutral; hue rotates 10→45→15) --- */
+	--warm-50: oklch(0.98 0.01 10); /* ≈ #fff7f5 — near-white */
+	--warm-100: oklch(0.95 0.02 20); /* = #ffebeb — BRAND ANCHOR, cream */
+	--warm-200: oklch(0.93 0.03 35); /* = #f7e7df — BRAND ANCHOR, gradient-B light end */
+	--warm-300: oklch(0.85 0.08 45); /* = #f9c2a4 — BRAND ANCHOR, peach */
+	--warm-500: oklch(0.62 0.09 30); /* ≈ #c68670 — terracotta divider */
+	--warm-700: oklch(0.35 0.07 15); /* ≈ #6e2a28 — subtle warm-dark on cream */
 
-  /* Green Accent (9 shades) - Brand primary, saturation compensated at extremes */
-  /* Refactoring UI: "Don't let lightness kill saturation" - extremes have higher saturation */
-  --green-900: oklch(0.50 0.12 147);  /* #2d8a3f - darkest, high saturation to avoid muddy */
-  --green-800: oklch(0.55 0.13 146);  /* #369448 */
-  --green-700: oklch(0.60 0.14 146);  /* #3fa052 */
-  --green-600: oklch(0.65 0.15 145);  /* #48ac5b */
-  --green-500: oklch(0.78 0.18 145);  /* #4ada56 - PRIMARY CTA - peak saturation */
-  --green-400: oklch(0.83 0.16 144);  /* #6ee379 */
-  --green-300: oklch(0.88 0.12 143);  /* #92eb9c */
-  --green-200: oklch(0.92 0.09 142);  /* #b6f4bf */
-  --green-100: oklch(0.97 0.05 141);  /* #dafce1 - lightest, lower saturation but still vibrant */
+	/* --- Utility --- */
+	--white: #ffffff;
+	--black: #000000;
 
-  /* Yellow Accent (9 shades) - Brand secondary, hue rotates toward orange when darker */
-  /* Refactoring UI: "Hue rotation for brightness" - darker yellows toward orange to avoid muddy brown */
-  --yellow-900: oklch(0.72 0.15 95);  /* #c4b500 - darkest, rotated toward orange (95° vs 100°) */
-  --yellow-800: oklch(0.76 0.16 97);  /* #d4c200 */
-  --yellow-700: oklch(0.80 0.18 98);  /* #e4cf00 */
-  --yellow-600: oklch(0.85 0.19 99);  /* #f4dc00 */
-  --yellow-500: oklch(0.93 0.20 100); /* #fae60b - SECONDARY ACCENT - peak saturation, pure yellow */
-  --yellow-400: oklch(0.94 0.18 101); /* #fbea35 */
-  --yellow-300: oklch(0.95 0.16 102); /* #fcee5f */
-  --yellow-200: oklch(0.96 0.12 103); /* #fdf389 */
-  --yellow-100: oklch(0.98 0.08 104); /* #fef7b3 - lightest */
+	/* --- Gradients --- */
+	--gradient-hero: linear-gradient(180deg, var(--red-500) 0%, var(--red-900) 100%);
+	--gradient-hero-diagonal: linear-gradient(135deg, var(--red-500) 0%, var(--red-900) 100%);
+	--gradient-hero-radial: radial-gradient(circle at 30% 30%, var(--red-500) 0%, var(--red-900) 75%);
+	--gradient-soft: linear-gradient(135deg, var(--warm-300) 0%, var(--warm-200) 100%);
 
-  /* Grey System (9 shades) - Blue-tinted for warmth and tech-appropriate feel */
-  /* Refactoring UI: "Greys don't have to be grey" - blue undertone for cool, professional, tech feel */
-  /* KEY: Saturation is 0.01 NOT 0 - this is the blue tint that differentiates the brand */
-  --grey-900: oklch(0.10 0.01 235);   /* #0f1419 - NOT pure grey (#0d0d0d) */
-  --grey-800: oklch(0.13 0.01 235);   /* #1a1f24 */
-  --grey-700: oklch(0.17 0.01 235);   /* #252a2f */
-  --grey-600: oklch(0.21 0.01 235);   /* #30353a */
-  --grey-500: oklch(0.26 0.01 235);   /* #3b4045 */
-  --grey-400: oklch(0.39 0.01 235);   /* #5a5f64 */
-  --grey-300: oklch(0.52 0.01 235);   /* #797e83 */
-  --grey-200: oklch(0.64 0.01 235);   /* #989da2 */
-  --grey-100: oklch(0.76 0.01 235);   /* #b7bcc1 */
+	/* --- Shadcn semantic contract (remapped in place) --- */
+	--background: var(--warm-100);
+	--foreground: var(--red-700);
+	--card: var(--warm-100);
+	--card-foreground: var(--red-700);
+	--popover: var(--warm-100);
+	--popover-foreground: var(--red-700);
+	--primary: var(--red-600);
+	/* Peach-tinted off-white for CTA text. Originally tuned for red-500 (where pure white at 4.80:1 read as glare); on red-600 it lands at 7.37:1 (AAA). Hue 40 matches warm-300, so the text shares chroma with the bg and doesn't vibrate. */
+	--primary-foreground: oklch(1 0.035 40);
+	--accent: var(--warm-300);
+	--accent-foreground: var(--red-700);
+	--secondary: var(--red-700);
+	--secondary-foreground: var(--warm-100);
+	--destructive: oklch(0.5 0.22 18); /* darker than brand red to distinguish */
+	--muted: var(--warm-200);
+	--muted-foreground: var(--warm-700);
+	--border: var(--warm-500);
+	--input: var(--warm-500);
+	--ring: var(--red-700); /* burgundy, NOT red — keeps focus ring visible on red CTA */
 
-  /* === Semantic Color Mappings (shadcn compatibility) === */
+	/* Chart colors (not used on current marketing page but shadcn expects them) */
+	--chart-1: var(--red-500);
+	--chart-2: var(--warm-300);
+	--chart-3: var(--red-700);
+	--chart-4: var(--warm-500);
+	--chart-5: var(--warm-700);
 
-  /* Light theme colors */
-  --background: oklch(1 0 0); /* Pure white */
-  --foreground: var(--dark-600); /* #1a1a1a - dark text */
-
-  /* Brand Colors mapped to semantic names */
-  --primary: var(--green-500); /* Green #4ada56 - PRIMARY CTA */
-  --primary-foreground: var(--dark-800); /* Dark text on green */
-  --accent: var(--yellow-500); /* Yellow #fae60b - SECONDARY ACCENT */
-  --accent-foreground: var(--dark-800); /* Dark text on yellow */
-
-  /* Semantic colors */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.11 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.11 0 0);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.78 0.18 145); /* Green ring for focus states */
-
-  /* Chart colors */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-
-  /* Sidebar (not needed for landing page) */
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.78 0.18 145);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.78 0.18 145);
+	/* Sidebar (unused, kept for shadcn compatibility) */
+	--sidebar: var(--warm-100);
+	--sidebar-foreground: var(--red-700);
+	--sidebar-primary: var(--red-500);
+	--sidebar-primary-foreground: var(--warm-100);
+	--sidebar-accent: var(--warm-200);
+	--sidebar-accent-foreground: var(--red-700);
+	--sidebar-border: var(--warm-500);
+	--sidebar-ring: var(--red-700);
 }
 
-.dark {
-  /* === Dark Theme Overrides === */
-  /* NOTE: All 34 color shades remain the same - they're already defined in :root */
-  /* Only semantic mappings change for dark mode */
-
-  /* Dark theme: --dark-800 (#0a0a0a) background from design-plan.md */
-  --background: var(--dark-800); /* #0a0a0a - primary dark background */
-  --foreground: oklch(0.95 0 0); /* rgba(255,255,255,0.95) - text on dark */
-
-  /* Brand colors on dark (same colors, different foregrounds) */
-  --primary: var(--green-500); /* Green #4ada56 - same green */
-  --primary-foreground: var(--dark-800); /* Dark background text */
-  --accent: var(--yellow-500); /* Yellow #fae60b - same yellow */
-  --accent-foreground: var(--dark-800); /* Dark background text */
-
-  /* Semantic colors for dark */
-  --card: oklch(0.08 0.01 265); /* Slightly lighter than background */
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.08 0.01 265);
-  --popover-foreground: oklch(0.95 0 0);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.78 0.18 145);
-
-  /* Charts dark mode */
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-
-  /* Sidebar dark */
-  --sidebar: oklch(0.08 0.01 265);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.78 0.18 145);
-  --sidebar-primary-foreground: oklch(0.04 0 0);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.78 0.18 145);
-}
+/* =========================================================================
+   Tailwind @theme inline — utility registration
+   ========================================================================= */
 
 @theme inline {
-  /* === COMPLETE Color System for Tailwind Utilities === */
-  /* Note: Using Tailwind's default radius, shadows, spacing, typography, etc. */
-  /* Only custom values defined below */
+	/* Color utilities */
+	--color-red-100: var(--red-100);
+	--color-red-300: var(--red-300);
+	--color-red-500: var(--red-500);
+	--color-red-600: var(--red-600);
+	--color-red-700: var(--red-700);
+	--color-red-900: var(--red-900);
 
-  /* Dark shades: text-dark-600, bg-dark-800, etc. */
-  --color-dark-900: var(--dark-900);
-  --color-dark-800: var(--dark-800);
-  --color-dark-700: var(--dark-700);
-  --color-dark-600: var(--dark-600);
-  --color-dark-500: var(--dark-500);
-  --color-dark-400: var(--dark-400);
-  --color-dark-300: var(--dark-300);
+	--color-warm-50: var(--warm-50);
+	--color-warm-100: var(--warm-100);
+	--color-warm-200: var(--warm-200);
+	--color-warm-300: var(--warm-300);
+	--color-warm-500: var(--warm-500);
+	--color-warm-700: var(--warm-700);
 
-  /* Green shades: text-green-500, bg-green-100, hover:bg-green-600, etc. */
-  --color-green-900: var(--green-900);
-  --color-green-800: var(--green-800);
-  --color-green-700: var(--green-700);
-  --color-green-600: var(--green-600);
-  --color-green-500: var(--green-500);
-  --color-green-400: var(--green-400);
-  --color-green-300: var(--green-300);
-  --color-green-200: var(--green-200);
-  --color-green-100: var(--green-100);
+	/* Shadcn semantic bridge */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
 
-  /* Yellow shades: text-yellow-500, bg-yellow-100, etc. */
-  --color-yellow-900: var(--yellow-900);
-  --color-yellow-800: var(--yellow-800);
-  --color-yellow-700: var(--yellow-700);
-  --color-yellow-600: var(--yellow-600);
-  --color-yellow-500: var(--yellow-500);
-  --color-yellow-400: var(--yellow-400);
-  --color-yellow-300: var(--yellow-300);
-  --color-yellow-200: var(--yellow-200);
-  --color-yellow-100: var(--yellow-100);
+	/* Fonts */
+	--font-sans: 'Metropolis', system-ui, -apple-system, sans-serif;
+	--font-display: 'Squanova', 'Metropolis', system-ui, sans-serif;
 
-  /* Grey shades: text-grey-500, bg-grey-100, border-grey-300, etc. */
-  /* These are BLUE-TINTED - key brand differentiator */
-  --color-grey-900: var(--grey-900);
-  --color-grey-800: var(--grey-800);
-  --color-grey-700: var(--grey-700);
-  --color-grey-600: var(--grey-600);
-  --color-grey-500: var(--grey-500);
-  --color-grey-400: var(--grey-400);
-  --color-grey-300: var(--grey-300);
-  --color-grey-200: var(--grey-200);
-  --color-grey-100: var(--grey-100);
+	/* Radius — keep 8px for buttons and cards (Tailwind defaults are 6px / 12px) */
+	--radius-md: var(--radius);
+	--radius-xl: var(--radius);
 
-  /* Semantic color mappings (shadcn compatibility) */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  
-  /* === Custom Border Radius === */
-  /* Override Tailwind's radius values to match our 8px brand value */
-  /* Design spec (line 1775): "Border Radius: 8px (buttons, cards)" */
-  /* Tailwind defaults: md=6px, xl=12px → both need to be 8px */
-  --radius-md: var(--radius);  /* 8px - used by buttons */
-  --radius-xl: var(--radius);  /* 8px - used by cards (override from 12px) */
+	/* Hand-picked type scale (Refactoring UI ch. 4 — hand-picked, not mathematical) */
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1rem;
+	--text-sm: 0.875rem;
+	--text-sm--line-height: 1.25rem;
+	--text-base: 1rem;
+	--text-base--line-height: 1.6;
+	--text-lg: 1.125rem;
+	--text-lg--line-height: 1.5;
+	--text-xl: 1.25rem;
+	--text-xl--line-height: 1.4;
+	--text-2xl: 1.5rem;
+	--text-2xl--line-height: 1.3;
+	--text-3xl: 1.875rem;
+	--text-3xl--line-height: 1.2;
+	--text-4xl: 2.5rem;
+	--text-4xl--line-height: 1.1;
+	--text-5xl: 3.75rem;
+	--text-5xl--line-height: 1;
+	--text-6xl: 5rem;
+	--text-6xl--line-height: 0.95;
+
+	/* Shadow tokens — burgundy-tinted (emulating light from above on warm palette) */
+	--shadow-sm: 0 1px 2px 0 rgb(43 2 18 / 0.08);
+	--shadow: 0 2px 4px 0 rgb(43 2 18 / 0.1);
+	--shadow-md: 0 4px 6px -1px rgb(43 2 18 / 0.12), 0 2px 4px -2px rgb(43 2 18 / 0.08);
+	--shadow-lg: 0 12px 16px -4px rgb(43 2 18 / 0.18), 0 4px 6px -4px rgb(43 2 18 / 0.1);
+	--shadow-cta: 0 8px 24px -4px rgb(43 2 18 / 0.35);
 }
 
+/* =========================================================================
+   @layer utilities — gradient utilities, signature moments
+   ========================================================================= */
+
+@layer utilities {
+	.bg-gradient-hero {
+		background-image: var(--gradient-hero);
+	}
+	.bg-gradient-hero-diagonal {
+		background-image: var(--gradient-hero-diagonal);
+	}
+	.bg-gradient-hero-radial {
+		background-image: var(--gradient-hero-radial);
+	}
+	.bg-gradient-soft {
+		background-image: var(--gradient-soft);
+	}
+
+	.text-gradient-hero {
+		background-image: var(--gradient-hero);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+	}
+
+	/* Accent-border CTA utility — Gradient A as a 2px border
+	   (Refactoring UI ch. 8: add color with accent borders). */
+	.border-gradient-hero {
+		border: 2px solid transparent;
+		background:
+			linear-gradient(var(--background), var(--background)) padding-box,
+			var(--gradient-hero) border-box;
+	}
+
+	/* Grain overlay — fractal noise at 5% opacity on dark sections.
+	   Apply `grain` class to a positioned parent. */
+	.grain {
+		position: relative;
+	}
+	.grain::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+		opacity: 0.05;
+		mix-blend-mode: overlay;
+		z-index: 1;
+	}
+
+	/* Staggered page-load reveal — apply `.rise` to children, pass --delay
+	   via inline style. Respects prefers-reduced-motion.
+
+	   In the hero, the stagger is held at the pre-animation state until
+	   the <header> gets a `.ready` class (added by +page.svelte's onMount
+	   once fonts + the photo underlay have loaded). Clearing the
+	   animation while paused and re-applying it when .ready lands gives
+	   a fresh t=0 start with the correct delay; a `paused → running`
+	   toggle instead lets the browser's animation clock advance in the
+	   background, producing a visible lag after unpause. Other `.rise`
+	   consumers (outside <header>) play immediately on load. */
+	@media (prefers-reduced-motion: no-preference) {
+		.rise {
+			animation: rise 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+			animation-delay: var(--delay, 0ms);
+		}
+		header:not(.ready) .rise {
+			animation: none;
+			opacity: 0;
+			transform: translateY(8px);
+		}
+	}
+	@keyframes rise {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+/* =========================================================================
+   @layer base
+   ========================================================================= */
+
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
-  }
-
-  /* Typography System: Space Grotesk for headings, Inter for body */
-  /* Refactoring UI: Display font for impact, UI font for legibility */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
-  }
-
-  /* Apply Space Grotesk to bold text for visual consistency */
-  /* Stats numbers, emphasis text, and other bold elements get display font */
-  strong,
-  b,
-  .font-bold {
-    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
-  }
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-family: var(--font-sans);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		font-weight: 400; /* Squanova is a single weight */
+		letter-spacing: -0.01em;
+	}
+	.font-display {
+		font-family: var(--font-display);
+	}
 }

@@ -57,18 +57,34 @@
 				<Carousel.Item class="basis-60 pl-4">
 					<figure class="flex flex-col items-center justify-center gap-3">
 						<div class="flex h-20 w-full items-center justify-center px-4">
-							<img src={logo.src} alt={logo.alt} class="h-auto max-h-16 w-auto max-w-full object-contain" />
+							<img
+								src={logo.src}
+								alt={logo.alt}
+								class="h-auto max-h-16 w-auto max-w-full object-contain"
+							/>
 						</div>
 						<figcaption class="text-center text-sm text-foreground/70">{logo.alt}</figcaption>
 					</figure>
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-		<div class="mt-6 flex justify-center gap-4 xl:hidden">
-			<Carousel.Previous class="relative left-auto top-auto translate-y-0 border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10" />
-			<Carousel.Next class="relative right-auto top-auto translate-y-0 border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10" />
+		<div class="mt-6 flex justify-center gap-6 xl:hidden">
+			<Carousel.Previous
+				variant="ghost"
+				class="relative top-auto left-auto size-10 translate-y-0 border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary [&_svg]:size-6"
+			/>
+			<Carousel.Next
+				variant="ghost"
+				class="relative top-auto right-auto size-10 translate-y-0 border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary [&_svg]:size-6"
+			/>
 		</div>
-		<Carousel.Previous class="hidden border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10 xl:flex" />
-		<Carousel.Next class="hidden border-green-500/30 bg-white hover:border-green-500 hover:bg-green-500/10 xl:flex" />
+		<Carousel.Previous
+			variant="ghost"
+			class="hidden size-10 border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary xl:flex [&_svg]:size-6"
+		/>
+		<Carousel.Next
+			variant="ghost"
+			class="hidden size-10 border-0 bg-transparent text-foreground shadow-none transition-colors hover:bg-transparent hover:text-primary xl:flex [&_svg]:size-6"
+		/>
 	</Carousel.Root>
 </div>

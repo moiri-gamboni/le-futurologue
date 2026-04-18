@@ -34,6 +34,6 @@
 	{#if type === 'textarea'}
 		<Textarea {id} {name} {placeholder} {rows} {required} {value} {autocomplete} />
 	{:else}
-		<Input {id} {name} type={type} {placeholder} {required} {value} {autocomplete} />
+		<Input {id} {name} {type} {placeholder} {required} {value} {autocomplete} />
 	{/if}
 </div>

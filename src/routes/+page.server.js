@@ -15,12 +15,12 @@ function getResendErrorMessage(error) {
 
 	// Invalid reply-to email format
 	if (errorName === 'validation_error' && errorMessage.toLowerCase().includes('reply_to')) {
-		return 'L\'adresse email fournie n\'est pas valide. Veuillez vérifier le format (ex: exemple@email.com).';
+		return "L'adresse email fournie n'est pas valide. Veuillez vérifier le format (ex: exemple@email.com).";
 	}
 
 	// Other invalid email format errors
 	if (errorName === 'validation_error' && errorMessage.toLowerCase().includes('email')) {
-		return 'L\'adresse email fournie n\'est pas valide. Veuillez vérifier et réessayer.';
+		return "L'adresse email fournie n'est pas valide. Veuillez vérifier et réessayer.";
 	}
 
 	// Generic validation error
@@ -29,22 +29,30 @@ function getResendErrorMessage(error) {
 	}
 
 	// Rate limits and quotas (account-level, not user's fault)
-	if (errorName === 'rate_limit_exceeded' || errorName === 'daily_quota_exceeded' || errorName === 'monthly_quota_exceeded') {
+	if (
+		errorName === 'rate_limit_exceeded' ||
+		errorName === 'daily_quota_exceeded' ||
+		errorName === 'monthly_quota_exceeded'
+	) {
 		return 'Le service de messagerie est temporairement surchargé. Veuillez réessayer dans quelques minutes ou nous contacter à contact@lefuturologue.com.';
 	}
 
 	// Server errors
-	if (error.statusCode === 500 || errorName === 'application_error' || errorName === 'internal_server_error') {
+	if (
+		error.statusCode === 500 ||
+		errorName === 'application_error' ||
+		errorName === 'internal_server_error'
+	) {
 		return 'Le service de messagerie rencontre un problème. Veuillez réessayer dans quelques instants ou nous contacter à contact@lefuturologue.com.';
 	}
 
 	// Security error
 	if (errorName === 'security_error') {
-		return 'Votre message n\'a pas pu être envoyé pour des raisons de sécurité. Veuillez nous contacter directement à contact@lefuturologue.com.';
+		return "Votre message n'a pas pu être envoyé pour des raisons de sécurité. Veuillez nous contacter directement à contact@lefuturologue.com.";
 	}
 
 	// Default fallback
-	return 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.';
+	return "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.";
 }
 
 /** @type {import('./$types').Actions} */
@@ -106,15 +114,17 @@ export const actions = {
 
 			// Check if Resend API returned an error
 			if (error) {
-				console.error(JSON.stringify({
-					event: 'contact_form_error',
-					source: 'resend_api',
-					error: {
-						name: error.name,
-						message: error.message,
-						statusCode: error.statusCode
-					}
-				}));
+				console.error(
+					JSON.stringify({
+						event: 'contact_form_error',
+						source: 'resend_api',
+						error: {
+							name: error.name,
+							message: error.message,
+							statusCode: error.statusCode
+						}
+					})
+				);
 				const userMessage = getResendErrorMessage(error);
 				return fail(error.statusCode || 500, {
 					error: userMessage,
@@ -125,25 +135,31 @@ export const actions = {
 				});
 			}
 
-			console.log(JSON.stringify({
-				event: 'contact_form_success',
-				emailId: emailData?.id
-			}));
+			console.log(
+				JSON.stringify({
+					event: 'contact_form_success',
+					emailId: emailData?.id
+				})
+			);
 			return {
 				success: true,
-				successMessage: 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
+				successMessage:
+					'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.'
 			};
 		} catch (error) {
-			console.error(JSON.stringify({
-				event: 'contact_form_error',
-				source: 'unexpected',
-				error: {
-					message: error instanceof Error ? error.message : 'Unknown error',
-					stack: error instanceof Error ? error.stack : undefined
-				}
-			}));
+			console.error(
+				JSON.stringify({
+					event: 'contact_form_error',
+					source: 'unexpected',
+					error: {
+						message: error instanceof Error ? error.message : 'Unknown error',
+						stack: error instanceof Error ? error.stack : undefined
+					}
+				})
+			);
 			return fail(500, {
-				error: 'Une erreur inattendue est survenue. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.',
+				error:
+					'Une erreur inattendue est survenue. Veuillez réessayer ou nous contacter à contact@lefuturologue.com.',
 				name: name.toString(),
 				email: email.toString(),
 				organization: organization?.toString() || '',

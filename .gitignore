@@ -22,7 +22,32 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
+# Catch-all for any *.env credential files (e.g. .brevo.env)
+*.env
+!example.env
 
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Rodney (browser automation scoped to this dir)
+.rodney/
+
+# Claude Code session state (worktrees, settings, transcripts)
+/.claude/
+
+# Brand source kit — raw PDFs, AI files, original photos, fonts.
+# Too big for git. The subsetted woff2s + curated brand assets that
+# actually ship live under static/fonts/ and src/lib/assets/brand/.
+/artistic-direction/
+
+# Design-phase analysis artifacts (JSON dumps, Python exploration
+# scripts, session notes). Kept locally for reference; not part of
+# the runtime.
+/scripts/
+
+# Local plan files (per-feature implementation plans).
+/plans/
+
+# A11y audit output (generated JSON dumps from tools/a11y-audit.sh).
+/a11y-reports/
