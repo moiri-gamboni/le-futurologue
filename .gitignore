@@ -45,3 +45,6 @@ vite.config.ts.timestamp-*
 
 # Local plan files (per-feature implementation plans).
 /plans/
+
+# A11y audit output (generated JSON dumps from tools/a11y-audit.sh).
+/a11y-reports/
